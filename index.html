@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -11,15 +10,15 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#090909;color:#fff;font-family:Tahoma,Arial,sans-serif}
-header{height:75px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #252525}
+header{min-height:75px;padding:15px 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #252525;flex-wrap:wrap;gap:15px}
 .logo{font-size:25px;font-weight:900;letter-spacing:2px}
 .logo span{color:#ed2029}
-nav a{color:#aaa;text-decoration:none;margin:0 12px;font-size:13px}
+nav a{color:#aaa;text-decoration:none;margin:0 10px;font-size:13px}
 .hero{padding:90px 8%;background:radial-gradient(ellipse at 75% 40%,#471014 0%,#17090a 35%,#090909 75%);min-height:400px}
 .hero h1{font-size:clamp(38px,7vw,75px);margin:0 0 20px;font-weight:900}
 .hero h1 span{color:#ed2029}
 .hero p{color:#aaa;line-height:2;max-width:550px}
-.btn{display:inline-block;background:#ed2029;color:white;padding:14px 28px;border-radius:5px;text-decoration:none;font-weight:bold;margin-top:20px}
+.btn{display:inline-block;background:#ed2029;color:white;padding:13px 25px;border:0;border-radius:5px;text-decoration:none;font-weight:bold;cursor:pointer}
 section{padding:55px 8%}
 .title{font-size:25px;border-right:4px solid #ed2029;padding-right:12px;margin-bottom:28px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
@@ -29,9 +28,15 @@ section{padding:55px 8%}
 .info h3{margin:0 0 8px}
 .info p{color:#888;font-size:12px}
 .tag{color:#ed2029;font-size:11px}
+.auth-box{max-width:480px;background:#151515;border:1px solid #292929;border-radius:10px;padding:25px}
+input{display:block;width:100%;padding:14px;margin:12px 0;background:#090909;color:#fff;border:1px solid #333;border-radius:5px;font-family:Tahoma}
+button{font-family:Tahoma}
+.auth-box button{margin:8px 5px 8px 0}
+#message{color:#ed2029;line-height:2;font-size:13px}
+#account{color:#aaa;line-height:2;margin-bottom:15px}
 footer{text-align:center;padding:35px;color:#666;border-top:1px solid #222;font-size:12px}
 @media(max-width:600px){
-header{padding:0 5%}
+header{padding:15px 5%}
 nav a{margin:0 5px;font-size:11px}
 .hero{padding:65px 6%}
 }
@@ -39,16 +44,19 @@ nav a{margin:0 5px;font-size:11px}
 </head>
 
 <body>
+
 <header>
 <div class="logo">RAP <span>ROOM</span></div>
 <nav>
 <a href="#tracks">ترک‌ها</a>
 <a href="#artists">هنرمندان</a>
+<a href="#auth">ورود هنرمندان</a>
 <a href="#about">درباره ما</a>
 </nav>
 </header>
 
 <main>
+
 <div class="hero">
 <h1>اینجا صدای <span>رپ</span> شنیده می‌شه.</h1>
 <p>خانه هنرمندان مستقل؛ جایی برای انتشار موسیقی، کشف استعدادهای جدید و شنیده شدن صداهای متفاوت.</p>
@@ -57,33 +65,8 @@ nav a{margin:0 5px;font-size:11px}
 
 <section id="tracks">
 <h2 class="title">ترک‌های منتخب</h2>
-<div class="cards">
-<div class="card">
-<div class="cover">RR / 01</div>
-<div class="info">
-<h3>به‌زودی</h3>
-<p>منتظر انتشار اولین ترک‌ها باشید.</p>
-<span class="tag">RAP ROOM</span>
-</div>
-</div>
-
-<div class="card">
-<div class="cover">RR / 02</div>
-<div class="info">
-<h3>صدای مستقل</h3>
-<p>موسیقی بدون مرز.</p>
-<span class="tag">UNDERGROUND</span>
-</div>
-</div>
-
-<div class="card">
-<div class="cover">RR / 03</div>
-<div class="info">
-<h3>هنرمندان جدید</h3>
-<p>استعدادهای تازه را کشف کن.</p>
-<span class="tag">NEW VOICES</span>
-</div>
-</div>
+<div class="cards" id="trackList">
+<p style="color:#888">در حال دریافت ترک‌ها...</p>
 </div>
 </section>
 
@@ -93,7 +76,27 @@ nav a{margin:0 5px;font-size:11px}
 موسیقی خودت رو منتشر کن و صدات رو به گوش مخاطب‌ها برسون.
 RAP ROOM برای هنرمندان مستقل ساخته شده.
 </p>
-<a class="btn" href="mailto:hello@raproom.example">ارتباط با ما</a>
+<a class="btn" href="#auth">عضویت هنرمندان</a>
+</section>
+
+<section id="auth">
+<h2 class="title">ورود و ثبت‌نام هنرمندان</h2>
+
+<div class="auth-box">
+
+<div id="account">برای ورود یا ساخت حساب، اطلاعاتت رو وارد کن.</div>
+
+<input id="displayName" type="text" placeholder="نام هنری">
+<input id="email" type="email" placeholder="ایمیل">
+<input id="password" type="password" placeholder="رمز عبور">
+
+<button class="btn" onclick="signUp()">ثبت‌نام</button>
+<button class="btn" onclick="signIn()">ورود</button>
+<button class="btn" id="logoutBtn" onclick="signOut()" style="display:none">خروج از حساب</button>
+
+<p id="message"></p>
+
+</div>
 </section>
 
 <section id="about">
@@ -103,6 +106,7 @@ RAP ROOM برای هنرمندان مستقل ساخته شده.
 ساخته‌شده برای صداهایی که باید شنیده بشن.
 </p>
 </section>
+
 </main>
 
 <footer>© 2026 RAP ROOM — Independent Music Platform</footer>
@@ -117,7 +121,163 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 window.supabase = supabase
 
-console.log('RAP ROOM connected to Supabase!')
+const message = document.getElementById('message')
+const account = document.getElementById('account')
+const logoutBtn = document.getElementById('logoutBtn')
+
+function showMessage(text) {
+  message.textContent = text
+}
+
+window.signUp = async function() {
+  const displayName = document.getElementById('displayName').value.trim()
+  const email = document.getElementById('email').value.trim()
+  const password = document.getElementById('password').value
+
+  if (!displayName || !email || password.length < 6) {
+    showMessage('نام هنری، ایمیل و رمز حداقل ۶ کاراکتری وارد کن.')
+    return
+  }
+
+  showMessage('در حال ثبت‌نام...')
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        display_name: displayName
+      }
+    }
+  })
+
+  if (error) {
+    showMessage(error.message)
+    return
+  }
+
+  if (data.session) {
+    showMessage('ثبت‌نام موفق بود! خوش اومدی.')
+  } else {
+    showMessage('ثبت‌نام انجام شد. ایمیلت رو برای تأیید حساب بررسی کن.')
+  }
+}
+
+window.signIn = async function() {
+  const email = document.getElementById('email').value.trim()
+  const password = document.getElementById('password').value
+
+  if (!email || !password) {
+    showMessage('ایمیل و رمز عبور رو وارد کن.')
+    return
+  }
+
+  showMessage('در حال ورود...')
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  })
+
+  if (error) {
+    showMessage(error.message)
+    return
+  }
+
+  showMessage('با موفقیت وارد شدی!')
+}
+
+window.signOut = async function() {
+  const { error } = await supabase.auth.signOut()
+
+  if (error) {
+    showMessage(error.message)
+    return
+  }
+
+  showMessage('از حساب خارج شدی.')
+}
+
+function updateAccount(session) {
+  if (session?.user) {
+    account.textContent = 'وارد شده‌ای: ' + session.user.email
+    logoutBtn.style.display = 'inline-block'
+  } else {
+    account.textContent = 'برای ورود یا ساخت حساب، اطلاعاتت رو وارد کن.'
+    logoutBtn.style.display = 'none'
+  }
+}
+
+const { data: sessionData } = await supabase.auth.getSession()
+updateAccount(sessionData.session)
+
+supabase.auth.onAuthStateChange((_event, session) => {
+  updateAccount(session)
+})
+
+async function loadTracks() {
+  const { data, error } = await supabase
+    .from('tracks')
+    .select('id,title,artist_name,audio_url,cover_url')
+    .eq('is_published', true)
+    .order('created_at', { ascending: false })
+
+  const trackList = document.getElementById('trackList')
+
+  if (error) {
+    trackList.innerHTML = '<p style="color:#888">دریافت ترک‌ها فعلاً ممکن نیست.</p>'
+    return
+  }
+
+  if (!data.length) {
+    trackList.innerHTML = '<p style="color:#888">هنوز آهنگی منتشر نشده؛ اولین صداها به‌زودی می‌رسن.</p>'
+    return
+  }
+
+  trackList.innerHTML = ''
+
+  data.forEach(track => {
+    const card = document.createElement('div')
+    card.className = 'card'
+
+    const cover = document.createElement('div')
+    cover.className = 'cover'
+
+    if (track.cover_url) {
+      cover.style.backgroundImage = `url("${track.cover_url}")`
+      cover.style.backgroundSize = 'cover'
+      cover.style.backgroundPosition = 'center'
+    } else {
+      cover.textContent = 'RAP ROOM'
+    }
+
+    const info = document.createElement('div')
+    info.className = 'info'
+
+    const title = document.createElement('h3')
+    title.textContent = track.title
+
+    const artist = document.createElement('p')
+    artist.textContent = track.artist_name
+
+    info.append(title, artist)
+
+    if (track.audio_url) {
+      const audio = document.createElement('audio')
+      audio.controls = true
+      audio.src = track.audio_url
+      audio.style.width = '100%'
+      info.appendChild(audio)
+    }
+
+    card.append(cover, info)
+    trackList.appendChild(card)
+  })
+}
+
+loadTracks()
+
+console.log('RAP ROOM initialized successfully.')
 </script>
 
 </body>
