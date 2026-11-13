@@ -1,306 +1,668 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090909">
-<meta name="description" content="RAP ROOM؛ پلتفرم موسیقی رپ و هنرمندان مستقل.">
+<meta name="description" content="RAP ROOM؛ خانه موسیقی رپ و هنرمندان مستقل">
 <title>RAP ROOM</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#090909;color:#fff;font-family:Tahoma,Arial,sans-serif}
-header{min-height:75px;padding:15px 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #252525;flex-wrap:wrap;gap:15px}
-.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+body{
+ margin:0;background:#090909;color:#fff;
+ font-family:Tahoma,Arial,sans-serif
+}
+header{
+ padding:18px 7%;display:flex;justify-content:space-between;
+ align-items:center;border-bottom:1px solid #292929;
+ flex-wrap:wrap;gap:15px
+}
+.logo{font-size:26px;font-weight:900;letter-spacing:2px}
 .logo span{color:#ed2029}
-nav a{color:#aaa;text-decoration:none;margin:0 10px;font-size:13px}
-.hero{padding:90px 8%;background:radial-gradient(ellipse at 75% 40%,#471014 0%,#17090a 35%,#090909 75%);min-height:400px}
-.hero h1{font-size:clamp(38px,7vw,75px);margin:0 0 20px;font-weight:900}
+nav a{
+ color:#aaa;text-decoration:none;margin:0 9px;font-size:13px
+}
+.hero{
+ padding:85px 8%;min-height:390px;
+ background:radial-gradient(ellipse at 75% 40%,#471014,#17090a 40%,#090909 78%)
+}
+.hero h1{font-size:clamp(38px,7vw,72px);margin:0 0 20px}
 .hero h1 span{color:#ed2029}
 .hero p{color:#aaa;line-height:2;max-width:550px}
-.btn{display:inline-block;background:#ed2029;color:white;padding:13px 25px;border:0;border-radius:5px;text-decoration:none;font-weight:bold;cursor:pointer;margin:5px}
-section{padding:55px 8%}
-.title{font-size:25px;border-right:4px solid #ed2029;padding-right:12px;margin-bottom:28px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-.card{background:#151515;border:1px solid #292929;border-radius:9px;overflow:hidden}
-.cover{height:150px;background:linear-gradient(135deg,#360b0e,#171717);display:flex;align-items:center;justify-content:center;font-size:35px;font-weight:900;color:#ed2029}
+.btn{
+ background:#ed2029;color:white;border:0;border-radius:5px;
+ padding:12px 22px;cursor:pointer;font-weight:bold;
+ font-family:inherit;margin:5px
+}
+section{padding:50px 8%}
+.title{
+ font-size:25px;border-right:4px solid #ed2029;
+ padding-right:12px;margin-bottom:25px
+}
+.cards{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:18px
+}
+.card{
+ background:#151515;border:1px solid #292929;
+ border-radius:9px;overflow:hidden
+}
+.cover{
+ height:160px;background:linear-gradient(135deg,#360b0e,#171717);
+ display:flex;align-items:center;justify-content:center;
+ font-size:30px;font-weight:bold;color:#ed2029;
+ background-size:cover;background-position:center
+}
 .info{padding:16px}
 .info h3{margin:0 0 8px}
-.info p{color:#888;font-size:12px}
-.auth-box{max-width:480px;background:#151515;border:1px solid #292929;border-radius:10px;padding:25px}
-input{display:block;width:100%;padding:14px;margin:12px 0;background:#090909;color:#fff;border:1px solid #333;border-radius:5px;font-family:Tahoma}
-#message{color:#ed2029;line-height:2;font-size:13px}
-#account{color:#aaa;line-height:2;margin-bottom:15px}
-footer{text-align:center;padding:35px;color:#666;border-top:1px solid #222;font-size:12px}
+.info p{color:#999;font-size:12px}
 audio{width:100%;margin-top:12px}
-@media(max-width:600px){header{padding:15px 5%}nav a{margin:0 5px;font-size:11px}.hero{padding:65px 6%}}
+.auth-box{
+ max-width:500px;background:#151515;
+ border:1px solid #292929;border-radius:10px;padding:22px
+}
+input,textarea{
+ width:100%;padding:13px;margin:10px 0;
+ background:#090909;color:white;border:1px solid #333;
+ border-radius:5px;font-family:inherit
+}
+textarea{resize:vertical;min-height:75px}
+#message{color:#ed2029;font-size:13px;line-height:2}
+#account{color:#aaa;line-height:2}
+.profile{
+ display:flex;align-items:center;gap:15px;margin:18px 0;
+ flex-wrap:wrap
+}
+.avatar{
+ width:75px;height:75px;border-radius:50%;
+ background:#333;object-fit:cover;border:2px solid #ed2029
+}
+.comment{
+ padding:12px 0;border-bottom:1px solid #292929;
+ font-size:13px;line-height:2
+}
+.comment strong{color:#ed2029}
+.comment small{color:#777}
+.comment-form{margin-top:15px}
+.hidden{display:none!important}
+footer{
+ text-align:center;padding:35px;color:#666;
+ border-top:1px solid #222;font-size:12px
+}
+@media(max-width:600px){
+ header{padding:15px 5%}
+ nav a{margin:0 5px;font-size:11px}
+ .hero{padding:65px 6%}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">RAP <span>ROOM</span></div>
-<nav>
-<a href="#tracks">ترک‌ها</a>
-<a href="#artists">هنرمندان</a>
-<a href="#auth">حساب هنرمندان</a>
-<a href="#about">درباره ما</a>
-</nav>
+ <div class="logo">RAP <span>ROOM</span></div>
+ <nav>
+  <a href="#tracks">ترک‌ها</a>
+  <a href="#artists">هنرمندان</a>
+  <a href="#auth">حساب من</a>
+  <a href="#about">درباره ما</a>
+ </nav>
 </header>
 
 <main>
 
 <div class="hero">
-<h1>اینجا صدای <span>رپ</span> شنیده می‌شه.</h1>
-<p>خانه هنرمندان مستقل؛ جایی برای انتشار موسیقی، کشف استعدادهای جدید و شنیده شدن صداهای متفاوت.</p>
-<a class="btn" href="#tracks">کشف موسیقی</a>
+ <h1>اینجا صدای <span>رپ</span> شنیده می‌شه.</h1>
+ <p>
+  فضایی مستقل برای شنیدن موسیقی، کشف هنرمندان
+  و حمایت از صداهای متفاوت.
+ </p>
+ <a class="btn" href="#tracks">شنیدن موسیقی</a>
 </div>
 
 <section id="tracks">
-<h2 class="title">ترک‌های منتخب</h2>
-<div class="cards" id="trackList">
-<p style="color:#888">در حال دریافت ترک‌ها...</p>
-</div>
+ <h2 class="title">ترک‌های منتشرشده</h2>
+ <div class="cards" id="trackList">
+  <p>در حال دریافت آهنگ‌ها...</p>
+ </div>
 </section>
 
 <section id="artists">
-<h2 class="title">برای هنرمندان</h2>
-<p style="color:#aaa;line-height:2">
-موسیقی خودت رو منتشر کن و صدات رو به گوش مخاطب‌ها برسون.
-RAP ROOM برای هنرمندان مستقل ساخته شده.
-</p>
-<a class="btn" href="#auth">عضویت هنرمندان</a>
+ <h2 class="title">هنرمندان RAP ROOM</h2>
+ <div class="cards" id="artistList">
+  <p style="color:#888">در حال دریافت هنرمندان...</p>
+ </div>
 </section>
 
 <section id="auth">
-<h2 class="title">حساب هنرمندان</h2>
+ <h2 class="title">حساب کاربری</h2>
 
-<div class="auth-box">
+ <div class="auth-box">
 
-<div id="account">برای ورود یا ساخت حساب، اطلاعاتت رو وارد کن.</div>
+  <div id="account">
+   برای ورود یا ثبت‌نام اطلاعاتت رو وارد کن.
+  </div>
 
-<div id="authForm">
-<input id="displayName" type="text" placeholder="نام هنری">
-<input id="email" type="email" placeholder="ایمیل">
-<input id="password" type="password" placeholder="رمز عبور">
+  <div id="authForm">
+   <input id="displayName" placeholder="نام هنری">
+   <input id="email" type="email" placeholder="ایمیل">
+   <input id="password" type="password" placeholder="رمز عبور">
 
-<button class="btn" onclick="signUp()">ثبت‌نام</button>
-<button class="btn" onclick="signIn()">ورود</button>
-</div>
+   <button class="btn" onclick="signUp()">ثبت‌نام</button>
+   <button class="btn" onclick="signIn()">ورود</button>
+  </div>
 
-<button class="btn" id="logoutBtn" onclick="signOut()" style="display:none">
-خروج از حساب
-</button>
+  <div id="profileArea" class="hidden">
 
-<p id="message"></p>
+   <div class="profile">
+    <img id="myAvatar" class="avatar" alt="عکس پروفایل">
+    <div>
+     <strong id="myArtistName"></strong>
+     <p style="color:#888;font-size:12px">
+      حساب هنرمند
+     </p>
+    </div>
+   </div>
 
-</div>
+   <label for="avatarFile">تغییر عکس پروفایل:</label>
+   <input id="avatarFile" type="file" accept="image/*">
+
+   <button class="btn" onclick="changeAvatar()">
+    ذخیره عکس جدید
+   </button>
+
+   <button class="btn" onclick="signOut()">
+    خروج از حساب
+   </button>
+
+  </div>
+
+  <p id="message"></p>
+
+ </div>
 </section>
 
 <section id="about">
-<h2 class="title">درباره RAP ROOM</h2>
-<p style="color:#aaa;line-height:2">
-یک فضای مستقل برای فرهنگ هیپ‌هاپ و موسیقی رپ؛ ساخته‌شده برای صداهایی که باید شنیده بشن.
-</p>
+ <h2 class="title">درباره RAP ROOM</h2>
+ <p style="color:#aaa;line-height:2">
+  RAP ROOM یک پلتفرم مستقل برای موسیقی رپ،
+  شنوندگان و هنرمندان است.
+  انتشار آثار توسط مدیریت RAP ROOM انجام می‌شود.
+ </p>
 </section>
 
 </main>
 
 <footer>
-© 2026 RAP ROOM — Independent Music Platform
+ © 2026 RAP ROOM — Independent Music Platform
 </footer>
 
 <script type="module">
 
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { createClient } from
+'https://esm.sh/@supabase/supabase-js@2'
 
-const SUPABASE_URL = 'https://hapmjswgqqxaeptvapve.supabase.co'
-const SUPABASE_KEY = 'sb_publishable_yBJJq_awdWpz58QQt85abA_yMbiUC4-'
+const SUPABASE_URL =
+'https://hapmjswgqqxaeptvapve.supabase.co'
 
-const supabase = createClient(SUPABASE_URL,SUPABASE_KEY)
+const SUPABASE_KEY =
+'sb_publishable_yBJJq_awdWpz58QQt85abA_yMbiUC4-'
 
-const message = document.getElementById('message')
-const account = document.getElementById('account')
-const logoutBtn = document.getElementById('logoutBtn')
-const authForm = document.getElementById('authForm')
+const supabase = createClient(
+ SUPABASE_URL,
+ SUPABASE_KEY
+)
 
-function showMessage(text){
-message.textContent = text
+let currentUser = null
+let currentProfile = null
+
+const $ = id => document.getElementById(id)
+
+function message(text){
+ $('message').textContent = text
 }
 
-function updateAccount(session){
-
-if(session?.user){
-
-const artistName =
-session.user.user_metadata?.display_name ||
-'هنرمند'
-
-account.textContent = 'وارد شده‌ای: ' + artistName + ' ✓'
-
-logoutBtn.style.display = 'inline-block'
-authForm.style.display = 'none'
-
-}else{
-
-account.textContent = 'برای ورود یا ساخت حساب، اطلاعاتت رو وارد کن.'
-logoutBtn.style.display = 'none'
-authForm.style.display = 'block'
-
+function safeImage(element,url){
+ if(url){
+  element.src = url
+ }
 }
+
+async function loadProfile(user){
+
+ const {data,error} = await supabase
+ .from('profiles')
+ .select('id,username,display_name,avatar_url')
+ .eq('id',user.id)
+ .maybeSingle()
+
+ if(error){
+  console.error(error)
+  return null
+ }
+
+ return data
+}
+
+async function updateAccount(session){
+
+ currentUser = session?.user || null
+
+ if(!currentUser){
+
+  currentProfile = null
+
+  $('account').textContent =
+  'برای ورود یا ثبت‌نام اطلاعاتت رو وارد کن.'
+
+  $('authForm').classList.remove('hidden')
+  $('profileArea').classList.add('hidden')
+
+  return
+ }
+
+ currentProfile = await loadProfile(currentUser)
+
+ const artistName =
+ currentProfile?.display_name ||
+ currentUser.user_metadata?.display_name ||
+ 'هنرمند'
+
+ $('account').textContent = 'وارد شده‌ای ✓'
+
+ $('myArtistName').textContent = artistName
+
+ $('authForm').classList.add('hidden')
+ $('profileArea').classList.remove('hidden')
+
+ if(currentProfile?.avatar_url){
+  $('myAvatar').src = currentProfile.avatar_url
+ }else{
+  $('myAvatar').removeAttribute('src')
+ }
 
 }
 
 window.signUp = async function(){
 
-const displayName = document.getElementById('displayName').value.trim()
-const email = document.getElementById('email').value.trim()
-const password = document.getElementById('password').value
+ const displayName = $('displayName').value.trim()
+ const email = $('email').value.trim()
+ const password = $('password').value
 
-if(!displayName || !email || password.length < 6){
-showMessage('نام هنری، ایمیل و رمز حداقل ۶ کاراکتری وارد کن.')
-return
-}
+ if(!displayName || !email || password.length < 6){
+  message('نام هنری، ایمیل و رمز حداقل ۶ کاراکتری وارد کن.')
+  return
+ }
 
-showMessage('در حال ثبت‌نام...')
+ message('در حال ثبت‌نام...')
 
-const {data,error} = await supabase.auth.signUp({
-email,
-password,
-options:{
-data:{display_name:displayName}
-}
-})
+ const {data,error} = await supabase.auth.signUp({
+  email,
+  password,
+  options:{
+   data:{display_name:displayName}
+  }
+ })
 
-if(error){
-showMessage(error.message)
-return
-}
+ if(error){
+  message(error.message)
+  return
+ }
 
-if(data.session){
-showMessage('ثبت‌نام موفق بود! خوش اومدی.')
-}else{
-showMessage('ثبت‌نام انجام شد. ایمیلت رو برای تأیید بررسی کن.')
-}
+ if(data.session){
+  message('ثبت‌نام موفق بود.')
+ }else{
+  message('ثبت‌نام انجام شد. ایمیلت رو برای تأیید بررسی کن.')
+ }
 
 }
 
 window.signIn = async function(){
 
-const email = document.getElementById('email').value.trim()
-const password = document.getElementById('password').value
+ const email = $('email').value.trim()
+ const password = $('password').value
 
-if(!email || !password){
-showMessage('ایمیل و رمز عبور رو وارد کن.')
-return
-}
+ if(!email || !password){
+  message('ایمیل و رمز عبور رو وارد کن.')
+  return
+ }
 
-showMessage('در حال ورود...')
+ message('در حال ورود...')
 
-const {error} = await supabase.auth.signInWithPassword({
-email,
-password
-})
+ const {error} = await supabase.auth.signInWithPassword({
+  email,
+  password
+ })
 
-if(error){
-showMessage(error.message)
-return
-}
+ if(error){
+  message(error.message)
+  return
+ }
 
-showMessage('با موفقیت وارد شدی!')
+ message('با موفقیت وارد شدی.')
 
 }
 
 window.signOut = async function(){
 
-const {error} = await supabase.auth.signOut()
+ const {error} = await supabase.auth.signOut()
 
-if(error){
-showMessage(error.message)
-return
+ if(error){
+  message(error.message)
+  return
+ }
+
+ message('از حساب خارج شدی.')
+
 }
 
-showMessage('از حساب خارج شدی.')
+window.changeAvatar = async function(){
+
+ if(!currentUser){
+  message('ابتدا وارد حساب شو.')
+  return
+ }
+
+ const file = $('avatarFile').files[0]
+
+ if(!file){
+  message('اول یک عکس انتخاب کن.')
+  return
+ }
+
+ if(!file.type.startsWith('image/')){
+  message('فقط فایل تصویری مجاز است.')
+  return
+ }
+
+ if(file.size > 3 * 1024 * 1024){
+  message('حجم عکس باید کمتر از ۳ مگابایت باشد.')
+  return
+ }
+
+ message('در حال آپلود عکس...')
+
+ const extension =
+ file.name.split('.').pop().toLowerCase()
+
+ const filePath =
+ currentUser.id + '/avatars/' +
+ crypto.randomUUID() + '.' + extension
+
+ const {error:uploadError} = await supabase
+ .storage
+ .from('rap-room-media')
+ .upload(filePath,file,{
+  contentType:file.type,
+  upsert:false
+ })
+
+ if(uploadError){
+  message('خطا در آپلود عکس: ' + uploadError.message)
+  return
+ }
+
+ const {data:urlData} = supabase
+ .storage
+ .from('rap-room-media')
+ .getPublicUrl(filePath)
+
+ const {error:updateError} = await supabase
+ .from('profiles')
+ .update({
+  avatar_url:urlData.publicUrl
+ })
+ .eq('id',currentUser.id)
+
+ if(updateError){
+  message('عکس آپلود شد اما ذخیره پروفایل ناموفق بود: ' + updateError.message)
+  return
+ }
+
+ currentProfile = await loadProfile(currentUser)
+
+ $('myAvatar').src = urlData.publicUrl
+ $('avatarFile').value = ''
+
+ message('عکس پروفایلت با موفقیت تغییر کرد.')
+
+ await loadArtists()
 
 }
-
-const {data:sessionData} = await supabase.auth.getSession()
-
-updateAccount(sessionData.session)
-
-supabase.auth.onAuthStateChange((_event,session)=>{
-updateAccount(session)
-})
 
 async function loadTracks(){
 
-const {data,error} = await supabase
-.from('tracks')
-.select('id,title,artist_name,audio_url,cover_url')
-.eq('is_published',true)
-.order('created_at',{ascending:false})
+ const list = $('trackList')
 
-const trackList = document.getElementById('trackList')
+ const {data,error} = await supabase
+ .from('tracks')
+ .select('id,title,artist_name,audio_url,cover_url')
+ .eq('is_published',true)
+ .order('created_at',{ascending:false})
 
-if(error){
-trackList.textContent = 'دریافت ترک‌ها فعلاً ممکن نیست.'
-return
+ if(error){
+  list.textContent = 'خطا در دریافت آهنگ‌ها.'
+  console.error(error)
+  return
+ }
+
+ list.innerHTML = ''
+
+ if(!data || data.length === 0){
+  list.textContent = 'هنوز آهنگی منتشر نشده است.'
+  return
+ }
+
+ data.forEach(track=>{
+
+  const card = document.createElement('div')
+  card.className = 'card'
+
+  const cover = document.createElement('div')
+  cover.className = 'cover'
+
+  if(track.cover_url){
+   cover.style.backgroundImage =
+   `url("${track.cover_url}")`
+  }else{
+   cover.textContent = 'RAP ROOM'
+  }
+
+  const info = document.createElement('div')
+  info.className = 'info'
+
+  const title = document.createElement('h3')
+  title.textContent = track.title || 'بدون عنوان'
+
+  const artist = document.createElement('p')
+  artist.textContent = track.artist_name || 'هنرمند مستقل'
+
+  info.append(title,artist)
+
+  if(track.audio_url){
+
+   const audio = document.createElement('audio')
+   audio.controls = true
+   audio.preload = 'none'
+   audio.src = track.audio_url
+
+   info.appendChild(audio)
+
+  }
+
+  const commentArea = document.createElement('div')
+  commentArea.className = 'comment-form'
+
+  const commentsTitle = document.createElement('strong')
+  commentsTitle.textContent = 'نظرات'
+
+  const commentsList = document.createElement('div')
+
+  const input = document.createElement('textarea')
+  input.placeholder = 'نظر خودت رو بنویس...'
+  input.maxLength = 1000
+
+  const submit = document.createElement('button')
+  submit.className = 'btn'
+  submit.textContent = 'ثبت نظر'
+
+  if(!currentUser){
+   input.disabled = true
+   input.placeholder = 'برای ثبت نظر ابتدا وارد حساب شو.'
+   submit.disabled = true
+  }
+
+  submit.addEventListener('click',async()=>{
+
+   if(!currentUser){
+    message('برای ثبت نظر باید وارد حساب شوی.')
+    return
+   }
+
+   const content = input.value.trim()
+
+   if(!content){
+    return
+   }
+
+   submit.disabled = true
+
+   const {error} = await supabase
+    .from('comments')
+    .insert({
+     track_id:track.id,
+     user_id:currentUser.id,
+     content
+    })
+
+   submit.disabled = false
+
+   if(error){
+    message('خطا در ثبت نظر: ' + error.message)
+    return
+   }
+
+   input.value = ''
+   message('نظرت ثبت شد.')
+
+   await loadComments(track.id,commentsList)
+
+  })
+
+  commentArea.append(
+   commentsTitle,
+   commentsList,
+   input,
+   submit
+  )
+
+  info.appendChild(commentArea)
+
+  card.append(cover,info)
+  list.appendChild(card)
+
+  loadComments(track.id,commentsList)
+
+ })
+
 }
 
-if(!data.length){
-trackList.textContent = 'هنوز آهنگی منتشر نشده است.'
-return
+async function loadComments(trackId,container){
+
+ const {data,error} = await supabase
+ .from('comments')
+ .select('id,user_id,content,created_at')
+ .eq('track_id',trackId)
+ .order('created_at',{ascending:true})
+
+ container.innerHTML = ''
+
+ if(error){
+  container.textContent = 'دریافت نظرات ممکن نیست.'
+  console.error(error)
+  return
+ }
+
+ if(!data || data.length === 0){
+  container.textContent = 'هنوز نظری ثبت نشده.'
+  return
+ }
+
+ const userIds = [...new Set(data.map(item=>item.user_id))]
+
+ const {data:profiles} = await supabase
+ .from('profiles')
+ .select('id,display_name,username')
+ .in('id',userIds)
+
+ const profileMap = new Map(
+  (profiles || []).map(p=>[p.id,p])
+ )
+
+ data.forEach(item=>{
+
+  const profile = profileMap.get(item.user_id)
+
+  const name =
+   profile?.display_name ||
+   profile?.username ||
+   'شنونده'
+
+  const box = document.createElement('div')
+  box.className = 'comment'
+
+  const author = document.createElement('strong')
+  author.textContent = name + ': '
+
+  const text = document.createElement('span')
+  text.textContent = item.content
+
+  const date = document.createElement('div')
+  date.style.color = '#777'
+  date.style.fontSize = '10px'
+
+  date.textContent =
+   new Date(item.created_at).toLocaleDateString('fa-IR')
+
+  box.append(author,text,date)
+  container.appendChild(box)
+
+ })
+
 }
 
-trackList.innerHTML = ''
+async function loadArtists(){
 
-data.forEach(track=>{
+ const list = $('artistList')
 
-const card = document.createElement('div')
-card.className = 'card'
+ const {data,error} = await supabase
+ .from('profiles')
+ .select('id,username,display_name,avatar_url')
+ .order('created_at',{ascending:false})
 
-const cover = document.createElement('div')
-cover.className = 'cover'
+ if(error){
+  list.textContent = 'خطا در دریافت هنرمندان.'
+  return
+ }
 
-if(track.cover_url){
-cover.style.backgroundImage = `url("${track.cover_url}")`
-cover.style.backgroundSize = 'cover'
-cover.style.backgroundPosition = 'center'
-}else{
-cover.textContent = 'RAP ROOM'
-}
+ list.innerHTML = ''
 
-const info = document.createElement('div')
-info.className = 'info'
+ if(!data || data.length === 0){
+  list.textContent = 'هنوز هنرمندی ثبت نشده است.'
+  return
+ }
 
-const title = document.createElement('h3')
-title.textContent = track.title
+ data.forEach(artist=>{
 
-const artist = document.createElement('p')
-artist.textContent = track.artist_name
+  const card = document.createElement('div')
+  card.className = 'card'
 
-info.append(title,artist)
+  const cover = document.createElement('div')
+  cover.className = 'cover'
 
-if(track.audio_url){
-const audio = document.createElement('audio')
-audio.controls = true
-audio.src = track.audio_url
-info.appendChild(audio)
-}
-
-card.append(cover,info)
-trackList.appendChild(card)
-
-})
-
-}
-
-loadTracks()
-
-console.log('RAP ROOM initialized.')
-
-</script>
-
-</body>
-</html>
+  if(artist.avatar_url){
+   cover.style.backgroundImage =
+   `url("${artist.avatar_url}")`
+  }else{
