@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -6,6 +7,7 @@
 <meta name="theme-color" content="#090909">
 <meta name="description" content="RAP ROOM؛ خانه موسیقی رپ مستقل، معرفی هنرمندان و کشف ترک‌های جدید.">
 <title>RAP ROOM | خانه رپ مستقل</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#090909;color:#fff;font-family:Tahoma,Arial,sans-serif}
@@ -28,9 +30,14 @@ section{padding:55px 8%}
 .info p{color:#888;font-size:12px}
 .tag{color:#ed2029;font-size:11px}
 footer{text-align:center;padding:35px;color:#666;border-top:1px solid #222;font-size:12px}
-@media(max-width:600px){header{padding:0 5%}nav a{margin:0 5px;font-size:11px}.hero{padding:65px 6%}}
+@media(max-width:600px){
+header{padding:0 5%}
+nav a{margin:0 5px;font-size:11px}
+.hero{padding:65px 6%}
+}
 </style>
 </head>
+
 <body>
 <header>
 <div class="logo">RAP <span>ROOM</span></div>
@@ -51,24 +58,67 @@ footer{text-align:center;padding:35px;color:#666;border-top:1px solid #222;font-
 <section id="tracks">
 <h2 class="title">ترک‌های منتخب</h2>
 <div class="cards">
-<div class="card"><div class="cover">RR / 01</div><div class="info"><h3>به‌زودی</h3><p>منتظر انتشار اولین ترک‌ها باشید.</p><span class="tag">RAP ROOM</span></div></div>
-<div class="card"><div class="cover">RR / 02</div><div class="info"><h3>صدای مستقل</h3><p>موسیقی بدون مرز.</p><span class="tag">UNDERGROUND</span></div></div>
-<div class="card"><div class="cover">RR / 03</div><div class="info"><h3>هنرمندان جدید</h3><p>استعدادهای تازه را کشف کن.</p><span class="tag">NEW VOICES</span></div></div>
+<div class="card">
+<div class="cover">RR / 01</div>
+<div class="info">
+<h3>به‌زودی</h3>
+<p>منتظر انتشار اولین ترک‌ها باشید.</p>
+<span class="tag">RAP ROOM</span>
+</div>
+</div>
+
+<div class="card">
+<div class="cover">RR / 02</div>
+<div class="info">
+<h3>صدای مستقل</h3>
+<p>موسیقی بدون مرز.</p>
+<span class="tag">UNDERGROUND</span>
+</div>
+</div>
+
+<div class="card">
+<div class="cover">RR / 03</div>
+<div class="info">
+<h3>هنرمندان جدید</h3>
+<p>استعدادهای تازه را کشف کن.</p>
+<span class="tag">NEW VOICES</span>
+</div>
+</div>
 </div>
 </section>
 
 <section id="artists">
 <h2 class="title">برای هنرمندان</h2>
-<p style="color:#aaa;line-height:2">موسیقی خودت رو منتشر کن و صدات رو به گوش مخاطب‌ها برسون. RAP ROOM برای هنرمندان مستقل ساخته شده.</p>
+<p style="color:#aaa;line-height:2">
+موسیقی خودت رو منتشر کن و صدات رو به گوش مخاطب‌ها برسون.
+RAP ROOM برای هنرمندان مستقل ساخته شده.
+</p>
 <a class="btn" href="mailto:hello@raproom.example">ارتباط با ما</a>
 </section>
 
 <section id="about">
 <h2 class="title">درباره RAP ROOM</h2>
-<p style="color:#aaa;line-height:2">یک فضای مستقل برای فرهنگ هیپ‌هاپ و موسیقی رپ؛ ساخته‌شده برای صداهایی که باید شنیده بشن.</p>
+<p style="color:#aaa;line-height:2">
+یک فضای مستقل برای فرهنگ هیپ‌هاپ و موسیقی رپ؛
+ساخته‌شده برای صداهایی که باید شنیده بشن.
+</p>
 </section>
 </main>
 
 <footer>© 2026 RAP ROOM — Independent Music Platform</footer>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+const SUPABASE_URL = 'https://hapmjswgqqxaeptvapve.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_yBJJq_awdWpz58QQt85abA_yMbiUC4-'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+window.supabase = supabase
+
+console.log('RAP ROOM connected to Supabase!')
+</script>
+
 </body>
 </html>
