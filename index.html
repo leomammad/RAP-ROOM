@@ -7,194 +7,43 @@
 
 <style>
 *{box-sizing:border-box}
-
-body{
- margin:0;
- background:#090909;
- color:#eee;
- font-family:Tahoma,Arial,sans-serif;
-}
-
-header{
- background:#160606;
- border-bottom:2px solid #a00000;
- padding:22px 15px;
- text-align:center;
-}
-
-header h1{
- margin:0;
- color:#e00000;
- font-size:32px;
- letter-spacing:3px;
-}
-
-header p{
- color:#aaa;
- font-size:12px;
-}
-
-nav{
- display:flex;
- justify-content:center;
- gap:10px;
- flex-wrap:wrap;
- padding:15px;
- background:#111;
-}
-
-button{
- background:#a00000;
- color:white;
- border:0;
- padding:11px 17px;
- border-radius:7px;
- cursor:pointer;
- font-weight:bold;
-}
-
+body{margin:0;background:#090909;color:#eee;font-family:Tahoma,Arial,sans-serif}
+header{background:#160606;border-bottom:2px solid #a00000;padding:22px 15px;text-align:center}
+header h1{margin:0;color:#e00000;font-size:32px;letter-spacing:3px}
+header p{color:#aaa;font-size:12px}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:15px;background:#111}
+button{background:#a00000;color:white;border:0;padding:11px 17px;border-radius:7px;cursor:pointer;font-weight:bold}
 button:hover{background:#d00000}
-
-main{
- max-width:900px;
- margin:auto;
- padding:15px;
-}
-
-section{
- background:#151515;
- border:1px solid #292929;
- border-radius:12px;
- padding:18px;
- margin-bottom:18px;
-}
-
+main{max-width:900px;margin:auto;padding:15px}
+section{background:#151515;border:1px solid #292929;border-radius:12px;padding:18px;margin-bottom:18px}
 h2{color:#e00000;margin-top:0}
-
-input,textarea{
- width:100%;
- padding:12px;
- margin:7px 0;
- background:#080808;
- color:white;
- border:1px solid #444;
- border-radius:7px;
-}
-
-.card{
- background:#202020;
- padding:14px;
- border-radius:10px;
- margin:12px 0;
- border-right:3px solid #a00000;
-}
-
+input,textarea{width:100%;padding:12px;margin:7px 0;background:#080808;color:white;border:1px solid #444;border-radius:7px}
+.card{background:#202020;padding:14px;border-radius:10px;margin:12px 0;border-right:3px solid #a00000}
 .card h3{margin-top:0}
-
-audio{
- width:100%;
- margin-top:10px;
-}
-
-.small{
- color:#999;
- font-size:12px;
-}
-
-.avatar{
- width:75px;
- height:75px;
- border-radius:50%;
- object-fit:cover;
- background:#333;
- border:2px solid #a00000;
-}
-
+audio{width:100%;margin-top:10px}
+.small{color:#999;font-size:12px}
+.avatar{width:75px;height:75px;border-radius:50%;object-fit:cover;background:#333;border:2px solid #a00000}
 .hidden{display:none}
+#status{color:#ff7777;white-space:pre-wrap}
+.comment{background:#111;padding:9px;border-radius:7px;margin:7px 0}
+footer{text-align:center;color:#666;padding:25px;font-size:12px}
 
-#status{
- color:#ff7777;
- white-space:pre-wrap;
-}
+.artistCard{cursor:pointer;transition:.2s}
+.artistCard:hover{background:#292020;transform:translateY(-2px)}
+.artistCard img{width:85px;height:85px;border-radius:50%;object-fit:cover;border:2px solid #a00000}
 
-.comment{
- background:#111;
- padding:9px;
- border-radius:7px;
- margin:7px 0;
-}
+.artistHero{text-align:center;padding:25px 10px;background:linear-gradient(145deg,#260707,#111);border:1px solid #570000;border-radius:12px;margin-bottom:20px}
+.artistHero img{width:170px;height:170px;border-radius:50%;object-fit:cover;border:4px solid #b00000;box-shadow:0 0 25px rgba(180,0,0,.35)}
+.artistHero h2{font-size:25px;margin:18px 0 8px}
+.artistBio{background:#101010;border-right:3px solid #a00000;border-radius:8px;padding:15px;line-height:2;text-align:right;white-space:pre-wrap;overflow-wrap:anywhere}
+.backButton{background:#333;margin-bottom:15px}
+.backButton:hover{background:#555}
 
-/* کارت هنرمندان */
-
-.artistCard{
- cursor:pointer;
- transition:0.2s;
-}
-
-.artistCard:hover{
- background:#292020;
- transform:translateY(-2px);
-}
-
-.artistCard img{
- width:85px;
- height:85px;
- border-radius:50%;
- object-fit:cover;
- border:2px solid #a00000;
-}
-
-/* صفحه اختصاصی هنرمند */
-
-.artistHero{
- text-align:center;
- padding:25px 10px;
- background:linear-gradient(145deg,#260707,#111);
- border:1px solid #570000;
- border-radius:12px;
- margin-bottom:20px;
-}
-
-.artistHero img{
- width:170px;
- height:170px;
- border-radius:50%;
- object-fit:cover;
- border:4px solid #b00000;
- box-shadow:0 0 25px rgba(180,0,0,.35);
-}
-
-.artistHero h2{
- font-size:25px;
- margin:18px 0 8px;
-}
-
-.artistBio{
- background:#101010;
- border-right:3px solid #a00000;
- border-radius:8px;
- padding:15px;
- line-height:2;
- text-align:right;
- white-space:pre-wrap;
- overflow-wrap:anywhere;
-}
-
-.backButton{
- background:#333;
- margin-bottom:15px;
-}
-
-.backButton:hover{
- background:#555;
-}
-
-footer{
- text-align:center;
- color:#666;
- padding:25px;
- font-size:12px;
-}
+.followButton{min-width:145px;margin-top:12px;background:#a00000}
+.followButton.following{background:#292929;border:1px solid #a00000}
+.followButton:disabled{opacity:.6;cursor:wait}
+.followCount{color:#ddd;font-size:14px;margin-top:12px}
+.followCount strong{color:#ff4444;font-size:18px}
 </style>
 </head>
 
@@ -228,23 +77,11 @@ footer{
  <div id="artistList">در حال دریافت هنرمندان...</div>
 </section>
 
-<!-- صفحه اختصاصی هنرمند -->
-
 <section id="artistPage" class="hidden">
-
- <button class="backButton" id="backToArtists">
-  ← بازگشت به هنرمندان
- </button>
-
- <div id="artistDetails">
-  در حال دریافت اطلاعات هنرمند...
- </div>
-
+ <button class="backButton" id="backToArtists">← بازگشت به هنرمندان</button>
+ <div id="artistDetails">در حال دریافت اطلاعات هنرمند...</div>
  <h2>🎧 آهنگ‌های این هنرمند</h2>
- <div id="artistTracks">
-  در حال دریافت آهنگ‌ها...
- </div>
-
+ <div id="artistTracks">در حال دریافت آهنگ‌ها...</div>
 </section>
 
 <section id="account" class="hidden">
@@ -252,7 +89,6 @@ footer{
 
  <div id="loggedOut">
   <h3>ورود</h3>
-
   <form id="loginForm">
    <input id="loginEmail" type="email" placeholder="ایمیل" required>
    <input id="loginPassword" type="password" placeholder="رمز عبور" required>
@@ -262,7 +98,6 @@ footer{
   <hr style="border-color:#333;margin:25px 0">
 
   <h3>ثبت‌نام</h3>
-
   <form id="signupForm">
    <input id="signupName" type="text" placeholder="نام هنری" required>
    <input id="signupEmail" type="email" placeholder="ایمیل" required>
@@ -272,196 +107,118 @@ footer{
  </div>
 
  <div id="loggedIn" class="hidden">
-
   <img id="myAvatar" class="avatar" alt="عکس پروفایل">
-
   <h3 id="myName"></h3>
-
   <p class="small">عضو RAP ROOM</p>
 
   <h3>تغییر عکس پروفایل</h3>
-
   <input type="file" id="avatarFile" accept="image/*">
-
   <button id="avatarButton">ثبت عکس جدید</button>
 
   <br><br>
-
   <button id="logoutButton">خروج از حساب</button>
-
  </div>
 </section>
 
 <section id="about" class="hidden">
  <h2>درباره RAP ROOM</h2>
-
- <p>
- RAP ROOM فضایی برای شنیدن صدای رپ مستقل است.
- اینجا هنرمندان و شنوندگان کنار هم هستند.
- </p>
-
- <p>
- انتشار و مدیریت آهنگ‌ها فقط توسط تیم RAP ROOM انجام می‌شود.
- </p>
+ <p>RAP ROOM فضایی برای شنیدن صدای رپ مستقل است. اینجا هنرمندان و شنوندگان کنار هم هستند.</p>
+ <p>انتشار و مدیریت آهنگ‌ها فقط توسط تیم RAP ROOM انجام می‌شود.</p>
 </section>
 
 </main>
 
-<footer>
-RAP ROOM © 2026
-</footer>
+<footer>RAP ROOM © 2026</footer>
 
 <script>
-
 const SUPABASE_URL = "https://hapmjswgqqxaeptvapve.supabase.co";
-
 const SUPABASE_KEY = "sb_publishable_yBJJq_awdWpz58QQt85abA_yMbiUC4-";
 
 let db = null;
 let currentUser = null;
+let activeArtist = null;
 
 const $ = id => document.getElementById(id);
-
-const DEFAULT_AVATAR =
- "https://placehold.co/300x300/222/fff?text=RAP+ROOM";
+const DEFAULT_AVATAR = "https://placehold.co/300x300/222/fff?text=RAP+ROOM";
 
 function message(text){
  $("status").textContent = text;
 }
 
 function escapeHTML(value){
- return String(value ?? "").replace(/[&<>"']/g, c=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#039;"
+ return String(value ?? "").replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
  })[c]);
 }
 
-/* جابه‌جایی بین بخش‌های سایت */
-
 function showSection(sectionId){
-
  document.querySelectorAll("main > section").forEach(section=>{
-
   if(section.id === "statusBox") return;
-
   section.classList.add("hidden");
-
  });
-
  $(sectionId).classList.remove("hidden");
-
  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 document.querySelectorAll("[data-go]").forEach(button=>{
-
  button.addEventListener("click",()=>{
-
   showSection(button.dataset.go);
-
  });
-
 });
 
-/* حساب کاربری */
-
 function showAccount(user){
-
  currentUser = user;
-
  $("loggedOut").classList.toggle("hidden",!!user);
-
  $("loggedIn").classList.toggle("hidden",!user);
 
  if(user){
-
   $("myName").textContent =
    user.user_metadata?.display_name || "هنرمند RAP ROOM";
-
   $("myAvatar").src =
    user.user_metadata?.avatar_url || DEFAULT_AVATAR;
-
  }
 
+ if(activeArtist){
+  renderArtistPage(activeArtist);
+ }
 }
 
-/* ساخت کارت آهنگ */
-
 function createTrackCard(track){
-
  const card = document.createElement("div");
-
  card.className = "card";
 
  card.innerHTML = `
-
   <h3>${escapeHTML(track.title)}</h3>
-
   <p>${escapeHTML(track.artist_name)}</p>
-
-  ${track.cover_url ? `
-   <img
-    src="${escapeHTML(track.cover_url)}"
-    class="avatar"
-    alt="کاور آهنگ"
-   >
-  ` : ""}
-
-  <audio
-   controls
-   preload="none"
-   src="${escapeHTML(track.audio_url)}"
-  ></audio>
-
+  ${track.cover_url ? `<img src="${escapeHTML(track.cover_url)}" class="avatar" alt="کاور">` : ""}
+  <audio controls preload="none" src="${escapeHTML(track.audio_url)}"></audio>
   <div class="commentsArea">
-
-   <button class="showComments">
-    دیدن نظرات
-   </button>
-
+   <button class="showComments">دیدن نظرات</button>
    <div class="commentsList hidden"></div>
-
    <div class="commentForm hidden"></div>
-
   </div>
-
  `;
 
  card.querySelector(".showComments").addEventListener("click",async()=>{
-
   const list = card.querySelector(".commentsList");
-
   const form = card.querySelector(".commentForm");
 
   list.classList.toggle("hidden");
-
   form.classList.toggle("hidden");
 
   if(!list.dataset.loaded){
-
    await loadComments(track.id,list);
-
    list.dataset.loaded = "yes";
-
   }
 
   renderCommentForm(track.id,form,list);
-
  });
 
  return card;
-
 }
 
-/* دریافت آهنگ‌ها */
-
 async function loadTracks(){
-
  const box = $("trackList");
-
  box.textContent = "در حال دریافت آهنگ‌ها...";
 
  const {data,error} = await db
@@ -471,35 +228,20 @@ async function loadTracks(){
   .order("created_at",{ascending:false});
 
  if(error){
-
   box.textContent = "خطا در دریافت آهنگ‌ها: " + error.message;
-
   return;
-
  }
 
- if(!data || data.length===0){
-
+ if(!data || !data.length){
   box.textContent = "هنوز آهنگی منتشر نشده است.";
-
   return;
-
  }
 
  box.innerHTML = "";
-
- data.forEach(track=>{
-
-  box.appendChild(createTrackCard(track));
-
- });
-
+ data.forEach(track=>box.appendChild(createTrackCard(track)));
 }
 
-/* دریافت نظرات */
-
 async function loadComments(trackId,box){
-
  box.textContent = "در حال دریافت نظرات...";
 
  const {data,error} = await db
@@ -509,97 +251,89 @@ async function loadComments(trackId,box){
   .order("created_at",{ascending:true});
 
  if(error){
-
-  box.textContent = "خطا در دریافت نظرات: "+error.message;
-
+  box.textContent = "خطا در دریافت نظرات: " + error.message;
   return;
-
  }
 
  if(!data || !data.length){
-
   box.textContent = "هنوز نظری ثبت نشده است.";
-
   return;
-
  }
 
  box.innerHTML = data.map(c=>`
-
-  <div class="comment">
-   ${escapeHTML(c.content)}
-  </div>
-
+  <div class="comment">${escapeHTML(c.content)}</div>
  `).join("");
-
 }
 
-/* فرم ارسال نظر */
-
 function renderCommentForm(trackId,form,list){
-
  if(!currentUser){
-
-  form.innerHTML =
-   '<p class="small">برای ثبت نظر ابتدا وارد حساب شو.</p>';
-
+  form.innerHTML = '<p class="small">برای ثبت نظر ابتدا وارد حساب شو.</p>';
   return;
-
  }
 
  form.innerHTML = `
-
-  <input
-   class="commentInput"
-   placeholder="نظر خودت را بنویس..."
-  >
-
-  <button class="sendComment">
-   ارسال نظر
-  </button>
-
+  <input class="commentInput" placeholder="نظر خودت را بنویس...">
+  <button class="sendComment">ارسال نظر</button>
  `;
 
  form.querySelector(".sendComment").addEventListener("click",async()=>{
-
   const input = form.querySelector(".commentInput");
-
   const content = input.value.trim();
 
   if(!content) return;
 
   const {error} = await db.from("comments").insert({
-
    track_id:trackId,
-
    user_id:currentUser.id,
-
    content:content
-
   });
 
   if(error){
-
-   alert("خطا در ارسال نظر: "+error.message);
-
+   alert("خطا در ارسال نظر: " + error.message);
    return;
-
   }
 
   input.value = "";
-
   await loadComments(trackId,list);
-
  });
-
 }
 
-/* دریافت فهرست هنرمندان */
+/* اطلاعات دنبال‌کننده‌های همه هنرمندان */
+
+async function loadFollowStats(){
+ const {data,error} = await db
+  .from("artist_follows")
+  .select("artist_id,follower_id");
+
+ if(error){
+  console.error("خطا در دریافت دنبال‌کننده‌ها:",error.message);
+  return null;
+ }
+
+ const stats = {};
+
+ (data || []).forEach(row=>{
+  if(!stats[row.artist_id]){
+   stats[row.artist_id] = {
+    count:0,
+    following:false
+   };
+  }
+
+  stats[row.artist_id].count++;
+
+  if(currentUser && row.follower_id === currentUser.id){
+   stats[row.artist_id].following = true;
+  }
+ });
+
+ return stats;
+}
+
+/* فهرست هنرمندان */
 
 async function loadArtists(){
-
  const box = $("artistList");
-
  box.textContent = "در حال دریافت هنرمندان...";
 
  const {data,error} = await db
@@ -608,391 +342,67 @@ async function loadArtists(){
   .order("created_at",{ascending:false});
 
  if(error){
-
-  box.textContent = "خطا در دریافت هنرمندان: "+error.message;
-
+  box.textContent = "خطا در دریافت هنرمندان: " + error.message;
   return;
-
  }
 
  if(!data || !data.length){
-
   box.textContent = "هنوز هنرمندی ثبت نشده است.";
-
   return;
-
  }
+
+ const stats = await loadFollowStats();
 
  box.innerHTML = "";
 
  data.forEach(artist=>{
-
   const card = document.createElement("div");
-
   card.className = "card artistCard";
 
   const name = artist.display_name || artist.username || "هنرمند";
+  const count = stats?.[artist.id]?.count || 0;
 
   card.innerHTML = `
-
-   <img
-    src="${escapeHTML(artist.avatar_url || DEFAULT_AVATAR)}"
-    alt="عکس هنرمند"
-   >
-
+   <img src="${escapeHTML(artist.avatar_url || DEFAULT_AVATAR)}" alt="عکس هنرمند">
    <h3>${escapeHTML(name)}</h3>
-
    <p>${escapeHTML(artist.bio || "هنرمند RAP ROOM")}</p>
-
+   <p class="small">❤️ ${count} دنبال‌کننده</p>
    <p class="small">مشاهده صفحه هنرمند ←</p>
-
   `;
 
   card.addEventListener("click",()=>{
-
    openArtistPage(artist);
-
   });
 
   box.appendChild(card);
-
  });
-
 }
 
-/* باز کردن صفحه اختصاصی هنرمند */
+/* صفحه هنرمند */
 
-async function openArtistPage(artist){
-
+function openArtistPage(artist){
+ activeArtist = artist;
  showSection("artistPage");
+ renderArtistPage(artist);
+ loadArtistTracks(artist);
+}
 
+async function renderArtistPage(artist){
  const name = artist.display_name || artist.username || "هنرمند";
 
- $("artistDetails").innerHTML = `
-
-  <div class="artistHero">
-
-   <img
-    src="${escapeHTML(artist.avatar_url || DEFAULT_AVATAR)}"
-    alt="عکس ${escapeHTML(name)}"
-   >
-
-   <h2>${escapeHTML(name)}</h2>
-
-   <p class="small">هنرمند RAP ROOM</p>
-
-  </div>
-
-  <h3 style="color:#e00000">بیوگرافی هنرمند</h3>
-
-  <div class="artistBio">
-
-   ${escapeHTML(artist.bio || "این هنرمند هنوز بیوگرافی خود را ثبت نکرده است.")}
-
-  </div>
-
- `;
-
- await loadArtistTracks(artist);
-
-}
-
-/* دریافت آهنگ‌های اختصاصی هنرمند */
-
-async function loadArtistTracks(artist){
-
- const box = $("artistTracks");
-
- box.textContent = "در حال دریافت آهنگ‌های هنرمند...";
-
- const artistNames = [
-  artist.display_name,
-  artist.username
- ].filter(Boolean);
-
- const uniqueNames = [...new Set(artistNames)];
-
- if(!uniqueNames.length){
-
-  box.textContent = "نام هنری برای این حساب ثبت نشده است.";
-
-  return;
-
- }
-
- let allTracks = [];
-
- for(const artistName of uniqueNames){
-
-  const {data,error} = await db
-   .from("tracks")
-   .select("*")
-   .eq("is_published",true)
-   .eq("artist_name",artistName)
-   .order("created_at",{ascending:false});
-
-  if(error){
-
-   box.textContent = "خطا در دریافت آهنگ‌ها: "+error.message;
-
-   return;
-
-  }
-
-  if(data){
-
-   allTracks = allTracks.concat(data);
-
-  }
-
- }
-
- const uniqueTracks = [
-
-  ...new Map(allTracks.map(track=>[track.id,track])).values()
-
- ];
-
- if(!uniqueTracks.length){
-
-  box.textContent = "هنوز آهنگی برای این هنرمند منتشر نشده است.";
-
-  return;
-
- }
-
- box.innerHTML = "";
-
- uniqueTracks.forEach(track=>{
-
-  box.appendChild(createTrackCard(track));
-
- });
-
-}
-
-/* بازگشت به فهرست هنرمندان */
-
-$("backToArtists").addEventListener("click",()=>{
-
- showSection("artists");
-
-});
-
-/* ورود */
-
-$("loginForm").addEventListener("submit",async e=>{
-
- e.preventDefault();
-
- if(!db) return alert("اتصال هنوز آماده نیست.");
-
- const email = $("loginEmail").value.trim();
-
- const password = $("loginPassword").value;
-
- const {data,error} = await db.auth.signInWithPassword({
-
-  email,
-
-  password
-
- });
+ const {count,error} = await db
+  .from("artist_follows")
+  .select("*",{count:"exact",head:true})
+  .eq("artist_id",artist.id);
 
  if(error){
-
-  alert("خطا در ورود: "+error.message);
-
-  return;
-
- }
-
- showAccount(data.user);
-
- message("با موفقیت وارد RAP ROOM شدی.");
-
-});
-
-/* ثبت‌نام */
-
-$("signupForm").addEventListener("submit",async e=>{
-
- e.preventDefault();
-
- if(!db) return alert("اتصال هنوز آماده نیست.");
-
- const name = $("signupName").value.trim();
-
- const email = $("signupEmail").value.trim();
-
- const password = $("signupPassword").value;
-
- const {data,error} = await db.auth.signUp({
-
-  email,
-
-  password,
-
-  options:{
-
-   data:{display_name:name}
-
-  }
-
- });
-
- if(error){
-
-  alert("خطا در ثبت‌نام: "+error.message);
-
-  return;
-
- }
-
- if(data.session){
-
-  showAccount(data.user);
-
-  message("ثبت‌نام انجام شد و وارد حساب شدی.");
-
- }else{
-
-  message("ثبت‌نام انجام شد. ایمیلت را برای تأیید حساب بررسی کن.");
-
-  alert("لینک تأیید حساب به ایمیلت ارسال شد.");
-
- }
-
-});
-
-/* خروج */
-
-$("logoutButton").addEventListener("click",async()=>{
-
- const {error} = await db.auth.signOut();
-
- if(error) return alert(error.message);
-
- showAccount(null);
-
- message("از حساب خارج شدی.");
-
-});
-
-/* تغییر عکس پروفایل */
-
-$("avatarButton").addEventListener("click",async()=>{
-
- if(!currentUser) return;
-
- const file = $("avatarFile").files[0];
-
- if(!file) return alert("اول یک عکس انتخاب کن.");
-
- if(!file.type.startsWith("image/")){
-
-  return alert("فقط فایل تصویری انتخاب کن.");
-
- }
-
- if(file.size > 5*1024*1024){
-
-  return alert("حجم عکس باید کمتر از ۵ مگابایت باشد.");
-
- }
-
- const extension = file.name.split(".").pop().toLowerCase();
-
- const path = `${currentUser.id}/avatars/${crypto.randomUUID()}.${extension}`;
-
- message("در حال بارگذاری عکس...");
-
- const {error:uploadError} = await db.storage
-  .from("rap-room-media")
-  .upload(path,file,{contentType:file.type});
-
- if(uploadError){
-
-  message("خطا در بارگذاری عکس: "+uploadError.message);
-
-  return;
-
- }
-
- const {data:urlData} = db.storage
-  .from("rap-room-media")
-  .getPublicUrl(path);
-
- const avatarUrl = urlData.publicUrl;
-
- const {error:updateError} = await db
-  .from("profiles")
-  .update({avatar_url:avatarUrl})
-  .eq("id",currentUser.id);
-
- if(updateError){
-
-  message("عکس بارگذاری شد اما ثبت پروفایل خطا داشت: "+updateError.message);
-
-  return;
-
- }
-
- $("myAvatar").src = avatarUrl;
-
- $("avatarFile").value = "";
-
- message("عکس پروفایل با موفقیت تغییر کرد.");
-
- await loadArtists();
-
-});
-
-/* راه‌اندازی سایت */
-
-async function startApp(){
-
- try{
-
-  message("در حال اتصال به پایگاه داده...");
-
-  const module = await import(
-   "https://esm.sh/@supabase/supabase-js@2"
-  );
-
-  db = module.createClient(SUPABASE_URL,SUPABASE_KEY);
-
-  const {data,error} = await db.auth.getSession();
-
-  if(error) throw error;
-
-  showAccount(data.session?.user || null);
-
-  await loadTracks();
-
-  await loadArtists();
-
-  message("RAP ROOM با موفقیت آماده شد.");
-
-  db.auth.onAuthStateChange((_event,session)=>{
-
-   showAccount(session?.user || null);
-
-  });
-
- }catch(error){
-
   console.error(error);
-
-  message("خطا در راه‌اندازی سایت: "+(error.message || error));
-
  }
 
-}
+ const followerCount = count || 0;
 
-startApp();
-
-</script>
-
-</body>
-</html>
+ const {data:followData,error:followError} = currentUser
+  ? await db
+    .from("artist_follows")
+    .select("artist_id")
+    .eq("artist_id",artist.id)
