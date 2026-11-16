@@ -95,6 +95,14 @@ footer a{color:#ff5555;text-decoration:none;margin:0 7px}
 .weeklyPlays{color:#ff5555;font-size:12px}
 .contactBox{line-height:2.5}
 .contactBox a{color:#ff5555;text-decoration:none}
+.trackStats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:15px 0}
+.trackStat{background:#101010;border:1px solid #444;padding:10px 16px;border-radius:9px;color:#ddd;font-size:13px}
+.trackStat strong{color:#ff5555;margin-right:5px}
+.artistStats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}
+.artistStat{background:#101010;border:1px solid #444;border-radius:9px;padding:13px;text-align:center;color:#aaa;font-size:12px}
+.artistStat strong{display:block;color:#ff4444;font-size:21px;margin-top:7px}
+.searchBox{margin:12px 0 20px}
+.searchBox input{margin:0}
 @media(max-width:600px){
 header h1{font-size:30px}
 nav{gap:6px;padding:10px 5px}
@@ -105,12 +113,12 @@ section{padding:14px}
 .trackTitle{font-size:23px}
 .trackCover,.trackCoverPlaceholder{width:100%}
 .lyricsText{font-size:14px}
+.artistStats{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 
 <body>
-
 <header>
 <h1>RAP ROOM</h1>
 <p>صدای رپ مستقل</p>
@@ -125,7 +133,6 @@ section{padding:14px}
 </nav>
 
 <main>
-
 <section id="statusBox">
 <p id="status">در حال اتصال به RAP ROOM...</p>
 </section>
@@ -135,39 +142,34 @@ section{padding:14px}
 <h2>🎧 آهنگ‌های منتشرشده</h2>
 <span class="weeklyBadge">RAP ROOM MUSIC</span>
 </div>
+<div class="searchBox">
+<input id="trackSearch" type="search" placeholder="🔎 جست‌وجوی نام آهنگ یا هنرمند...">
+</div>
 <div id="trackList">در حال دریافت آهنگ‌ها...</div>
-
 <hr>
-
 <div class="sectionHeading">
 <h2>🔥 ۱۰ آهنگ برتر هفته</h2>
 <span class="weeklyBadge">۷ روز اخیر</span>
 </div>
-<div id="weeklyTrackList">
-<p class="empty">در حال دریافت آمار هفتگی...</p>
-</div>
+<div id="weeklyTrackList"><p class="empty">در حال دریافت آمار هفتگی...</p></div>
 </section>
 
 <section id="trackPage" class="hidden">
 <button class="backButton" id="backToTracks">← بازگشت به آهنگ‌ها</button>
 <div id="trackDetails"></div>
-
-<div class="downloadBox" id="downloadSection">
+<div class="downloadBox">
 <h3>⬇️ دانلود آهنگ</h3>
 <div id="downloadOptions"></div>
 </div>
-
 <div class="lyricsBox">
 <h3>📝 متن آهنگ</h3>
 <div id="lyricsContent" class="lyricsText">متن این آهنگ هنوز ثبت نشده است.</div>
 </div>
-
 <div class="card">
 <h3>💬 نظرات شنوندگان</h3>
 <div id="trackComments"></div>
 <div id="trackCommentForm"></div>
 </div>
-
 <div class="card">
 <h3>🎵 آهنگ‌های هنرمندان دیگر</h3>
 <div id="relatedTracks"></div>
@@ -176,6 +178,9 @@ section{padding:14px}
 
 <section id="artists" class="hidden">
 <h2>🎤 هنرمندان RAP ROOM</h2>
+<div class="searchBox">
+<input id="artistSearch" type="search" placeholder="🔎 جست‌وجوی هنرمند...">
+</div>
 <div id="artistList">در حال دریافت هنرمندان...</div>
 </section>
 
@@ -188,7 +193,6 @@ section{padding:14px}
 
 <section id="account" class="hidden">
 <h2>👤 حساب کاربری</h2>
-
 <div id="loggedOut">
 <h3>ورود به حساب</h3>
 <form id="loginForm">
@@ -205,7 +209,6 @@ section{padding:14px}
 <button type="submit">ثبت‌نام</button>
 </form>
 </div>
-
 <div id="loggedIn" class="hidden">
 <img id="myAvatar" class="avatar" alt="عکس پروفایل">
 <h3 id="myName"></h3>
@@ -222,21 +225,17 @@ section{padding:14px}
 <section id="adminPanel" class="hidden">
 <h2>⚙️ پنل مدیریت RAP ROOM</h2>
 <p class="small">مدیریت انتشار، ویرایش و حذف آهنگ‌ها</p>
-
 <div class="adminStats">
 <div class="statBox">کل آهنگ‌ها<strong id="statTotal">۰</strong></div>
 <div class="statBox">منتشرشده<strong id="statPublished">۰</strong></div>
 <div class="statBox">پیش‌نویس<strong id="statDrafts">۰</strong></div>
 </div>
-
 <div class="adminForm">
 <h3 id="adminFormTitle">🎵 افزودن آهنگ جدید</h3>
 <label>عنوان آهنگ</label>
 <input id="adminTrackTitle" type="text" placeholder="نام آهنگ">
 <label>انتخاب هنرمند</label>
-<select id="adminArtistSelect">
-<option value="">در حال دریافت هنرمندان...</option>
-</select>
+<select id="adminArtistSelect"><option value="">در حال دریافت هنرمندان...</option></select>
 <label>فایل اصلی آهنگ MP3</label>
 <input id="adminAudioFile" type="file" accept=".mp3,audio/mpeg">
 <label>کاور آهنگ</label>
@@ -261,7 +260,6 @@ section{padding:14px}
 <button id="adminCancelEdit" class="secondaryButton hidden">لغو ویرایش</button>
 </div>
 </div>
-
 <hr>
 <h3>📚 مدیریت آهنگ‌ها</h3>
 <div id="adminTrackList">در حال دریافت آهنگ‌ها...</div>
@@ -269,13 +267,8 @@ section{padding:14px}
 
 <section id="about" class="hidden">
 <h2>درباره RAP ROOM</h2>
-<p style="line-height:2">
-RAP ROOM فضایی برای شنیدن صدای رپ مستقل است.
-اینجا هنرمندان و شنوندگان کنار هم هستند.
-</p>
-<p style="line-height:2">
-انتشار و مدیریت آهنگ‌ها فقط توسط تیم RAP ROOM انجام می‌شود.
-</p>
+<p style="line-height:2">RAP ROOM فضایی برای شنیدن صدای رپ مستقل است. اینجا هنرمندان و شنوندگان کنار هم هستند.</p>
+<p style="line-height:2">انتشار و مدیریت آهنگ‌ها فقط توسط تیم RAP ROOM انجام می‌شود.</p>
 <hr>
 <h3>📞 ارتباط با ما</h3>
 <div class="contactBox">
@@ -284,7 +277,6 @@ RAP ROOM فضایی برای شنیدن صدای رپ مستقل است.
 <div>تلفن: <a href="tel:+989363215916">09363215916</a></div>
 </div>
 </section>
-
 </main>
 
 <footer>
@@ -294,36 +286,30 @@ RAP ROOM فضایی برای شنیدن صدای رپ مستقل است.
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 const SUPABASE_URL="https://hapmjswgqqxaeptvapve.supabase.co";
 const SUPABASE_KEY="sb_publishable_yBJJq_awdWpz58QQt85abA_yMbiUC4-";
 const DEFAULT_AVATAR="https://placehold.co/300x300/222/fff?text=RAP+ROOM";
 
-let db=null;
-let currentUser=null;
-let activeArtist=null;
-let activeTrack=null;
-let isAdmin=false;
-let editingTrackId=null;
-
+let db=null,currentUser=null,activeArtist=null,activeTrack=null,isAdmin=false,editingTrackId=null;
+let allTracks=[],allArtists=[];
 const $=id=>document.getElementById(id);
 
-function message(text){
-$("status").textContent=text;
-}
+function message(text){$("status").textContent=text;}
 
 function escapeHTML(value){
-return String(value??"").replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-})[c]);
+return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+
+function safeUrl(value){
+try{
+const url=new URL(value);
+return ["https:","http:"].includes(url.protocol)?url.href:null;
+}catch(e){return null;}
 }
 
 function showSection(sectionId){
-if(sectionId==="adminPanel"&&!isAdmin){
-message("دسترسی به پنل مدیریت مجاز نیست.");
-return;
-}
+if(sectionId==="adminPanel"&&!isAdmin){message("دسترسی به پنل مدیریت مجاز نیست.");return;}
 document.querySelectorAll("main > section").forEach(section=>{
 if(section.id!=="statusBox")section.classList.add("hidden");
 });
@@ -336,13 +322,10 @@ button.addEventListener("click",async()=>{
 const target=button.dataset.go;
 if(target==="adminPanel"){
 if(!isAdmin){message("دسترسی مدیر تأیید نشده است.");return;}
-showSection("adminPanel");
-await loadAdminPanel();
+showSection("adminPanel");await loadAdminPanel();
 }else showSection(target);
 });
 });
-
-/* بررسی مدیر */
 
 async function refreshAdminAccess(){
 isAdmin=false;
@@ -355,20 +338,15 @@ $("adminNavButton").classList.toggle("hidden",!isAdmin);
 if(!isAdmin&&!$("adminPanel").classList.contains("hidden"))showSection("tracks");
 }
 
-/* پروفایل */
-
 async function ensureProfile(user){
 const {data,error}=await db.from("profiles").select("*").eq("id",user.id).maybeSingle();
 if(error){console.error(error);return null;}
 if(data)return data;
-
 const displayName=user.user_metadata?.display_name||user.email?.split("@")[0]||"هنرمند";
 const username="artist_"+user.id.replace(/-/g,"").slice(0,10);
-
 const {data:newProfile,error:insertError}=await db.from("profiles").insert({
 id:user.id,username,display_name:displayName,bio:"",avatar_url:null
 }).select().single();
-
 if(insertError){console.error(insertError);return null;}
 return newProfile;
 }
@@ -377,120 +355,109 @@ async function showAccount(user){
 currentUser=user;
 $("loggedOut").classList.toggle("hidden",!!user);
 $("loggedIn").classList.toggle("hidden",!user);
-if(!user){
-$("myName").textContent="";
-$("myAvatar").src=DEFAULT_AVATAR;
-return;
-}
+if(!user){$("myName").textContent="";$("myAvatar").src=DEFAULT_AVATAR;return;}
 const profile=await ensureProfile(user);
 $("myName").textContent=profile?.display_name||user.user_metadata?.display_name||"هنرمند RAP ROOM";
 $("myAvatar").src=profile?.avatar_url||user.user_metadata?.avatar_url||DEFAULT_AVATAR;
 }
 
-/* شناسه بازدیدکننده */
-
+/* شناسه پایدار بازدیدکننده */
 function getVisitorId(){
 let visitorId=localStorage.getItem("rap_room_visitor_id");
 if(visitorId)return visitorId;
-
-if(window.crypto&&crypto.randomUUID){
-visitorId=crypto.randomUUID();
-}else{
-visitorId="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,c=>{
-const r=Math.random()*16|0;
-return(c==="x"?r:(r&3|8)).toString(16);
+if(window.crypto&&crypto.randomUUID)visitorId=crypto.randomUUID();
+else visitorId="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,c=>{
+const r=Math.random()*16|0;return(c==="x"?r:(r&3|8)).toString(16);
 });
-}
 localStorage.setItem("rap_room_visitor_id",visitorId);
 return visitorId;
 }
 
-/* ثبت پخش بعد از ۳۰ ثانیه شنیدن واقعی */
+/* فراخوانی امن RPC با شناسه بازدیدکننده */
+async function visitorRpc(functionName,payload){
+const sessionResult=await db.auth.getSession();
+const token=sessionResult.data?.session?.access_token||SUPABASE_KEY;
+const response=await fetch(SUPABASE_URL+"/rest/v1/rpc/"+functionName,{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+token,
+"x-rr-visitor":getVisitorId()
+},
+body:JSON.stringify(payload)
+});
+if(!response.ok){
+const details=await response.text();
+throw new Error(details||"خطا در ارتباط با سرور");
+}
+return true;
+}
 
+/* ثبت بازدید صفحه آهنگ */
+async function registerTrackView(trackId){
+try{
+await visitorRpc("record_rap_room_view",{p_track_id:trackId});
+console.log("RAP ROOM view registered:",trackId);
+await loadTrackStats(trackId);
+}catch(error){console.error("View tracking error:",error);}
+}
+
+/* دریافت آمار یک آهنگ */
+async function loadTrackStats(trackId){
+const {data,error}=await db.rpc("get_rap_room_track_stats",{p_track_id:trackId});
+if(error){console.error("Track stats:",error);return null;}
+const stats=Array.isArray(data)?data[0]:data;
+if(!stats)return null;
+const viewBox=$("trackViews");
+const playBox=$("trackPlays");
+if(activeTrack?.id===trackId&&viewBox&&playBox){
+viewBox.textContent=Number(stats.total_views||0).toLocaleString("fa-IR");
+playBox.textContent=Number(stats.total_plays||0).toLocaleString("fa-IR");
+}
+return stats;
+}
+
+/* ثبت پخش بعد از ۳۰ ثانیه شنیدن واقعی */
+let playSessionToken=0;
 const playSessions=new Set();
 
 function setupPlayTracking(trackId){
 const audio=$("mainAudio");
 if(!audio)return;
+const thisSession=++playSessionToken;
+let listenedSeconds=0,lastTime=null,registered=false;
 
-let listenedSeconds=0;
-let lastTime=null;
-let registered=false;
+audio.addEventListener("playing",()=>{lastTime=audio.currentTime;});
+audio.addEventListener("pause",()=>{lastTime=null;});
+audio.addEventListener("seeking",()=>{lastTime=null;});
+audio.addEventListener("seeked",()=>{lastTime=audio.paused?null:audio.currentTime;});
 
-const visitorId=getVisitorId();
-
-async function registerPlay(){
-if(registered||playSessions.has(trackId))return;
-registered=true;
-playSessions.add(trackId);
-
-try{
-const response=await fetch(
-SUPABASE_URL+"/rest/v1/rpc/record_rap_room_play",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+(await db.auth.getSession()).data.session?.access_token||SUPABASE_KEY,
-"x-rr-visitor":visitorId
-},
-body:JSON.stringify({p_track_id:trackId})
-}
-);
-
-if(!response.ok){
-const errorText=await response.text();
-console.error("Play tracking error:",errorText);
-playSessions.delete(trackId);
-}else{
-console.log("RAP ROOM play registered:",trackId);
-loadWeeklyTracks();
-}
-}catch(error){
-console.error("Play tracking failed:",error);
-playSessions.delete(trackId);
-}
-}
-
-audio.addEventListener("playing",()=>{
-lastTime=audio.currentTime;
-});
-
-audio.addEventListener("pause",()=>{
-lastTime=null;
-});
-
-audio.addEventListener("seeking",()=>{
-lastTime=null;
-});
-
-audio.addEventListener("seeked",()=>{
-lastTime=audio.paused?null:audio.currentTime;
-});
-
-audio.addEventListener("timeupdate",()=>{
-if(audio.paused||audio.seeking||registered)return;
-
+audio.addEventListener("timeupdate",async()=>{
+if(audio.paused||audio.seeking||registered||thisSession!==playSessionToken)return;
 const now=audio.currentTime;
-
 if(lastTime!==null){
 const delta=now-lastTime;
-if(delta>0&&delta<=2.5){
-listenedSeconds+=delta;
+if(delta>0&&delta<=2.5)listenedSeconds+=delta;
 }
-}
-
 lastTime=now;
+if(listenedSeconds<30||playSessions.has(trackId))return;
 
-if(listenedSeconds>=30){
-registerPlay();
+registered=true;
+playSessions.add(trackId);
+try{
+await visitorRpc("record_rap_room_play",{p_track_id:trackId});
+console.log("RAP ROOM play registered:",trackId);
+await loadTrackStats(trackId);
+await loadWeeklyTracks();
+}catch(error){
+console.error("Play tracking error:",error);
+playSessions.delete(trackId);
 }
 });
 }
 
 /* کارت آهنگ */
-
 function createTrackCard(track){
 const card=document.createElement("div");
 card.className="card";
@@ -501,97 +468,70 @@ card.innerHTML=`
 <h4>${escapeHTML(track.title)}</h4>
 <p class="small">${escapeHTML(track.artist_name)}</p>
 <p class="small">مشاهده صفحه آهنگ ←</p>
-</div>
-</div>`;
+</div></div>`;
 card.addEventListener("click",()=>openTrackPage(track));
 return card;
 }
 
-/* لیست آهنگ‌ها */
+/* جست‌وجوی آهنگ‌ها */
+function renderTrackSearch(){
+const query=$("trackSearch").value.trim().toLowerCase();
+const filtered=allTracks.filter(track=>
+String(track.title||"").toLowerCase().includes(query)||
+String(track.artist_name||"").toLowerCase().includes(query)
+);
+const box=$("trackList");
+box.innerHTML="";
+if(!filtered.length){box.innerHTML='<p class="empty">نتیجه‌ای پیدا نشد.</p>';return;}
+filtered.forEach(track=>box.appendChild(createTrackCard(track)));
+}
+
+$("trackSearch").addEventListener("input",renderTrackSearch);
 
 async function loadTracks(){
 const box=$("trackList");
 box.textContent="در حال دریافت آهنگ‌ها...";
-
-const {data,error}=await db.from("tracks")
-.select("*").eq("is_published",true)
-.order("created_at",{ascending:false});
-
+const {data,error}=await db.from("tracks").select("*").eq("is_published",true).order("created_at",{ascending:false});
 if(error){box.textContent="خطا در دریافت آهنگ‌ها: "+error.message;return;}
-if(!data?.length){box.innerHTML='<p class="empty">هنوز آهنگی منتشر نشده است.</p>';return;}
-
-box.innerHTML="";
-data.forEach(track=>box.appendChild(createTrackCard(track)));
+allTracks=data||[];
+renderTrackSearch();
 }
 
-/* آهنگ‌های برتر هفته */
-
+/* ۱۰ آهنگ برتر هفته */
 async function loadWeeklyTracks(){
 const box=$("weeklyTrackList");
 box.innerHTML='<p class="empty">در حال دریافت آمار هفتگی...</p>';
-
 const {data:plays,error:playsError}=await db.rpc("get_rap_room_weekly_plays");
-
-if(playsError){
-console.error("Weekly plays:",playsError);
-box.innerHTML='<p class="empty">دریافت آمار هفتگی ممکن نشد.</p>';
-return;
-}
-
-if(!plays?.length){
-box.innerHTML='<p class="empty">هنوز آمار پخش هفتگی ثبت نشده است. اولین آهنگ را گوش کن!</p>';
-return;
-}
-
-const {data:tracks,error}=await db.from("tracks")
-.select("*").eq("is_published",true);
-
-if(error){
-box.innerHTML='<p class="empty">خطا در دریافت آهنگ‌ها.</p>';
-return;
-}
-
+if(playsError){console.error(playsError);box.innerHTML='<p class="empty">دریافت آمار هفتگی ممکن نشد.</p>';return;}
+if(!plays?.length){box.innerHTML='<p class="empty">هنوز آمار پخش هفتگی ثبت نشده است. اولین آهنگ را گوش کن!</p>';return;}
+const {data:tracks,error}=await db.from("tracks").select("*").eq("is_published",true);
+if(error){box.innerHTML='<p class="empty">خطا در دریافت آهنگ‌ها.</p>';return;}
 const trackMap=new Map((tracks||[]).map(t=>[t.id,t]));
-
-const ranked=plays
-.map(p=>({track:trackMap.get(p.track_id),count:Number(p.play_count)||0}))
-.filter(item=>item.track)
-.sort((a,b)=>b.count-a.count)
-.slice(0,10);
-
-if(!ranked.length){
-box.innerHTML='<p class="empty">هنوز آهنگی در جدول هفتگی قرار نگرفته است.</p>';
-return;
-}
-
+const ranked=plays.map(p=>({track:trackMap.get(p.track_id),count:Number(p.play_count)||0}))
+.filter(item=>item.track).sort((a,b)=>b.count-a.count).slice(0,10);
+if(!ranked.length){box.innerHTML='<p class="empty">هنوز آهنگی در جدول هفتگی قرار نگرفته است.</p>';return;}
 box.innerHTML="";
-
 ranked.forEach((item,index)=>{
 const row=document.createElement("div");
 row.className="card weeklyCard";
-const cover=item.track.cover_url||DEFAULT_AVATAR;
-
 row.innerHTML=`
 <div class="weeklyNumber">${index+1}</div>
-<img src="${escapeHTML(cover)}" alt="کاور">
+<img src="${escapeHTML(item.track.cover_url||DEFAULT_AVATAR)}" alt="کاور">
 <div class="weeklyInfo">
 <h3>${escapeHTML(item.track.title)}</h3>
 <p class="small">${escapeHTML(item.track.artist_name)}</p>
 <div class="weeklyPlays">▶ ${item.count.toLocaleString("fa-IR")} پخش در ۷ روز اخیر</div>
 </div>`;
-
 row.style.cursor="pointer";
 row.addEventListener("click",()=>openTrackPage(item.track));
 box.appendChild(row);
 });
 }
 
-/* صفحه آهنگ */
-
+/* صفحه اختصاصی آهنگ */
 async function openTrackPage(track){
 activeTrack=track;
 showSection("trackPage");
-
 $("trackDetails").innerHTML="";
 $("lyricsContent").textContent="در حال دریافت متن آهنگ...";
 $("downloadOptions").textContent="در حال آماده‌سازی دانلودها...";
@@ -601,7 +541,6 @@ $("relatedTracks").textContent="در حال دریافت آهنگ‌های مر�
 const cover=track.cover_url
 ?`<img class="trackCover" src="${escapeHTML(track.cover_url)}" alt="کاور">`
 :`<div class="trackCoverPlaceholder">RAP ROOM</div>`;
-
 const date=track.created_at?new Date(track.created_at).toLocaleDateString("fa-IR"):"";
 
 $("trackDetails").innerHTML=`
@@ -610,6 +549,10 @@ ${cover}
 <h1 class="trackTitle">${escapeHTML(track.title)}</h1>
 <div class="trackArtist">${escapeHTML(track.artist_name)}</div>
 <div class="trackMeta">RAP ROOM ${date?" | تاریخ انتشار: "+date:""}</div>
+<div class="trackStats">
+<div class="trackStat">👁 بازدید <strong id="trackViews">...</strong></div>
+<div class="trackStat">▶ پخش <strong id="trackPlays">...</strong></div>
+</div>
 <div class="playerBox">
 <div class="playerLabel">🎧 پخش آنلاین</div>
 <audio id="mainAudio" controls preload="metadata">
@@ -624,22 +567,17 @@ ${cover}
 </div>`;
 
 setupPlayTracking(track.id);
-
+await registerTrackView(track.id);
+await loadTrackStats(track.id);
 $("lyricsContent").textContent=track.lyrics?.trim()||"متن این آهنگ هنوز ثبت نشده است.";
 renderDownloads(track);
 
 $("shareTrackButton").addEventListener("click",async()=>{
 const url=location.origin+location.pathname+"?track="+encodeURIComponent(track.id);
 try{
-if(navigator.share){
-await navigator.share({title:track.title+" | RAP ROOM",text:"گوش کن به "+track.title+" از "+track.artist_name,url});
-}else{
-await navigator.clipboard.writeText(url);
-alert("لینک آهنگ کپی شد.");
-}
-}catch(error){
-if(error.name!=="AbortError")prompt("لینک آهنگ:",url);
-}
+if(navigator.share)await navigator.share({title:track.title+" | RAP ROOM",text:"گوش کن به "+track.title+" از "+track.artist_name,url});
+else{await navigator.clipboard.writeText(url);alert("لینک آهنگ کپی شد.");}
+}catch(error){if(error.name!=="AbortError")prompt("لینک آهنگ:",url);}
 });
 
 await loadComments(track.id,$("trackComments"));
@@ -650,24 +588,19 @@ await loadRelatedTracks(track);
 function renderDownloads(track){
 const box=$("downloadOptions");
 box.innerHTML="";
-
 const options=[
 {label:"کیفیت 320 KBPS",url:track.audio_320_url},
 {label:"کیفیت 128 KBPS",url:track.audio_128_url},
 {label:"فایل اصلی آهنگ",url:track.audio_url}
 ];
-
 let available=0;
-
 options.forEach(option=>{
 if(!option.url)return;
 available++;
 const row=document.createElement("div");
 row.className="downloadRow";
-
 const title=document.createElement("span");
 title.textContent=option.label;
-
 const link=document.createElement("a");
 link.className="downloadButton";
 link.href=option.url;
@@ -675,142 +608,96 @@ link.target="_blank";
 link.rel="noopener";
 link.download="";
 link.textContent="⬇️ دانلود";
-
 row.append(title,link);
 box.appendChild(row);
 });
-
 if(!available)box.innerHTML='<p class="small">فایل دانلودی موجود نیست.</p>';
 }
 
 /* آهنگ‌های هنرمندان دیگر */
-
 async function loadRelatedTracks(track){
 const box=$("relatedTracks");
-
-const {data,error}=await db.from("tracks")
-.select("*").eq("is_published",true)
-.neq("id",track.id)
-.order("created_at",{ascending:false})
-.limit(30);
-
+const {data,error}=await db.from("tracks").select("*").eq("is_published",true).neq("id",track.id).order("created_at",{ascending:false}).limit(30);
 if(error){box.textContent="خطا در دریافت آهنگ‌ها.";return;}
-
 const differentArtist=(data||[]).filter(item=>
-String(item.artist_name||"").trim().toLowerCase()!==
-String(track.artist_name||"").trim().toLowerCase()
+String(item.artist_name||"").trim().toLowerCase()!==String(track.artist_name||"").trim().toLowerCase()
 ).slice(0,5);
-
-if(!differentArtist.length){
-box.innerHTML='<p class="small">فعلاً آهنگ دیگری از هنرمندان دیگر موجود نیست.</p>';
-return;
-}
-
+if(!differentArtist.length){box.innerHTML='<p class="small">فعلاً آهنگ دیگری از هنرمندان دیگر موجود نیست.</p>';return;}
 box.innerHTML="";
 differentArtist.forEach(item=>box.appendChild(createTrackCard(item)));
 }
 
 /* نظرات */
-
 async function loadComments(trackId,box){
 box.textContent="در حال دریافت نظرات...";
-
-const {data,error}=await db.from("comments")
-.select("content,created_at,user_id")
-.eq("track_id",trackId)
-.order("created_at",{ascending:true});
-
+const {data,error}=await db.from("comments").select("content,created_at,user_id").eq("track_id",trackId).order("created_at",{ascending:true});
 if(error){box.textContent="خطا در دریافت نظرات: "+error.message;return;}
 if(!data?.length){box.innerHTML='<p class="small">هنوز نظری ثبت نشده است.</p>';return;}
-
 box.innerHTML=data.map(c=>`<div class="comment">${escapeHTML(c.content)}</div>`).join("");
 }
 
 function renderTrackCommentForm(trackId){
 const form=$("trackCommentForm");
-
-if(!currentUser){
-form.innerHTML='<p class="small">برای ثبت نظر ابتدا وارد حساب شو.</p>';
-return;
-}
-
-form.innerHTML=`
-<input id="trackCommentInput" placeholder="نظر خودت را بنویس...">
-<button id="sendTrackComment">ارسال نظر</button>`;
-
+if(!currentUser){form.innerHTML='<p class="small">برای ثبت نظر ابتدا وارد حساب شو.</p>';return;}
+form.innerHTML=`<input id="trackCommentInput" placeholder="نظر خودت را بنویس..."><button id="sendTrackComment">ارسال نظر</button>`;
 $("sendTrackComment").addEventListener("click",async()=>{
 const content=$("trackCommentInput").value.trim();
 if(!content)return;
-
-const button=$("sendTrackComment");
-button.disabled=true;
-
-const {error}=await db.from("comments").insert({
-track_id:trackId,user_id:currentUser.id,content
-});
-
+const button=$("sendTrackComment");button.disabled=true;
+const {error}=await db.from("comments").insert({track_id:trackId,user_id:currentUser.id,content});
 button.disabled=false;
-
 if(error){alert("خطا در ارسال نظر: "+error.message);return;}
 $("trackCommentInput").value="";
 await loadComments(trackId,$("trackComments"));
 });
 }
 
-/* دنبال‌کنندگان */
-
+/* آمار دنبال‌کنندگان */
 async function loadFollowStats(){
 const {data,error}=await db.from("artist_follows").select("artist_id,follower_id");
 if(error){console.error(error);return null;}
-
 const stats={};
-
 (data||[]).forEach(row=>{
 if(!stats[row.artist_id])stats[row.artist_id]={count:0,following:false};
 stats[row.artist_id].count++;
 if(currentUser&&row.follower_id===currentUser.id)stats[row.artist_id].following=true;
 });
-
 return stats;
 }
 
-/* هنرمندان */
-
-async function loadArtists(){
-const box=$("artistList");
-box.textContent="در حال دریافت هنرمندان...";
-
-const {data,error}=await db.from("profiles")
-.select("id,username,display_name,bio,avatar_url")
-.order("created_at",{ascending:false});
-
-if(error){box.textContent="خطا در دریافت هنرمندان: "+error.message;return;}
-if(!data?.length){box.innerHTML='<p class="empty">هنوز هنرمندی ثبت نشده است.</p>';return;}
-
-const stats=await loadFollowStats();
-box.innerHTML="";
-
-data.forEach(artist=>{
-const card=document.createElement("div");
-card.className="card artistCard";
+/* هنرمندان و جست‌وجو */
+function renderArtistSearch(){
+const query=$("artistSearch").value.trim().toLowerCase();
+const filtered=allArtists.filter(a=>
+String(a.display_name||"").toLowerCase().includes(query)||
+String(a.username||"").toLowerCase().includes(query)
+);
+const box=$("artistList");box.innerHTML="";
+if(!filtered.length){box.innerHTML='<p class="empty">هنرمندی پیدا نشد.</p>';return;}
+filtered.forEach(artist=>{
+const card=document.createElement("div");card.className="card artistCard";
 const name=artist.display_name||artist.username||"هنرمند";
-const count=stats?.[artist.id]?.count||0;
-
 card.innerHTML=`
 <img src="${escapeHTML(artist.avatar_url||DEFAULT_AVATAR)}" alt="عکس هنرمند">
 <h3>${escapeHTML(name)}</h3>
 <p>${escapeHTML(artist.bio||"هنرمند RAP ROOM")}</p>
-<p class="small">❤️ ${count} دنبال‌کننده</p>
 <p class="small">مشاهده صفحه هنرمند ←</p>`;
-
 card.addEventListener("click",()=>openArtistPage(artist));
 box.appendChild(card);
 });
 }
+$("artistSearch").addEventListener("input",renderArtistSearch);
+
+async function loadArtists(){
+const box=$("artistList");box.textContent="در حال دریافت هنرمندان...";
+const {data,error}=await db.from("profiles").select("id,username,display_name,bio,avatar_url").order("created_at",{ascending:false});
+if(error){box.textContent="خطا در دریافت هنرمندان: "+error.message;return;}
+allArtists=data||[];
+renderArtistSearch();
+}
 
 async function openArtistPage(artist){
-activeArtist=artist;
-showSection("artistPage");
+activeArtist=artist;showSection("artistPage");
 $("artistDetails").textContent="در حال دریافت اطلاعات هنرمند...";
 $("artistTracks").textContent="در حال دریافت آهنگ‌ها...";
 await renderArtistPage(artist);
@@ -819,37 +706,43 @@ await loadArtistTracks(artist);
 
 async function renderArtistPage(artist){
 const name=artist.display_name||artist.username||"هنرمند";
-
-const {count,error}=await db.from("artist_follows")
-.select("*",{count:"exact",head:true})
-.eq("artist_id",artist.id);
-
+const {count,error}=await db.from("artist_follows").select("*",{count:"exact",head:true}).eq("artist_id",artist.id);
 if(error)console.error(error);
-
 const followerCount=count||0;
 let following=false;
-
 if(currentUser){
-const {data}=await db.from("artist_follows")
-.select("artist_id")
-.eq("artist_id",artist.id)
-.eq("follower_id",currentUser.id)
-.maybeSingle();
+const {data}=await db.from("artist_follows").select("artist_id").eq("artist_id",artist.id).eq("follower_id",currentUser.id).maybeSingle();
 following=!!data;
 }
-
 const isSelf=currentUser&&currentUser.id===artist.id;
+const names=[artist.display_name,artist.username].filter(Boolean).map(n=>n.trim().toLowerCase());
+
+const {data:artistTracks}=await db.from("tracks").select("id").eq("is_published",true);
+const matchingIds=(artistTracks||[]).map(t=>t.id);
+let trackCount=0,totalViews=0,totalPlays=0;
+
+const {data:publishedTracks}=await db.from("tracks").select("id,artist_name").eq("is_published",true);
+const ownTracks=(publishedTracks||[]).filter(t=>names.includes(String(t.artist_name||"").trim().toLowerCase()));
+trackCount=ownTracks.length;
+
+for(const track of ownTracks){
+const {data:stats}=await db.rpc("get_rap_room_track_stats",{p_track_id:track.id});
+const s=Array.isArray(stats)?stats[0]:stats;
+if(s){totalViews+=Number(s.total_views)||0;totalPlays+=Number(s.total_plays)||0;}
+}
 
 $("artistDetails").innerHTML=`
 <div class="artistHero">
 <img src="${escapeHTML(artist.avatar_url||DEFAULT_AVATAR)}" alt="عکس هنرمند">
 <h2>${escapeHTML(name)}</h2>
 <div class="artistBio">${escapeHTML(artist.bio||"این هنرمند هنوز بیوگرافی خود را ثبت نکرده است.")}</div>
-<div class="followCount">❤️ <strong>${followerCount}</strong> دنبال‌کننده</div>
-${!isSelf?`
-<button id="followButton" class="followButton ${following?"following":""}">
-${following?"✓ دنبال‌شده":"دنبال کردن"}
-</button>`:`<p class="small">این صفحه متعلق به شماست.</p>`}
+<div class="artistStats">
+<div class="artistStat">🎵 آهنگ‌ها<strong>${trackCount.toLocaleString("fa-IR")}</strong></div>
+<div class="artistStat">▶ مجموع پخش<strong>${totalPlays.toLocaleString("fa-IR")}</strong></div>
+<div class="artistStat">👁 مجموع بازدید<strong>${totalViews.toLocaleString("fa-IR")}</strong></div>
+<div class="artistStat">❤️ دنبال‌کننده<strong>${followerCount.toLocaleString("fa-IR")}</strong></div>
+</div>
+${!isSelf?`<button id="followButton" class="followButton ${following?"following":""}">${following?"✓ دنبال‌شده":"دنبال کردن"}</button>`:`<p class="small">این صفحه متعلق به شماست.</p>`}
 </div>`;
 
 const button=$("followButton");
@@ -857,154 +750,67 @@ if(button)button.addEventListener("click",()=>toggleFollow(artist));
 }
 
 async function toggleFollow(artist){
-if(!currentUser){
-alert("برای دنبال کردن ابتدا وارد حساب شو.");
-showSection("account");
-return;
-}
-
-if(currentUser.id===artist.id){
-alert("نمی‌توانی خودت را دنبال کنی.");
-return;
-}
-
-const button=$("followButton");
-if(button)button.disabled=true;
-
-const {data:existing,error}=await db.from("artist_follows")
-.select("artist_id")
-.eq("follower_id",currentUser.id)
-.eq("artist_id",artist.id)
-.maybeSingle();
-
-if(error){
-alert(error.message);
-if(button)button.disabled=false;
-return;
-}
-
+if(!currentUser){alert("برای دنبال کردن ابتدا وارد حساب شو.");showSection("account");return;}
+if(currentUser.id===artist.id){alert("نمی‌توانی خودت را دنبال کنی.");return;}
+const button=$("followButton");if(button)button.disabled=true;
+const {data:existing,error}=await db.from("artist_follows").select("artist_id").eq("follower_id",currentUser.id).eq("artist_id",artist.id).maybeSingle();
+if(error){alert(error.message);if(button)button.disabled=false;return;}
 let result;
-
-if(existing){
-result=await db.from("artist_follows").delete()
-.eq("follower_id",currentUser.id)
-.eq("artist_id",artist.id);
-}else{
-result=await db.from("artist_follows").insert({
-follower_id:currentUser.id,artist_id:artist.id
-});
-}
-
-if(result.error){
-alert(result.error.message);
-if(button)button.disabled=false;
-return;
-}
-
-await renderArtistPage(artist);
-await loadArtists();
+if(existing)result=await db.from("artist_follows").delete().eq("follower_id",currentUser.id).eq("artist_id",artist.id);
+else result=await db.from("artist_follows").insert({follower_id:currentUser.id,artist_id:artist.id});
+if(result.error){alert(result.error.message);if(button)button.disabled=false;return;}
+await renderArtistPage(artist);await loadArtists();
 }
 
 async function loadArtistTracks(artist){
 const box=$("artistTracks");
-
-const {data,error}=await db.from("tracks")
-.select("*").eq("is_published",true)
-.order("created_at",{ascending:false});
-
+const {data,error}=await db.from("tracks").select("*").eq("is_published",true).order("created_at",{ascending:false});
 if(error){box.textContent=error.message;return;}
-
-const names=[artist.display_name,artist.username]
-.filter(Boolean).map(n=>n.trim().toLowerCase());
-
-const tracks=(data||[]).filter(track=>
-names.includes(String(track.artist_name||"").trim().toLowerCase())
-);
-
-if(!tracks.length){
-box.innerHTML='<p class="empty">هنوز آهنگی برای این هنرمند منتشر نشده است.</p>';
-return;
-}
-
-box.innerHTML="";
-tracks.forEach(track=>box.appendChild(createTrackCard(track)));
+const names=[artist.display_name,artist.username].filter(Boolean).map(n=>n.trim().toLowerCase());
+const tracks=(data||[]).filter(track=>names.includes(String(track.artist_name||"").trim().toLowerCase()));
+if(!tracks.length){box.innerHTML='<p class="empty">هنوز آهنگی برای این هنرمند منتشر نشده است.</p>';return;}
+box.innerHTML="";tracks.forEach(track=>box.appendChild(createTrackCard(track)));
 }
 
 /* پنل مدیریت */
-
 async function loadAdminArtists(){
-const select=$("adminArtistSelect");
-select.innerHTML='<option value="">در حال دریافت هنرمندان...</option>';
-
-const {data,error}=await db.from("profiles")
-.select("id,username,display_name")
-.order("created_at",{ascending:false});
-
-if(error){
-select.innerHTML='<option value="">خطا در دریافت هنرمندان</option>';
-return;
-}
-
+const select=$("adminArtistSelect");select.innerHTML='<option value="">در حال دریافت هنرمندان...</option>';
+const {data,error}=await db.from("profiles").select("id,username,display_name").order("created_at",{ascending:false});
+if(error){select.innerHTML='<option value="">خطا در دریافت هنرمندان</option>';return;}
 select.innerHTML='<option value="">انتخاب هنرمند...</option>';
-
 (data||[]).forEach(artist=>{
 const name=artist.display_name||artist.username||"هنرمند";
-const option=document.createElement("option");
-option.value=name;
-option.textContent=name;
-select.appendChild(option);
+const option=document.createElement("option");option.value=name;option.textContent=name;select.appendChild(option);
 });
 }
 
 async function loadAdminPanel(){
-if(!isAdmin||!currentUser){
-message("دسترسی مدیر تأیید نشده است.");
-return;
-}
-await loadAdminArtists();
-await loadAdminTracks();
+if(!isAdmin||!currentUser){message("دسترسی مدیر تأیید نشده است.");return;}
+await loadAdminArtists();await loadAdminTracks();
 }
 
 async function loadAdminTracks(){
-const box=$("adminTrackList");
-box.textContent="در حال دریافت آهنگ‌ها...";
-
-const {data,error}=await db.from("tracks")
-.select("*").order("created_at",{ascending:false});
-
+const box=$("adminTrackList");box.textContent="در حال دریافت آهنگ‌ها...";
+const {data,error}=await db.from("tracks").select("*").order("created_at",{ascending:false});
 if(error){box.textContent=error.message;return;}
-
-const tracks=data||[];
-const published=tracks.filter(t=>t.is_published).length;
-
+const tracks=data||[],published=tracks.filter(t=>t.is_published).length;
 $("statTotal").textContent=tracks.length;
 $("statPublished").textContent=published;
 $("statDrafts").textContent=tracks.length-published;
-
-if(!tracks.length){
-box.innerHTML='<p class="empty">هنوز آهنگی ثبت نشده است.</p>';
-return;
-}
-
+if(!tracks.length){box.innerHTML='<p class="empty">هنوز آهنگی ثبت نشده است.</p>';return;}
 box.innerHTML="";
-
 tracks.forEach(track=>{
-const card=document.createElement("div");
-card.className="card";
-
+const card=document.createElement("div");card.className="card";
 card.innerHTML=`
 <h3>${escapeHTML(track.title)}</h3>
 <p>هنرمند: ${escapeHTML(track.artist_name)}</p>
-<p class="${track.is_published?"publishedLabel":"draftLabel"}">
-${track.is_published?"● منتشرشده":"● پیش‌نویس"}
-</p>
+<p class="${track.is_published?"publishedLabel":"draftLabel"}">${track.is_published?"● منتشرشده":"● پیش‌نویس"}</p>
 ${track.cover_url?`<img class="previewCover" src="${escapeHTML(track.cover_url)}" alt="کاور">`:""}
 ${track.audio_url?`<audio controls preload="none" src="${escapeHTML(track.audio_url)}"></audio>`:""}
 <div class="adminActions">
 <button class="editTrack secondaryButton">✏️ ویرایش</button>
 <button class="deleteTrack deleteButton">🗑 حذف</button>
 </div>`;
-
 card.querySelector(".editTrack").addEventListener("click",()=>editAdminTrack(track));
 card.querySelector(".deleteTrack").addEventListener("click",()=>deleteAdminTrack(track));
 box.appendChild(card);
@@ -1013,397 +819,212 @@ box.appendChild(card);
 
 function editAdminTrack(track){
 if(!isAdmin)return;
-
 editingTrackId=track.id;
 $("adminFormTitle").textContent="✏️ ویرایش آهنگ";
 $("adminTrackTitle").value=track.title||"";
 $("adminPublish").checked=!!track.is_published;
 $("adminLyrics").value=track.lyrics||"";
-
-["adminAudioFile","adminCoverFile","adminAudio128","adminAudio320"]
-.forEach(id=>$(id).value="");
-
+["adminAudioFile","adminCoverFile","adminAudio128","adminAudio320"].forEach(id=>$(id).value="");
 const select=$("adminArtistSelect");
 const exists=[...select.options].some(o=>o.value===track.artist_name);
-
 if(!exists&&track.artist_name){
-const option=document.createElement("option");
-option.value=track.artist_name;
-option.textContent=track.artist_name;
-select.appendChild(option);
+const option=document.createElement("option");option.value=track.artist_name;option.textContent=track.artist_name;select.appendChild(option);
 }
-
 select.value=track.artist_name||"";
 $("adminSaveButton").textContent="ذخیره تغییرات";
 $("adminCancelEdit").classList.remove("hidden");
-
 $("adminTrackTitle").scrollIntoView({behavior:"smooth",block:"center"});
 }
 
 function resetAdminForm(){
 editingTrackId=null;
 $("adminFormTitle").textContent="🎵 افزودن آهنگ جدید";
-$("adminTrackTitle").value="";
-$("adminArtistSelect").value="";
-$("adminLyrics").value="";
-
-["adminAudioFile","adminCoverFile","adminAudio128","adminAudio320"]
-.forEach(id=>$(id).value="");
-
+$("adminTrackTitle").value="";$("adminArtistSelect").value="";$("adminLyrics").value="";
+["adminAudioFile","adminCoverFile","adminAudio128","adminAudio320"].forEach(id=>$(id).value="");
 $("adminPublish").checked=true;
 $("adminSaveButton").textContent="ثبت آهنگ";
 $("adminCancelEdit").classList.add("hidden");
 }
-
 $("adminCancelEdit").addEventListener("click",resetAdminForm);
-
-/* آپلود فایل */
 
 async function uploadAdminFile(file,folder){
 if(!file)return null;
 if(!currentUser)throw new Error("کاربر وارد حساب نشده است.");
-
-const safeExtension=(file.name.split(".").pop()||"bin")
-.toLowerCase().replace(/[^a-z0-9]/g,"");
-
-const uniqueName=window.crypto?.randomUUID
-?crypto.randomUUID()
-:Date.now()+"-"+Math.random().toString(36).slice(2);
-
+const safeExtension=(file.name.split(".").pop()||"bin").toLowerCase().replace(/[^a-z0-9]/g,"");
+const uniqueName=window.crypto?.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random().toString(36).slice(2);
 const path="admin/"+currentUser.id+"/"+folder+"/"+uniqueName+"."+safeExtension;
-
-const {error}=await db.storage.from("rap-room-media")
-.upload(path,file,{upsert:false,contentType:file.type||undefined});
-
+const {error}=await db.storage.from("rap-room-media").upload(path,file,{upsert:false,contentType:file.type||undefined});
 if(error)throw new Error("آپلود "+folder+": "+error.message);
-
 const {data}=db.storage.from("rap-room-media").getPublicUrl(path);
 if(!data?.publicUrl)throw new Error("ساخت لینک عمومی فایل ناموفق بود.");
-
 return data.publicUrl;
 }
 
-/* ثبت و ویرایش آهنگ */
-
 $("adminSaveButton").addEventListener("click",async()=>{
-if(!isAdmin||!currentUser){
-alert("دسترسی مدیر تأیید نشده است.");
-return;
-}
-
+if(!isAdmin||!currentUser){alert("دسترسی مدیر تأیید نشده است.");return;}
 const title=$("adminTrackTitle").value.trim();
 const artistName=$("adminArtistSelect").value;
-const audioFile=$("adminAudioFile").files[0];
-const coverFile=$("adminCoverFile").files[0];
-const audio128=$("adminAudio128").files[0];
-const audio320=$("adminAudio320").files[0];
-const lyrics=$("adminLyrics").value;
-const publish=$("adminPublish").checked;
-
+const audioFile=$("adminAudioFile").files[0],coverFile=$("adminCoverFile").files[0];
+const audio128=$("adminAudio128").files[0],audio320=$("adminAudio320").files[0];
+const lyrics=$("adminLyrics").value,publish=$("adminPublish").checked;
 if(!title){alert("عنوان آهنگ را وارد کن.");return;}
 if(!artistName){alert("هنرمند را انتخاب کن.");return;}
 if(!editingTrackId&&!audioFile){alert("برای آهنگ جدید فایل MP3 اصلی لازم است.");return;}
 
-const audioFiles=[audioFile,audio128,audio320].filter(Boolean);
-
-for(const file of audioFiles){
-if(file.type!=="audio/mpeg"&&!/\.mp3$/i.test(file.name)){
-alert("فقط فایل MP3 مجاز است.");return;
+for(const file of [audioFile,audio128,audio320].filter(Boolean)){
+if(file.type!=="audio/mpeg"&&!/\.mp3$/i.test(file.name)){alert("فقط فایل MP3 مجاز است.");return;}
+if(file.size>30*1024*1024){alert("حجم هر فایل صوتی نباید بیشتر از ۳۰ مگابایت باشد.");return;}
 }
-if(file.size>30*1024*1024){
-alert("حجم هر فایل صوتی نباید بیشتر از ۳۰ مگابایت باشد.");return;
-}
-}
-
 if(coverFile){
-if(!coverFile.type.startsWith("image/")){
-alert("فایل کاور باید تصویر باشد.");return;
-}
-if(coverFile.size>5*1024*1024){
-alert("حجم کاور نباید بیشتر از ۵ مگابایت باشد.");return;
-}
+if(!coverFile.type.startsWith("image/")){alert("فایل کاور باید تصویر باشد.");return;}
+if(coverFile.size>5*1024*1024){alert("حجم کاور نباید بیشتر از ۵ مگابایت باشد.");return;}
 }
 
-const button=$("adminSaveButton");
-button.disabled=true;
-button.textContent="در حال ذخیره...";
+const button=$("adminSaveButton");button.disabled=true;button.textContent="در حال ذخیره...";
 let stage="آماده‌سازی اطلاعات";
-
 try{
 let oldTrack=null;
-
 if(editingTrackId){
 stage="دریافت اطلاعات آهنگ قبلی";
 const {data,error}=await db.from("tracks").select("*").eq("id",editingTrackId).single();
-if(error)throw error;
-oldTrack=data;
+if(error)throw error;oldTrack=data;
 }
-
-let audioUrl=oldTrack?.audio_url||null;
-let coverUrl=oldTrack?.cover_url||null;
-let audio128Url=oldTrack?.audio_128_url||null;
-let audio320Url=oldTrack?.audio_320_url||null;
-
+let audioUrl=oldTrack?.audio_url||null,coverUrl=oldTrack?.cover_url||null;
+let audio128Url=oldTrack?.audio_128_url||null,audio320Url=oldTrack?.audio_320_url||null;
 if(audioFile){stage="آپلود فایل اصلی";audioUrl=await uploadAdminFile(audioFile,"audio");}
 if(coverFile){stage="آپلود کاور";coverUrl=await uploadAdminFile(coverFile,"covers");}
 if(audio128){stage="آپلود کیفیت 128";audio128Url=await uploadAdminFile(audio128,"audio-128");}
 if(audio320){stage="آپلود کیفیت 320";audio320Url=await uploadAdminFile(audio320,"audio-320");}
-
 stage="ثبت اطلاعات در جدول tracks";
-
-const payload={
-title,artist_name:artistName,audio_url:audioUrl,cover_url:coverUrl,
-audio_128_url:audio128Url,audio_320_url:audio320Url,lyrics,is_published:publish
-};
-
+const payload={title,artist_name:artistName,audio_url:audioUrl,cover_url:coverUrl,audio_128_url:audio128Url,audio_320_url:audio320Url,lyrics,is_published:publish};
 let result;
-
-if(editingTrackId){
-result=await db.from("tracks").update(payload).eq("id",editingTrackId);
-}else{
-payload.created_by=currentUser.id;
-result=await db.from("tracks").insert(payload);
-}
-
+if(editingTrackId)result=await db.from("tracks").update(payload).eq("id",editingTrackId);
+else{payload.created_by=currentUser.id;result=await db.from("tracks").insert(payload);}
 if(result.error)throw result.error;
-
 alert(editingTrackId?"تغییرات آهنگ با موفقیت ذخیره شد.":"آهنگ با موفقیت ثبت شد.");
-
 resetAdminForm();
-
 await Promise.all([loadAdminTracks(),loadTracks(),loadArtists(),loadWeeklyTracks()]);
-
 }catch(error){
 console.error("SAVE ERROR:",error);
-alert(
-"خطا در ثبت آهنگ:\n\n"+
-"مرحله: "+stage+"\n"+
-"پیام: "+(error.message||"نامشخص")+"\n"+
-"کد: "+(error.code||"ندارد")+"\n"+
-"جزئیات: "+(error.details||"ندارد")+"\n"+
-"راهنما: "+(error.hint||"ندارد")
-);
+alert("خطا در ثبت آهنگ:\n\nمرحله: "+stage+"\nپیام: "+(error.message||"نامشخص")+"\nکد: "+(error.code||"ندارد")+"\nجزئیات: "+(error.details||"ندارد")+"\nراهنما: "+(error.hint||"ندارد"));
 }finally{
-button.disabled=false;
-button.textContent=editingTrackId?"ذخیره تغییرات":"ثبت آهنگ";
+button.disabled=false;button.textContent=editingTrackId?"ذخیره تغییرات":"ثبت آهنگ";
 }
 });
-
-/* حذف فایل */
 
 function storagePathFromPublicUrl(url){
 if(!url)return null;
 const marker="/storage/v1/object/public/rap-room-media/";
 const index=url.indexOf(marker);
 if(index<0)return null;
-try{return decodeURIComponent(url.slice(index+marker.length).split("?")[0]);}
-catch(e){return null;}
+try{return decodeURIComponent(url.slice(index+marker.length).split("?")[0]);}catch(e){return null;}
 }
 
 async function deleteAdminTrack(track){
 if(!isAdmin)return;
-
-const confirmed=confirm("آیا از حذف آهنگ «"+track.title+"» مطمئنی؟");
-if(!confirmed)return;
-
+if(!confirm("آیا از حذف آهنگ «"+track.title+"» مطمئنی؟"))return;
 try{
 const {error}=await db.from("tracks").delete().eq("id",track.id);
 if(error)throw error;
-
-const paths=[
-track.audio_url,track.cover_url,track.audio_128_url,track.audio_320_url
-].map(storagePathFromPublicUrl).filter(Boolean);
-
+const paths=[track.audio_url,track.cover_url,track.audio_128_url,track.audio_320_url].map(storagePathFromPublicUrl).filter(Boolean);
 if(paths.length){
 const {error:storageError}=await db.storage.from("rap-room-media").remove(paths);
 if(storageError)console.warn(storageError);
 }
-
 alert("آهنگ حذف شد.");
-
 await Promise.all([loadAdminTracks(),loadTracks(),loadArtists(),loadWeeklyTracks()]);
-}catch(error){
-alert("خطا در حذف آهنگ: "+error.message);
-}
+}catch(error){alert("خطا در حذف آهنگ: "+error.message);}
 }
 
 /* ثبت‌نام */
-
 $("signupForm").addEventListener("submit",async event=>{
 event.preventDefault();
-
-const name=$("signupName").value.trim();
-const email=$("signupEmail").value.trim();
-const password=$("signupPassword").value;
-
+const name=$("signupName").value.trim(),email=$("signupEmail").value.trim(),password=$("signupPassword").value;
 message("در حال ساخت حساب...");
-
-const button=event.submitter;
-button.disabled=true;
-
-const {data,error}=await db.auth.signUp({
-email,password,options:{data:{display_name:name}}
-});
-
+const button=event.submitter;button.disabled=true;
+const {data,error}=await db.auth.signUp({email,password,options:{data:{display_name:name}}});
 button.disabled=false;
-
 if(error){message("خطا در ثبت‌نام: "+error.message);return;}
-
 if(data.session){
-currentUser=data.user;
-await ensureProfile(data.user);
-await showAccount(data.user);
-await refreshAdminAccess();
+currentUser=data.user;await ensureProfile(data.user);await showAccount(data.user);await refreshAdminAccess();
 message("حساب شما با موفقیت ساخته شد.");
-}else{
-message("ثبت‌نام انجام شد. در صورت فعال بودن تأیید ایمیل، ایمیل خود را بررسی کن.");
-}
+}else message("ثبت‌نام انجام شد. در صورت فعال بودن تأیید ایمیل، ایمیل خود را بررسی کن.");
 });
 
 /* ورود */
-
 $("loginForm").addEventListener("submit",async event=>{
 event.preventDefault();
-
-const email=$("loginEmail").value.trim();
-const password=$("loginPassword").value;
-
+const email=$("loginEmail").value.trim(),password=$("loginPassword").value;
 message("در حال ورود به حساب...");
-
-const button=event.submitter;
-button.disabled=true;
-
+const button=event.submitter;button.disabled=true;
 const {data,error}=await db.auth.signInWithPassword({email,password});
-
 button.disabled=false;
-
 if(error){message("خطا در ورود: "+error.message);return;}
-
-currentUser=data.user;
-await ensureProfile(data.user);
-await showAccount(data.user);
-await refreshAdminAccess();
-await loadArtists();
-
+currentUser=data.user;await ensureProfile(data.user);await showAccount(data.user);
+await refreshAdminAccess();await loadArtists();
 message("با موفقیت وارد حساب شدی.");
 });
 
 /* خروج */
-
 $("logoutButton").addEventListener("click",async()=>{
 const {error}=await db.auth.signOut();
-
 if(error){alert(error.message);return;}
-
-currentUser=null;
-activeArtist=null;
-activeTrack=null;
-isAdmin=false;
-
-await showAccount(null);
-await refreshAdminAccess();
-
-showSection("tracks");
-message("از حساب خارج شدی.");
-
-await loadArtists();
+currentUser=null;activeArtist=null;activeTrack=null;isAdmin=false;
+await showAccount(null);await refreshAdminAccess();
+showSection("tracks");message("از حساب خارج شدی.");await loadArtists();
 });
 
 /* تغییر عکس پروفایل */
-
 $("avatarButton").addEventListener("click",async()=>{
 if(!currentUser){alert("ابتدا وارد حساب شو.");return;}
-
 const file=$("avatarFile").files[0];
 if(!file){alert("ابتدا یک عکس انتخاب کن.");return;}
 if(!file.type.startsWith("image/")){alert("فقط فایل تصویری مجاز است.");return;}
 if(file.size>5*1024*1024){alert("حجم عکس باید کمتر از ۵ مگابایت باشد.");return;}
-
-const button=$("avatarButton");
-button.disabled=true;
-button.textContent="در حال آپلود عکس...";
-
+const button=$("avatarButton");button.disabled=true;button.textContent="در حال آپلود عکس...";
 try{
 const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
 const filePath=currentUser.id+"/avatars/"+Date.now()+"-"+safeName;
-
-const {error:uploadError}=await db.storage.from("rap-room-media")
-.upload(filePath,file,{upsert:false,contentType:file.type});
-
+const {error:uploadError}=await db.storage.from("rap-room-media").upload(filePath,file,{upsert:false,contentType:file.type});
 if(uploadError)throw uploadError;
-
 const {data:urlData}=db.storage.from("rap-room-media").getPublicUrl(filePath);
 const avatarUrl=urlData.publicUrl;
-
-const {error:updateError}=await db.from("profiles")
-.update({avatar_url:avatarUrl}).eq("id",currentUser.id);
-
+const {error:updateError}=await db.from("profiles").update({avatar_url:avatarUrl}).eq("id",currentUser.id);
 if(updateError)throw updateError;
-
-$("myAvatar").src=avatarUrl;
-$("avatarFile").value="";
-message("عکس پروفایل با موفقیت تغییر کرد.");
-
-await loadArtists();
-
-if(activeArtist&&activeArtist.id===currentUser.id){
-activeArtist.avatar_url=avatarUrl;
-await renderArtistPage(activeArtist);
-}
-}catch(error){
-alert("خطا در تغییر عکس: "+error.message);
-}finally{
-button.disabled=false;
-button.textContent="ثبت عکس جدید";
-}
+$("myAvatar").src=avatarUrl;$("avatarFile").value="";
+message("عکس پروفایل با موفقیت تغییر کرد.");await loadArtists();
+if(activeArtist&&activeArtist.id===currentUser.id){activeArtist.avatar_url=avatarUrl;await renderArtistPage(activeArtist);}
+}catch(error){alert("خطا در تغییر عکس: "+error.message);}
+finally{button.disabled=false;button.textContent="ثبت عکس جدید";}
 });
 
 /* بازگشت‌ها */
-
 $("backToArtists").addEventListener("click",()=>showSection("artists"));
 $("backToTracks").addEventListener("click",()=>showSection("tracks"));
 
 /* لینک مستقیم آهنگ */
-
 async function openTrackFromURL(){
-const params=new URLSearchParams(location.search);
-const trackId=params.get("track");
+const params=new URLSearchParams(location.search),trackId=params.get("track");
 if(!trackId)return;
-
-const {data,error}=await db.from("tracks")
-.select("*").eq("id",trackId).eq("is_published",true).maybeSingle();
-
+const {data,error}=await db.from("tracks").select("*").eq("id",trackId).eq("is_published",true).maybeSingle();
 if(error){console.error(error);return;}
 if(data)await openTrackPage(data);
 }
 
 /* شروع سایت */
-
 async function startApp(){
 try{
 if(!window.supabase)throw new Error("کتابخانه اتصال بارگذاری نشد.");
-
 const {createClient}=window.supabase;
 db=createClient(SUPABASE_URL,SUPABASE_KEY);
-
 message("در حال بررسی حساب کاربری...");
-
 const {data,error}=await db.auth.getSession();
 if(error)throw error;
-
 currentUser=data.session?.user||null;
-
 await showAccount(currentUser);
 await refreshAdminAccess();
-
 message("اتصال برقرار شد. خوش آمدی به RAP ROOM.");
-
-await Promise.all([
-loadTracks(),
-loadArtists(),
-loadWeeklyTracks()
-]);
-
+await Promise.all([loadTracks(),loadArtists(),loadWeeklyTracks()]);
 await openTrackFromURL();
 
 db.auth.onAuthStateChange((event,session)=>{
@@ -1412,19 +1033,15 @@ currentUser=session?.user||null;
 await showAccount(currentUser);
 await refreshAdminAccess();
 await loadArtists();
-
 if(activeTrack)renderTrackCommentForm(activeTrack.id);
 },0);
 });
-
 }catch(error){
 console.error(error);
 message("خطا در اتصال به سایت: "+error.message);
 }
 }
-
 startApp();
 </script>
-
 </body>
 </html>
