@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101010">
+<meta name="theme-color" content="#090909">
 <title>RAP ROOM | صدای رپ مستقل</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,12 +12,12 @@
 *{box-sizing:border-box}
 :root{
 --orange:#ff7018;
---orange2:#ff923d;
---bg:#101010;
---sidebar:#090909;
---panel:#191919;
---panel2:#222;
---border:#303030;
+--orange2:#ff8b32;
+--bg:#090909;
+--sidebar:#080808;
+--panel:#151515;
+--panel2:#202020;
+--border:#292929;
 --text:#f5f5f5;
 --muted:#999;
 }
@@ -29,7 +29,7 @@ color:var(--text);
 font-family:Vazirmatn,Tahoma,sans-serif;
 font-size:14px;
 line-height:1.8;
-padding-bottom:105px;
+padding-bottom:112px;
 }
 button,input,textarea,select{font-family:inherit}
 button{
@@ -37,16 +37,12 @@ background:var(--orange);
 color:#111;
 border:0;
 padding:11px 19px;
-border-radius:8px;
+border-radius:30px;
 cursor:pointer;
 font-weight:800;
 transition:.2s;
 }
-button:hover{
-background:var(--orange2);
-transform:translateY(-2px);
-box-shadow:0 6px 20px #ff701830;
-}
+button:hover{background:var(--orange2);transform:translateY(-2px)}
 button:disabled{opacity:.5;cursor:wait;transform:none}
 input,textarea,select{
 width:100%;
@@ -59,8 +55,7 @@ border-radius:9px;
 font-size:13px;
 }
 input:focus,textarea:focus,select:focus{
-outline:none;
-border-color:var(--orange);
+outline:none;border-color:var(--orange);
 box-shadow:0 0 0 3px #ff701815;
 }
 textarea{min-height:120px;resize:vertical}
@@ -74,765 +69,518 @@ position:fixed;
 top:0;
 bottom:104px;
 left:0;
-width:245px;
-z-index:200;
+width:262px;
+z-index:300;
 display:flex;
 flex-direction:column;
 align-items:stretch;
-justify-content:flex-start;
-gap:8px;
-padding:25px 16px;
-background:var(--sidebar);
+gap:5px;
+padding:25px 20px;
+background:#080808;
 border-right:1px solid #292929;
+overflow-y:auto;
 }
-nav:before{
-content:"♛ RAP ROOM";
+.brandLogo{
 direction:ltr;
-display:block;
 text-align:center;
-font-size:27px;
-font-weight:900;
-letter-spacing:1px;
+height:210px;
+padding:0 0 15px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+border-bottom:1px solid #292929;
+margin-bottom:12px;
+}
+.brandCrown{
+font-size:54px;
+line-height:1;
 color:var(--orange);
-padding:10px 0 3px;
+text-shadow:0 0 22px #ff701855;
+transform:rotate(-5deg);
 }
-nav:after{
-content:"THE SOUND OF INDEPENDENCE";
-direction:ltr;
-text-align:center;
-font-size:8px;
+.brandName{
+font-family:Impact,'Arial Black',sans-serif;
+font-size:42px;
+font-weight:900;
+font-style:italic;
+line-height:.85;
+letter-spacing:-2px;
+color:var(--orange);
+text-shadow:2px 3px 0 #6b2609,0 0 20px #ff701830;
+transform:rotate(-5deg);
+}
+.brandWave{
+color:var(--orange);
+font-size:23px;
 letter-spacing:2px;
-color:#666;
-position:absolute;
-top:78px;
-left:0;
-right:0;
+margin-top:10px;
+}
+.navLabel{
+color:#777;
+font-size:11px;
+padding:7px 12px;
 }
 nav button{
 width:100%;
 text-align:right;
 background:transparent;
 color:#aaa;
-border:1px solid transparent;
-padding:13px 16px;
+border:0;
+padding:12px 15px;
 font-size:13px;
-border-radius:9px;
+border-radius:30px;
+box-shadow:none;
 }
 nav button:hover{
 background:#21170f;
 color:var(--orange);
-border-color:#392315;
 box-shadow:none;
 transform:none;
 }
 nav button[data-go="tracks"]{
-background:#24170e;
+background:#2b1a10;
 color:var(--orange);
-border-color:#402514;
 }
-#adminNavButton:not(.hidden){display:block}
+.playlistHeading{
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:#aaa;
+padding:12px 10px 5px;
+margin-top:10px;
+border-top:1px solid #292929;
+}
+.playlistHeading span:last-child{font-size:20px}
+.sidePlaylist{
+display:flex;
+align-items:center;
+gap:10px;
+padding:7px;
+border-radius:8px;
+color:#aaa;
+font-size:12px;
+cursor:pointer;
+transition:.2s;
+}
+.sidePlaylist:hover{background:#1c1c1c;color:white}
+.sidePlaylist img{
+width:47px;height:47px;
+object-fit:cover;border-radius:7px;
+}
+.sidePlaylist small{display:block;color:#777;font-size:10px}
 
-/* HEADER / HERO */
+/* TOPBAR */
+.topbar{
+height:88px;
+margin-left:262px;
+padding:0 35px;
+display:flex;
+align-items:center;
+gap:22px;
+direction:ltr;
+background:linear-gradient(#0c0c0c,#090909);
+}
+.topSearch{
+max-width:650px;
+height:50px;
+margin:auto;
+position:relative;
+flex:1;
+}
+.topSearch input{
+height:50px;
+border-radius:30px;
+background:#101010;
+border:1px solid #333;
+padding:0 55px 0 22px;
+direction:ltr;
+text-align:left;
+font-size:13px;
+}
+.topSearch:before{
+content:"⌕";
+position:absolute;
+left:20px;
+top:0;
+font-size:29px;
+color:#aaa;
+z-index:2;
+}
+.topIcons{
+display:flex;
+align-items:center;
+gap:20px;
+color:#ccc;
+font-size:22px;
+}
+.topIcons button{
+background:transparent;
+color:#ddd;
+font-size:21px;
+padding:4px;
+box-shadow:none;
+}
+.topIcons button:hover{color:var(--orange);transform:none}
+.topAvatar{
+width:40px;height:40px;border-radius:50%;
+object-fit:cover;border:1px solid #444;
+}
+
+/* HERO */
 header{
 position:relative;
 overflow:hidden;
-min-height:330px;
-margin:24px 27px 25px 270px;
-border-radius:18px;
+height:350px;
+margin:4px 26px 25px 288px;
+border-radius:22px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:flex-start;
-text-align:right;
-padding:35px 7%;
+text-align:left;
+direction:ltr;
+padding:35px 45px;
 background:
-linear-gradient(90deg,#090909 0%,#090909e8 38%,#09090955 100%),
-linear-gradient(0deg,#09090970,transparent),
-url('https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1800') center/cover;
-border:1px solid #292929;
+linear-gradient(90deg,#080808 0%,#080808e8 28%,#08080850 72%,#08080830 100%),
+linear-gradient(0deg,#08080850,transparent),
+url('https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1800') center 42%/cover;
+border:1px solid #242424;
 }
 header:before{
 content:"";
 position:absolute;
 inset:0;
-background:radial-gradient(ellipse at 75% 50%,#ff701830,transparent 55%);
+background:linear-gradient(90deg,transparent,#00000015),radial-gradient(ellipse at 75% 50%,#ffffff12,transparent 55%);
 pointer-events:none;
 }
 header:after{
-content:"RAP ROOM  /  THE SOUND OF INDEPENDENCE";
+content:"";
 position:absolute;
-bottom:20px;
-left:25px;
-direction:ltr;
-letter-spacing:3px;
-font-size:9px;
-color:#ffffff75;
+right:8%;
+top:36%;
+width:150px;
+height:75px;
+opacity:.45;
+background:repeating-linear-gradient(90deg,#ddd 0 4px,transparent 4px 12px);
+clip-path:polygon(0 45%,5% 35%,10% 55%,15% 20%,20% 70%,25% 10%,30% 85%,35% 25%,40% 70%,45% 0,50% 100%,55% 20%,60% 75%,65% 10%,70% 90%,75% 20%,80% 70%,85% 30%,90% 60%,95% 40%,100% 50%);
+pointer-events:none;
 }
 header h1{
 position:relative;
 margin:0;
-font-size:clamp(45px,7vw,76px);
+font-family:Arial,sans-serif;
+font-size:clamp(45px,6vw,76px);
 font-weight:900;
-letter-spacing:4px;
-line-height:1.3;
+letter-spacing:-2px;
+line-height:1.2;
 color:white;
 text-shadow:0 5px 35px #000;
 }
-header h1:before{
-content:"♛";
-color:var(--orange);
-font-size:.65em;
-margin-left:14px;
-}
+header h1:before{display:none}
 header p{
 position:relative;
-color:#ddd;
-font-size:15px;
-margin:8px 0 20px;
+color:#ccc;
+font-family:Arial,sans-serif;
+font-size:19px;
+margin:10px 0 25px;
 }
 .heroTag{
 position:relative;
 display:inline-block;
-background:#ff7018;
+background:#eee;
 color:#111;
-font-weight:900;
-padding:7px 17px;
+font-weight:800;
+padding:10px 28px;
 border-radius:30px;
-font-size:11px;
+font-size:13px;
 letter-spacing:1px;
+cursor:pointer;
+}
+.heroTag:hover{background:var(--orange)}
+.heroDots{
+position:absolute;
+left:220px;
+bottom:30px;
+width:50px;height:50px;
+border:1px solid #555;
+border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-size:22px;color:#ddd;
 }
 
 /* MAIN */
 main{
 width:auto;
 max-width:none;
-margin:0 0 0 245px;
-padding:5px 28px 35px;
+margin:0 0 0 262px;
+padding:0 28px 35px;
 min-height:75vh;
 }
 section{
 background:transparent;
 border:0;
 border-radius:0;
-padding:18px 0;
-margin-bottom:24px;
+padding:14px 0;
+margin-bottom:20px;
 }
 h2{
-color:#fff;
-font-size:21px;
-font-weight:900;
-margin:0 0 22px;
+color:#eee;
+font-size:20px;
+font-weight:800;
+margin:0 0 18px;
 padding:0;
 border:0;
 }
-h2:after{
-content:"";
-display:block;
-width:40px;
-height:3px;
-background:var(--orange);
-border-radius:5px;
-margin-top:8px;
-}
+h2:after{display:none}
 h3{color:#eee;font-weight:800}
 .small{color:var(--muted);font-size:12px}
 .empty{
-color:#888;
-text-align:center;
-padding:30px 10px;
-background:#191919;
-border:1px dashed #393939;
-border-radius:12px;
+color:#888;text-align:center;padding:30px 10px;
+background:#191919;border:1px dashed #393939;border-radius:12px;
 }
 .card{
-background:#191919;
-padding:18px;
-border:1px solid #292929;
-border-radius:13px;
-margin:13px 0;
-transition:.2s;
+background:#191919;padding:16px;
+border:1px solid #292929;border-radius:13px;
+margin:13px 0;transition:.2s;
 }
-.card:hover{
-border-color:#76502f;
-background:#202020;
-transform:translateY(-2px);
-}
+.card:hover{border-color:#76502f;background:#202020;transform:translateY(-2px)}
 
 /* STATUS */
 #statusBox{
-background:#191919;
-border:1px solid #383838;
-padding:13px 18px;
-border-radius:10px;
+background:#171717;border:1px solid #303030;
+padding:10px 17px;border-radius:10px;
 }
-#status{
-color:#ffb17d;
-white-space:pre-wrap;
-line-height:1.9;
-margin:0;
-font-size:12px;
-}
+#status{color:#ffb17d;white-space:pre-wrap;line-height:1.9;margin:0;font-size:12px}
 
-/* SECTION HEADINGS */
+/* HEADINGS */
 .sectionHeading{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
+display:flex;justify-content:space-between;align-items:center;
+gap:10px;flex-wrap:wrap;
 }
 .weeklyBadge{
-background:#292017;
-color:var(--orange);
-padding:6px 12px;
-border:1px solid #55351e;
-border-radius:30px;
-font-size:11px;
+background:#211d19;color:#aaa;padding:5px 12px;
+border:1px solid #333;border-radius:30px;font-size:10px;
 }
 
 /* SEARCH */
 .searchBox{margin:14px 0 24px}
 .searchBox input{
-margin:0;
-background:#202020;
-border:1px solid #303030;
-border-radius:30px;
-padding:15px 22px;
+margin:0;background:#202020;border:1px solid #303030;
+border-radius:30px;padding:14px 22px;
 }
 input::placeholder,textarea::placeholder{color:#777}
 
-/* TRACK GRID */
+/* TRACKS - SQUARE ALBUM CARDS */
 #trackList{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+grid-template-columns:repeat(6,minmax(0,1fr));
 gap:16px;
 }
 #trackList .card{
-margin:0;
-padding:12px;
-cursor:pointer;
-min-width:0;
-background:#191919;
+margin:0;padding:0;cursor:pointer;min-width:0;
+background:transparent;border:0;border-radius:9px;
 }
-#trackList .card:hover{
-background:#25201c;
-border-color:var(--orange);
+#trackList .card:hover{background:transparent;border-color:transparent}
+#trackList .relatedTrack{
+display:flex;flex-direction:column;align-items:stretch;gap:8px;
 }
-#trackList .relatedTrack{display:block}
 #trackList .relatedTrack img{
-width:100%;
-aspect-ratio:1/1;
-height:auto;
-object-fit:cover;
-border-radius:10px;
-margin-bottom:10px;
-border:1px solid #333;
-transition:.3s;
+width:100%;aspect-ratio:1/1;height:auto;
+object-fit:cover;border-radius:9px;margin:0;
+border:1px solid #292929;transition:.3s;
 }
-#trackList .card:hover img{transform:scale(1.02)}
+#trackList .card:hover img{transform:scale(1.025);box-shadow:0 8px 22px #000}
+#trackList .relatedTrackInfo{padding:0 3px}
 #trackList .relatedTrackInfo h4{
-font-size:14px;
-margin:5px 0;
-color:white;
+font-size:13px;margin:0;color:#eee;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-#trackList .relatedTrackInfo p{margin:3px 0}
-
-.relatedTrack{
-display:flex;
-align-items:center;
-gap:14px;
-cursor:pointer;
-}
+#trackList .relatedTrackInfo p{margin:2px 0;font-size:11px}
+.relatedTrack{display:flex;align-items:center;gap:14px;cursor:pointer}
 .relatedTrack img{
-width:70px;
-height:70px;
-object-fit:cover;
-border-radius:9px;
-border:1px solid #444;
+width:70px;height:70px;object-fit:cover;border-radius:9px;border:1px solid #444;
 }
 .relatedTrackInfo{flex:1;min-width:0}
 .relatedTrackInfo h4{margin:0 0 7px}
 
 /* WEEKLY */
-.weeklyNumber{
-font-size:25px;
-color:var(--orange);
-font-weight:900;
-min-width:38px;
-text-align:center;
-}
-.weeklyCard{
-display:flex;
-align-items:center;
-gap:14px;
-}
-.weeklyCard img{
-width:75px;
-height:75px;
-object-fit:cover;
-border-radius:9px;
-border:1px solid #444;
-}
+.weeklyNumber{font-size:25px;color:var(--orange);font-weight:900;min-width:38px;text-align:center}
+.weeklyCard{display:flex;align-items:center;gap:14px}
+.weeklyCard img{width:75px;height:75px;object-fit:cover;border-radius:9px;border:1px solid #444}
 .weeklyInfo{flex:1;min-width:0}
 .weeklyInfo h3{margin:0 0 7px}
 .weeklyPlays{color:var(--orange);font-size:12px}
 
 /* ARTISTS */
 .artistCard{
-cursor:pointer;
-display:inline-block;
-vertical-align:top;
-width:calc(25% - 14px);
-min-width:170px;
-text-align:center;
+cursor:pointer;display:inline-block;vertical-align:top;
+width:calc(25% - 14px);min-width:170px;text-align:center;
 }
 .artistCard img{
-width:110px;
-height:110px;
-border-radius:50%;
-object-fit:cover;
-border:2px solid #76502f;
+width:110px;height:110px;border-radius:50%;
+object-fit:cover;border:2px solid #444;
 }
 .artistCard:hover{transform:translateY(-4px)}
 .artistHero{
-text-align:center;
-padding:32px 18px;
+text-align:center;padding:32px 18px;
 background:linear-gradient(145deg,#24201b,#141414);
-border:1px solid #443426;
-border-radius:15px;
-margin-bottom:20px;
+border:1px solid #443426;border-radius:15px;margin-bottom:20px;
 }
 .artistHero img{
-width:165px;
-height:165px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid var(--orange);
+width:165px;height:165px;border-radius:50%;
+object-fit:cover;border:3px solid var(--orange);
 }
 .artistBio{
-background:#101010;
-border-right:3px solid var(--orange);
-border-radius:9px;
-padding:16px;
-line-height:2.2;
-text-align:right;
-white-space:pre-wrap;
-overflow-wrap:anywhere;
+background:#101010;border-right:3px solid var(--orange);
+border-radius:9px;padding:16px;line-height:2.2;
+text-align:right;white-space:pre-wrap;overflow-wrap:anywhere;
 }
-.backButton{
-background:#292929;
-color:white;
-border:1px solid #444;
-margin-bottom:16px;
-}
+.backButton{background:#292929;color:white;border:1px solid #444;margin-bottom:16px}
 .backButton:hover{background:#444}
 .followButton{min-width:145px;margin-top:12px}
-.followButton.following{
-background:#202020;
-color:var(--orange);
-border:1px solid var(--orange);
-}
-.artistStats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin:18px 0;
-}
-.artistStat{
-background:#0d0d0d;
-border:1px solid #333;
-border-radius:10px;
-padding:14px;
-text-align:center;
-color:#aaa;
-font-size:12px;
-}
-.artistStat strong{
-display:block;
-color:var(--orange);
-font-size:22px;
-margin-top:7px;
-}
+.followButton.following{background:#202020;color:var(--orange);border:1px solid var(--orange)}
+.artistStats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.artistStat{background:#0d0d0d;border:1px solid #333;border-radius:10px;padding:14px;text-align:center;color:#aaa;font-size:12px}
+.artistStat strong{display:block;color:var(--orange);font-size:22px;margin-top:7px}
 
 /* TRACK PAGE */
 .trackHero{
 background:linear-gradient(145deg,#201a15,#111);
-border:1px solid #423326;
-border-radius:16px;
-padding:27px;
-text-align:center;
-overflow:hidden;
+border:1px solid #423326;border-radius:16px;padding:27px;
+text-align:center;overflow:hidden;
 }
 .trackCover{
-width:min(100%,460px);
-aspect-ratio:1/1;
-object-fit:cover;
-display:block;
-margin:0 auto 24px;
-border-radius:13px;
-border:1px solid #444;
-box-shadow:0 20px 60px #000b;
+width:min(100%,460px);aspect-ratio:1/1;object-fit:cover;
+display:block;margin:0 auto 24px;border-radius:13px;
+border:1px solid #444;box-shadow:0 20px 60px #000b;
 }
 .trackCoverPlaceholder{
-width:min(100%,460px);
-aspect-ratio:1/1;
-display:flex;
-align-items:center;
-justify-content:center;
-margin:0 auto 24px;
-border-radius:13px;
-background:linear-gradient(135deg,#49301d,#111);
-color:var(--orange);
-font-size:38px;
-font-weight:900;
+width:min(100%,460px);aspect-ratio:1/1;display:flex;
+align-items:center;justify-content:center;margin:0 auto 24px;
+border-radius:13px;background:linear-gradient(135deg,#49301d,#111);
+color:var(--orange);font-size:38px;font-weight:900;
 }
-.trackTitle{
-font-size:29px;
-margin:10px 0;
-color:#fff;
-font-weight:900;
-}
+.trackTitle{font-size:29px;margin:10px 0;color:#fff;font-weight:900}
 .trackArtist{color:var(--orange);font-size:16px;margin-bottom:10px}
 .trackMeta{color:#888;font-size:12px;margin-bottom:20px}
-.playerBox{
-background:#090909;
-border:1px solid #333;
-border-radius:13px;
-padding:21px;
-margin-top:22px;
-text-align:right;
-}
+.playerBox{background:#090909;border:1px solid #333;border-radius:13px;padding:21px;margin-top:22px;text-align:right}
 .playerLabel{color:var(--orange);font-size:13px;font-weight:800}
 .playerNote{color:#777;font-size:11px}
-.lyricsBox,.downloadBox{
-margin-top:22px;
-background:#171717;
-border:1px solid #303030;
-border-radius:13px;
-padding:21px;
-}
+.lyricsBox,.downloadBox{margin-top:22px;background:#171717;border:1px solid #303030;border-radius:13px;padding:21px}
 .lyricsBox h3{color:var(--orange);margin-top:0}
-.lyricsText{
-white-space:pre-wrap;
-line-height:2.7;
-text-align:center;
-font-size:15px;
-color:#eee;
-overflow-wrap:anywhere;
-}
-.downloadRow{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-flex-wrap:wrap;
-padding:13px 0;
-border-bottom:1px solid #292929;
-}
+.lyricsText{white-space:pre-wrap;line-height:2.7;text-align:center;font-size:15px;color:#eee;overflow-wrap:anywhere}
+.downloadRow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:13px 0;border-bottom:1px solid #292929}
 .downloadRow:last-child{border-bottom:0}
-.downloadButton{
-background:#252525;
-border:1px solid #444;
-text-decoration:none;
-color:white;
-padding:10px 16px;
-border-radius:8px;
-font-size:12px;
-display:inline-block;
-transition:.2s;
-}
-.downloadButton:hover{
-background:#382719;
-border-color:var(--orange);
-}
-.trackActions{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-margin-top:20px;
-}
-.shareButton{
-background:#292929;
-color:white;
-border:1px solid #444;
-}
-.trackStats{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-margin:17px 0;
-}
-.trackStat{
-background:#0b0b0b;
-border:1px solid #383838;
-padding:11px 17px;
-border-radius:9px;
-color:#ddd;
-font-size:13px;
-}
+.downloadButton{background:#252525;border:1px solid #444;text-decoration:none;color:white;padding:10px 16px;border-radius:8px;font-size:12px;display:inline-block;transition:.2s}
+.downloadButton:hover{background:#382719;border-color:var(--orange)}
+.trackActions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.shareButton{background:#292929;color:white;border:1px solid #444}
+.trackStats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:17px 0}
+.trackStat{background:#0b0b0b;border:1px solid #383838;padding:11px 17px;border-radius:9px;color:#ddd;font-size:13px}
 .trackStat strong{color:var(--orange);margin-right:5px}
 
 /* COMMENTS */
-.comment{
-background:#202020;
-padding:13px;
-border-radius:9px;
-margin:9px 0;
-border-right:2px solid var(--orange);
-line-height:1.9;
-}
+.comment{background:#202020;padding:13px;border-radius:9px;margin:9px 0;border-right:2px solid var(--orange);line-height:1.9}
 
 /* ACCOUNT */
-.avatar{
-width:85px;
-height:85px;
-border-radius:50%;
-object-fit:cover;
-background:#222;
-border:2px solid var(--orange);
-}
-#loggedIn,#loggedOut{
-background:#191919;
-padding:20px;
-border-radius:13px;
-border:1px solid #303030;
-}
+.avatar{width:85px;height:85px;border-radius:50%;object-fit:cover;background:#222;border:2px solid var(--orange)}
+#loggedIn,#loggedOut{background:#191919;padding:20px;border-radius:13px;border:1px solid #303030}
 
 /* ADMIN */
-.adminStats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:12px;
-margin:18px 0;
-}
-.statBox{
-background:linear-gradient(145deg,#211c17,#111);
-border:1px solid #433528;
-border-radius:12px;
-padding:17px;
-text-align:center;
-color:#aaa;
-}
-.statBox strong{
-display:block;
-color:var(--orange);
-font-size:27px;
-margin-top:8px;
-}
-.adminForm{
-background:#151515;
-border:1px solid #403326;
-border-radius:13px;
-padding:20px;
-margin:18px 0;
-}
-.adminActions{
-display:flex;
-gap:9px;
-flex-wrap:wrap;
-margin-top:14px;
-}
-.secondaryButton{
-background:#292929;
-color:white;
-border:1px solid #444;
-}
-.deleteButton{
-background:#5c1710;
-color:white;
-border:1px solid #8b3020;
-}
+.adminStats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:18px 0}
+.statBox{background:linear-gradient(145deg,#211c17,#111);border:1px solid #433528;border-radius:12px;padding:17px;text-align:center;color:#aaa}
+.statBox strong{display:block;color:var(--orange);font-size:27px;margin-top:8px}
+.adminForm{background:#151515;border:1px solid #403326;border-radius:13px;padding:20px;margin:18px 0}
+.adminActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.secondaryButton{background:#292929;color:white;border:1px solid #444}
+.deleteButton{background:#5c1710;color:white;border:1px solid #8b3020}
 .draftLabel{color:#ffb347}
 .publishedLabel{color:#55dd88}
-.previewCover{
-width:115px;
-height:115px;
-object-fit:cover;
-border-radius:10px;
-border:1px solid #555;
-margin:8px 0;
-}
+.previewCover{width:115px;height:115px;object-fit:cover;border-radius:10px;border:1px solid #555;margin:8px 0}
 
-/* GLOBAL PLAYER */
+/* BOTTOM PLAYER */
 .global-player{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:94px;
-z-index:500;
-background:#090909f7;
-border-top:1px solid #333;
-display:grid;
-grid-template-columns:1fr 1.5fr 1fr;
-align-items:center;
-gap:20px;
-padding:10px 25px;
+position:fixed;bottom:0;left:0;right:0;height:104px;
+z-index:500;background:#090909f7;
+border-top:1px solid #303030;
+display:grid;grid-template-columns:1fr 1.4fr 1fr;
+align-items:center;gap:20px;padding:10px 25px;
 backdrop-filter:blur(18px);
+direction:ltr;
 }
 .global-player.hidden{display:none}
-.player-track{
-display:flex;
-align-items:center;
-gap:12px;
-min-width:0;
-}
-.player-track img{
-width:57px;
-height:57px;
-border-radius:8px;
-object-fit:cover;
-background:#222;
-}
-.player-track-info{min-width:0}
-.player-track-info strong{
-display:block;
-font-size:13px;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
-}
+.player-track{display:flex;align-items:center;gap:13px;min-width:0}
+.player-track img{width:61px;height:61px;border-radius:8px;object-fit:cover;background:#222}
+.player-track-info{min-width:0;text-align:left}
+.player-track-info strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .player-track-info span{font-size:11px;color:#999}
-.player-center{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:4px;
-min-width:0;
-}
-.player-controls{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:20px;
-}
-.player-controls button{
-background:transparent;
-color:#ddd;
-padding:4px 8px;
-font-size:18px;
-box-shadow:none;
-}
+.player-center{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+.player-controls{display:flex;align-items:center;justify-content:center;gap:20px}
+.player-controls button{background:transparent;color:#ccc;padding:4px 8px;font-size:18px;box-shadow:none}
 .player-controls button:hover{color:var(--orange);transform:none}
 .player-controls #globalPlay{
-width:37px;
-height:37px;
-border-radius:50%;
-background:var(--orange);
-color:#111;
-font-size:16px;
+width:43px;height:43px;border-radius:50%;
+background:#eee;color:#111;font-size:17px;
 }
-.progress-row{
-width:100%;
-display:flex;
-align-items:center;
-gap:9px;
-direction:ltr;
-color:#999;
-font-size:10px;
-}
-.progress-row input{
-width:100%;
-margin:0;
-padding:0;
-height:4px;
-accent-color:var(--orange);
-cursor:pointer;
-}
-.player-extra{
-display:flex;
-align-items:center;
-justify-content:flex-end;
-gap:12px;
-}
-.player-extra button{
-background:transparent;
-color:#aaa;
-padding:5px;
-font-size:17px;
-box-shadow:none;
-}
+.progress-row{width:100%;display:flex;align-items:center;gap:9px;direction:ltr;color:#999;font-size:10px}
+.progress-row input{width:100%;margin:0;padding:0;height:4px;accent-color:#eee;cursor:pointer}
+.player-extra{display:flex;align-items:center;justify-content:flex-end;gap:12px}
+.player-extra button{background:transparent;color:#aaa;padding:5px;font-size:18px;box-shadow:none}
 .player-extra button:hover{color:var(--orange);transform:none}
-.player-extra input{
-width:90px;
-margin:0;
-padding:0;
-height:4px;
-accent-color:var(--orange);
-}
+.player-extra input{width:90px;margin:0;padding:0;height:4px;accent-color:#eee}
 
 /* FOOTER */
 footer{
-margin-left:245px;
-text-align:center;
-color:#777;
-padding:35px 15px;
-font-size:12px;
-border-top:1px solid #292929;
-line-height:2.4;
-background:#080808;
+margin-left:262px;text-align:center;color:#777;padding:35px 15px;
+font-size:12px;border-top:1px solid #292929;line-height:2.4;background:#080808;
 }
 footer a{color:var(--orange);text-decoration:none;margin:0 7px}
-hr{border:0;border-top:1px solid #303030;margin:26px 0}
+hr{border:0;border-top:1px solid #292929;margin:26px 0}
 .contactBox{line-height:2.8}
 .contactBox a{color:var(--orange);text-decoration:none}
 
 /* RESPONSIVE */
+@media(max-width:1200px){
+#trackList{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
 @media(max-width:900px){
-#trackList{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
-.artistCard{width:calc(33.33% - 14px)}
-.global-player{grid-template-columns:1fr 1.5fr;height:90px}
+#trackList{grid-template-columns:repeat(3,minmax(0,1fr))}
+.global-player{grid-template-columns:1fr 1.5fr;height:94px}
 .player-extra{display:none}
+header{height:300px}
 }
 @media(max-width:700px){
 nav{
-position:fixed;
-top:auto;
-bottom:90px;
-left:0;
-right:0;
-width:100%;
-height:65px;
-flex-direction:row;
-justify-content:space-around;
-align-items:center;
-padding:5px;
-gap:2px;
-border-right:0;
-border-top:1px solid #333;
-background:#090909f5;
+position:fixed;top:auto;bottom:85px;left:0;right:0;
+width:100%;height:65px;flex-direction:row;
+justify-content:space-around;align-items:center;
+padding:5px;gap:2px;border-right:0;border-top:1px solid #333;
+background:#090909f5;overflow:visible;
 }
-nav:before,nav:after{display:none}
-nav button{
-width:auto;
-flex:1;
-padding:10px 3px;
-font-size:10px;
-text-align:center;
-}
+.brandLogo,.navLabel,.playlistHeading,.sidePlaylist{display:none}
+nav button{width:auto;flex:1;padding:10px 3px;font-size:10px;text-align:center}
+.topbar{height:65px;margin:0;padding:0 14px;gap:10px}
+.topSearch{max-width:none}
+.topSearch input{height:43px}
+.topSearch:before{font-size:25px}
+.topIcons{gap:10px;font-size:18px}
+.topAvatar{width:34px;height:34px}
 header{
-margin:12px 12px 18px;
-min-height:230px;
-padding:30px 22px;
+margin:10px 12px 18px;height:230px;
+padding:25px 22px;border-radius:15px;
 }
 header h1{font-size:42px}
-header p{font-size:12px}
-main{
-margin:0;
-padding:12px 14px 35px;
-}
+header p{font-size:13px}
+header:after{right:5%;width:80px;height:50px}
+main{margin:0;padding:10px 14px 35px}
 footer{margin:0}
 body{padding-bottom:155px}
 .artistCard{width:calc(50% - 12px);min-width:130px}
 .artistStats{grid-template-columns:repeat(2,1fr)}
 .global-player{
-height:85px;
-bottom:65px;
-padding:8px 12px;
-grid-template-columns:1fr 1fr;
-gap:5px;
+height:85px;bottom:65px;padding:8px 12px;
+grid-template-columns:1fr 1fr;gap:5px;
 }
 .global-player .player-track img{width:45px;height:45px}
 .player-controls{gap:8px}
@@ -841,11 +589,9 @@ gap:5px;
 .progress-row{gap:5px}
 }
 @media(max-width:450px){
-header h1{font-size:34px;letter-spacing:2px}
-header{min-height:200px}
-#trackList{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-#trackList .card{padding:9px}
-#trackList .relatedTrackInfo h4{font-size:12px}
+header h1{font-size:34px}
+header{height:200px}
+#trackList{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .trackHero{padding:15px}
 .trackTitle{font-size:24px}
 .trackCover,.trackCoverPlaceholder{width:100%}
@@ -864,19 +610,61 @@ h2{font-size:18px}
 
 <body>
 
-<header>
-<h1>RAP ROOM</h1>
-<p>صدای رپ مستقل</p>
-<span class="heroTag">INDEPENDENT HIP HOP CULTURE</span>
-</header>
-
+<!-- SIDEBAR -->
 <nav>
-<button data-go="tracks">🎧 آهنگ‌ها</button>
-<button data-go="artists">🎤 هنرمندان</button>
-<button data-go="account">👤 حساب کاربری</button>
-<button id="adminNavButton" class="hidden" data-go="adminPanel">⚙️ مدیریت</button>
-<button data-go="about">درباره ما</button>
+<div class="brandLogo">
+<div class="brandCrown">♛</div>
+<div class="brandName">RAP<br>ROOM</div>
+<div class="brandWave">▂▅▇▃▆▂▅▇▃</div>
+</div>
+
+<div class="navLabel">منوی اصلی</div>
+<button data-go="tracks">⌂ &nbsp; خانه</button>
+<button data-go="tracks">⌕ &nbsp; جست‌وجو</button>
+<button data-go="tracks">▥ &nbsp; کتابخانه من</button>
+
+<div class="playlistHeading">
+<span>پلی‌لیست‌ها</span><span>＋</span>
+</div>
+
+<div class="sidePlaylist" data-go="tracks">
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=150" alt="">
+<div>Rap Room Vibes<small>موسیقی RAP ROOM</small></div>
+</div>
+<div class="sidePlaylist" data-go="tracks">
+<img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=150" alt="">
+<div>Hip Hop Essentials<small>هیپ‌هاپ</small></div>
+</div>
+<div class="sidePlaylist" data-go="tracks">
+<img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=150" alt="">
+<div>Underground<small>رپ مستقل</small></div>
+</div>
+
+<div style="flex:1"></div>
+<button data-go="artists">🎤 &nbsp; هنرمندان</button>
+<button data-go="account">👤 &nbsp; حساب کاربری</button>
+<button id="adminNavButton" class="hidden" data-go="adminPanel">⚙️ &nbsp; مدیریت</button>
+<button data-go="about">ⓘ &nbsp; درباره ما</button>
 </nav>
+
+<!-- TOP BAR -->
+<div class="topbar">
+<div class="topSearch">
+<input id="globalSearch" type="search" placeholder="Search in Rap Room...">
+</div>
+<div class="topIcons">
+<button title="اعلان‌ها">♧</button>
+<img id="topAvatar" class="topAvatar" src="https://placehold.co/100x100/222/fff?text=RR" alt="پروفایل">
+</div>
+</div>
+
+<!-- HERO -->
+<header>
+<h1>Rap Room</h1>
+<p>Feel the beat. Live the rhyme.</p>
+<button class="heroTag" id="heroPlay">▶ &nbsp; Play</button>
+<div class="heroDots">•••</div>
+</header>
 
 <main>
 
@@ -886,8 +674,8 @@ h2{font-size:18px}
 
 <section id="tracks">
 <div class="sectionHeading">
-<h2>🎧 آهنگ‌های منتشرشده</h2>
-<span class="weeklyBadge">RAP ROOM MUSIC</span>
+<h2>Recently Played</h2>
+<span class="weeklyBadge">مشاهده همه</span>
 </div>
 
 <div class="searchBox">
@@ -911,23 +699,19 @@ h2{font-size:18px}
 <section id="trackPage" class="hidden">
 <button class="backButton" id="backToTracks">← بازگشت به آهنگ‌ها</button>
 <div id="trackDetails"></div>
-
 <div class="downloadBox">
 <h3>⬇️ دانلود آهنگ</h3>
 <div id="downloadOptions"></div>
 </div>
-
 <div class="lyricsBox">
 <h3>📝 متن آهنگ</h3>
 <div id="lyricsContent" class="lyricsText">متن این آهنگ هنوز ثبت نشده است.</div>
 </div>
-
 <div class="card">
 <h3>💬 نظرات شنوندگان</h3>
 <div id="trackComments"></div>
 <div id="trackCommentForm"></div>
 </div>
-
 <div class="card">
 <h3>🎵 آهنگ‌های هنرمندان دیگر</h3>
 <div id="relatedTracks"></div>
@@ -951,7 +735,6 @@ h2{font-size:18px}
 
 <section id="account" class="hidden">
 <h2>👤 حساب کاربری</h2>
-
 <div id="loggedOut">
 <h3>ورود به حساب</h3>
 <form id="loginForm">
@@ -959,9 +742,7 @@ h2{font-size:18px}
 <input id="loginPassword" type="password" placeholder="رمز عبور" required>
 <button type="submit">ورود به حساب</button>
 </form>
-
 <hr>
-
 <h3>ساخت حساب جدید</h3>
 <form id="signupForm">
 <input id="signupName" type="text" placeholder="نام هنری" required>
@@ -970,7 +751,6 @@ h2{font-size:18px}
 <button type="submit">ثبت‌نام</button>
 </form>
 </div>
-
 <div id="loggedIn" class="hidden">
 <img id="myAvatar" class="avatar" alt="عکس پروفایل">
 <h3 id="myName"></h3>
@@ -987,61 +767,42 @@ h2{font-size:18px}
 <section id="adminPanel" class="hidden">
 <h2>⚙️ پنل مدیریت RAP ROOM</h2>
 <p class="small">مدیریت انتشار، ویرایش و حذف آهنگ‌ها</p>
-
 <div class="adminStats">
 <div class="statBox">کل آهنگ‌ها<strong id="statTotal">۰</strong></div>
 <div class="statBox">منتشرشده<strong id="statPublished">۰</strong></div>
 <div class="statBox">پیش‌نویس<strong id="statDrafts">۰</strong></div>
 </div>
-
 <div class="adminForm">
 <h3 id="adminFormTitle">🎵 افزودن آهنگ جدید</h3>
-
 <label>عنوان آهنگ</label>
 <input id="adminTrackTitle" type="text" placeholder="نام آهنگ">
-
 <label>انتخاب هنرمند</label>
-<select id="adminArtistSelect">
-<option value="">در حال دریافت هنرمندان...</option>
-</select>
-
+<select id="adminArtistSelect"><option value="">در حال دریافت هنرمندان...</option></select>
 <label>فایل اصلی آهنگ MP3</label>
 <input id="adminAudioFile" type="file" accept=".mp3,audio/mpeg">
-
 <label>کاور آهنگ</label>
 <input id="adminCoverFile" type="file" accept="image/*">
-
 <hr>
-
 <h3>🎚️ فایل‌های دانلود با کیفیت مختلف</h3>
 <label>فایل MP3 کیفیت 128</label>
 <input id="adminAudio128" type="file" accept=".mp3,audio/mpeg">
-
 <label>فایل MP3 کیفیت 320</label>
 <input id="adminAudio320" type="file" accept=".mp3,audio/mpeg">
-
 <p class="small">اگر فایل کیفیتی را انتخاب نکنی، لینک دانلود آن کیفیت تغییر نمی‌کند.</p>
-
 <hr>
-
 <label>📝 متن آهنگ</label>
 <textarea id="adminLyrics" placeholder="متن کامل آهنگ را اینجا وارد کن..."></textarea>
-
 <label style="display:flex;align-items:center;gap:10px;margin:12px 0">
 <input id="adminPublish" type="checkbox" checked style="width:auto;margin:0">
 انتشار عمومی آهنگ
 </label>
-
 <p class="small">در صورت غیرفعال بودن، آهنگ به‌صورت پیش‌نویس ذخیره می‌شود.</p>
-
 <div class="adminActions">
 <button id="adminSaveButton">ثبت آهنگ</button>
 <button id="adminCancelEdit" class="secondaryButton hidden">لغو ویرایش</button>
 </div>
 </div>
-
 <hr>
-
 <h3>📚 مدیریت آهنگ‌ها</h3>
 <div id="adminTrackList">در حال دریافت آهنگ‌ها...</div>
 </section>
@@ -1076,7 +837,6 @@ h2{font-size:18px}
 <span id="playerArtist">هنوز آهنگی انتخاب نشده</span>
 </div>
 </div>
-
 <div class="player-center">
 <div class="player-controls">
 <button id="globalPrev" title="آهنگ قبلی">⏮</button>
@@ -1089,12 +849,10 @@ h2{font-size:18px}
 <span id="playerDuration">0:00</span>
 </div>
 </div>
-
 <div class="player-extra">
 <button id="playerMute" title="قطع صدا">🔊</button>
 <input id="playerVolume" type="range" min="0" max="1" step="0.01" value="0.8">
 </div>
-
 <audio id="mainAudio" preload="metadata"></audio>
 </div>
 
@@ -1139,6 +897,17 @@ showSection("adminPanel");await loadAdminPanel();
 });
 });
 
+$("globalSearch").addEventListener("input",()=>{
+$("trackSearch").value=$("globalSearch").value;
+renderTrackSearch();
+showSection("tracks");
+});
+
+$("heroPlay").addEventListener("click",()=>{
+if(allTracks.length)openTrackPage(allTracks[0],true);
+else showSection("tracks");
+});
+
 async function refreshAdminAccess(){
 isAdmin=false;
 if(currentUser&&db){
@@ -1167,10 +936,17 @@ async function showAccount(user){
 currentUser=user;
 $("loggedOut").classList.toggle("hidden",!!user);
 $("loggedIn").classList.toggle("hidden",!user);
-if(!user){$("myName").textContent="";$("myAvatar").src=DEFAULT_AVATAR;return;}
+if(!user){
+$("myName").textContent="";
+$("myAvatar").src=DEFAULT_AVATAR;
+$("topAvatar").src=DEFAULT_AVATAR;
+return;
+}
 const profile=await ensureProfile(user);
+const avatar=profile?.avatar_url||user.user_metadata?.avatar_url||DEFAULT_AVATAR;
 $("myName").textContent=profile?.display_name||user.user_metadata?.display_name||"هنرمند RAP ROOM";
-$("myAvatar").src=profile?.avatar_url||user.user_metadata?.avatar_url||DEFAULT_AVATAR;
+$("myAvatar").src=avatar;
+$("topAvatar").src=avatar;
 }
 
 function getVisitorId(){
@@ -1254,7 +1030,7 @@ await loadWeeklyTracks();
 });
 }
 
-/* GLOBAL PLAYER CONTROLS */
+/* GLOBAL PLAYER */
 const audioPlayer=$("mainAudio");
 
 function formatTime(seconds){
@@ -1339,7 +1115,6 @@ card.innerHTML=`
 <div class="relatedTrackInfo">
 <h4>${escapeHTML(track.title)}</h4>
 <p class="small">${escapeHTML(track.artist_name)}</p>
-<p class="small">مشاهده صفحه آهنگ ←</p>
 </div></div>`;
 card.addEventListener("click",()=>openTrackPage(track));
 return card;
@@ -1834,7 +1609,9 @@ const {data:urlData}=db.storage.from("rap-room-media").getPublicUrl(filePath);
 const avatarUrl=urlData.publicUrl;
 const {error:updateError}=await db.from("profiles").update({avatar_url:avatarUrl}).eq("id",currentUser.id);
 if(updateError)throw updateError;
-$("myAvatar").src=avatarUrl;$("avatarFile").value="";
+$("myAvatar").src=avatarUrl;
+$("topAvatar").src=avatarUrl;
+$("avatarFile").value="";
 message("عکس پروفایل با موفقیت تغییر کرد.");await loadArtists();
 if(activeArtist&&activeArtist.id===currentUser.id){activeArtist.avatar_url=avatarUrl;await renderArtistPage(activeArtist);}
 }catch(error){alert("خطا در تغییر عکس: "+error.message);}
