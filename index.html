@@ -23,40 +23,25 @@
 }
 html{scroll-behavior:smooth}
 body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-font-family:Vazirmatn,Tahoma,sans-serif;
-font-size:14px;
-line-height:1.8;
-padding-bottom:112px;
+margin:0;background:var(--bg);color:var(--text);
+font-family:Vazirmatn,Tahoma,sans-serif;font-size:14px;
+line-height:1.8;padding-bottom:112px;
 }
 button,input,textarea,select{font-family:inherit}
 button{
-background:var(--orange);
-color:#111;
-border:0;
-padding:11px 19px;
-border-radius:30px;
-cursor:pointer;
-font-weight:800;
-transition:.2s;
+background:var(--orange);color:#111;border:0;
+padding:11px 19px;border-radius:30px;cursor:pointer;
+font-weight:800;transition:.2s;
 }
 button:hover{background:var(--orange2);transform:translateY(-2px)}
 button:disabled{opacity:.5;cursor:wait;transform:none}
 input,textarea,select{
-width:100%;
-padding:13px 15px;
-margin:8px 0;
-background:#101010;
-color:white;
-border:1px solid #383838;
-border-radius:9px;
-font-size:13px;
+width:100%;padding:13px 15px;margin:8px 0;
+background:#101010;color:white;border:1px solid #383838;
+border-radius:9px;font-size:13px;
 }
 input:focus,textarea:focus,select:focus{
-outline:none;border-color:var(--orange);
-box-shadow:0 0 0 3px #ff701815;
+outline:none;border-color:var(--orange);box-shadow:0 0 0 3px #ff701815;
 }
 textarea{min-height:120px;resize:vertical}
 input[type=checkbox]{accent-color:var(--orange)}
@@ -65,274 +50,148 @@ a{color:var(--orange)}
 
 /* SIDEBAR */
 nav{
-position:fixed;
-top:0;
-bottom:104px;
-left:0;
-width:262px;
-z-index:300;
-display:flex;
-flex-direction:column;
-align-items:stretch;
-gap:5px;
-padding:25px 20px;
-background:#080808;
-border-right:1px solid #292929;
-overflow-y:auto;
+position:fixed;top:0;bottom:104px;left:0;width:262px;
+z-index:300;display:flex;flex-direction:column;
+align-items:stretch;gap:5px;padding:25px 20px;
+background:#080808;border-right:1px solid #292929;overflow-y:auto;
 }
+
+/* GRAFFITI LOGO */
 .brandLogo{
-direction:ltr;
-text-align:center;
-height:210px;
-padding:0 0 15px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-border-bottom:1px solid #292929;
-margin-bottom:12px;
+direction:ltr;text-align:center;height:210px;padding:0 0 15px;
+display:flex;flex-direction:column;align-items:center;
+justify-content:center;border-bottom:1px solid #292929;
+margin-bottom:12px;position:relative;overflow:hidden;
+}
+.brandLogo:before{
+content:"";position:absolute;width:190px;height:130px;
+background:radial-gradient(ellipse,#ff701825,transparent 70%);
 }
 .brandCrown{
-font-size:54px;
-line-height:1;
-color:var(--orange);
-text-shadow:0 0 22px #ff701855;
-transform:rotate(-5deg);
+position:relative;font-size:48px;line-height:1;
+color:var(--orange);text-shadow:0 0 18px #ff7018aa;
+transform:rotate(-9deg);z-index:1;
 }
 .brandName{
-font-family:Impact,'Arial Black',sans-serif;
-font-size:42px;
-font-weight:900;
-font-style:italic;
-line-height:.85;
-letter-spacing:-2px;
-color:var(--orange);
-text-shadow:2px 3px 0 #6b2609,0 0 20px #ff701830;
-transform:rotate(-5deg);
+position:relative;font-family:Impact,'Arial Black',sans-serif;
+font-size:43px;font-weight:1000;font-style:italic;
+line-height:.83;letter-spacing:-2px;color:var(--orange);
+text-shadow:3px 3px 0 #6b2609,-2px -2px 0 #ffb276,0 0 18px #ff701855;
+transform:rotate(-7deg);z-index:1;
+-webkit-text-stroke:1px #ff9a50;
 }
 .brandWave{
-color:var(--orange);
-font-size:23px;
-letter-spacing:2px;
-margin-top:10px;
+position:relative;color:var(--orange);font-size:23px;
+letter-spacing:2px;margin-top:13px;text-shadow:0 0 12px #ff7018;
+z-index:1;
 }
-.navLabel{
-color:#777;
-font-size:11px;
-padding:7px 12px;
+.brandTag{
+font-size:8px;letter-spacing:3px;color:#777;margin-top:5px;
+direction:ltr;
 }
+.navLabel{color:#777;font-size:11px;padding:7px 12px}
 nav button{
-width:100%;
-text-align:right;
-background:transparent;
-color:#aaa;
-border:0;
-padding:12px 15px;
-font-size:13px;
-border-radius:30px;
+width:100%;text-align:right;background:transparent;color:#aaa;
+border:0;padding:12px 15px;font-size:13px;border-radius:30px;
 box-shadow:none;
 }
-nav button:hover{
-background:#21170f;
-color:var(--orange);
-box-shadow:none;
-transform:none;
-}
-nav button[data-go="tracks"]{
-background:#2b1a10;
-color:var(--orange);
-}
+nav button:hover{background:#21170f;color:var(--orange);box-shadow:none;transform:none}
+nav button[data-go="tracks"]{background:#2b1a10;color:var(--orange)}
 .playlistHeading{
-display:flex;
-justify-content:space-between;
-align-items:center;
-color:#aaa;
-padding:12px 10px 5px;
-margin-top:10px;
+display:flex;justify-content:space-between;align-items:center;
+color:#aaa;padding:12px 10px 5px;margin-top:10px;
 border-top:1px solid #292929;
 }
 .playlistHeading span:last-child{font-size:20px}
 .sidePlaylist{
-display:flex;
-align-items:center;
-gap:10px;
-padding:7px;
-border-radius:8px;
-color:#aaa;
-font-size:12px;
-cursor:pointer;
-transition:.2s;
+display:flex;align-items:center;gap:10px;padding:7px;
+border-radius:8px;color:#aaa;font-size:12px;cursor:pointer;transition:.2s;
 }
 .sidePlaylist:hover{background:#1c1c1c;color:white}
-.sidePlaylist img{
-width:47px;height:47px;
-object-fit:cover;border-radius:7px;
-}
+.sidePlaylist img{width:47px;height:47px;object-fit:cover;border-radius:7px}
 .sidePlaylist small{display:block;color:#777;font-size:10px}
 
 /* TOPBAR */
 .topbar{
-height:88px;
-margin-left:262px;
-padding:0 35px;
-display:flex;
-align-items:center;
-gap:22px;
-direction:ltr;
+height:88px;margin-left:262px;padding:0 35px;
+display:flex;align-items:center;gap:22px;direction:ltr;
 background:linear-gradient(#0c0c0c,#090909);
 }
-.topSearch{
-max-width:650px;
-height:50px;
-margin:auto;
-position:relative;
-flex:1;
-}
+.topSearch{max-width:650px;height:50px;margin:auto;position:relative;flex:1}
 .topSearch input{
-height:50px;
-border-radius:30px;
-background:#101010;
-border:1px solid #333;
-padding:0 55px 0 22px;
-direction:ltr;
-text-align:left;
-font-size:13px;
+height:50px;border-radius:30px;background:#101010;
+border:1px solid #333;padding:0 55px 0 22px;
+direction:ltr;text-align:left;font-size:13px;
 }
 .topSearch:before{
-content:"⌕";
-position:absolute;
-left:20px;
-top:0;
-font-size:29px;
-color:#aaa;
-z-index:2;
+content:"⌕";position:absolute;left:20px;top:0;
+font-size:29px;color:#aaa;z-index:2;
 }
-.topIcons{
-display:flex;
-align-items:center;
-gap:20px;
-color:#ccc;
-font-size:22px;
-}
-.topIcons button{
-background:transparent;
-color:#ddd;
-font-size:21px;
-padding:4px;
-box-shadow:none;
-}
+.topIcons{display:flex;align-items:center;gap:20px;color:#ccc;font-size:22px}
+.topIcons button{background:transparent;color:#ddd;font-size:21px;padding:4px;box-shadow:none}
 .topIcons button:hover{color:var(--orange);transform:none}
-.topAvatar{
-width:40px;height:40px;border-radius:50%;
-object-fit:cover;border:1px solid #444;
-}
+.topAvatar{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid #444}
 
-/* HERO */
+/* HERO IMAGE BANNER */
 header{
-position:relative;
-overflow:hidden;
-height:350px;
-margin:4px 26px 25px 288px;
-border-radius:22px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:flex-start;
-text-align:left;
-direction:ltr;
-padding:35px 45px;
+position:relative;overflow:hidden;height:370px;
+margin:4px 26px 25px 288px;border-radius:22px;
+display:flex;flex-direction:column;justify-content:center;
+align-items:flex-start;text-align:left;direction:ltr;padding:35px 55px;
 background:
-linear-gradient(90deg,#080808 0%,#080808e8 28%,#08080850 72%,#08080830 100%),
-linear-gradient(0deg,#08080850,transparent),
-url('https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1800') center 42%/cover;
-border:1px solid #242424;
+linear-gradient(90deg,#080808 0%,#080808ed 25%,#08080885 55%,#08080820 100%),
+linear-gradient(0deg,#080808a0,transparent 65%),
+url('https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1800&q=90') center 42%/cover;
+border:1px solid #30251e;
+box-shadow:0 18px 55px #0009;
 }
 header:before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(90deg,transparent,#00000015),radial-gradient(ellipse at 75% 50%,#ffffff12,transparent 55%);
+content:"";position:absolute;inset:0;
+background:radial-gradient(ellipse at 78% 50%,#ff70183b,transparent 48%);
 pointer-events:none;
 }
 header:after{
-content:"";
-position:absolute;
-right:8%;
-top:36%;
-width:150px;
-height:75px;
-opacity:.45;
-background:repeating-linear-gradient(90deg,#ddd 0 4px,transparent 4px 12px);
-clip-path:polygon(0 45%,5% 35%,10% 55%,15% 20%,20% 70%,25% 10%,30% 85%,35% 25%,40% 70%,45% 0,50% 100%,55% 20%,60% 75%,65% 10%,70% 90%,75% 20%,80% 70%,85% 30%,90% 60%,95% 40%,100% 50%);
-pointer-events:none;
+content:"RAP ROOM  /  INDEPENDENT HIP HOP CULTURE";
+position:absolute;bottom:19px;left:26px;
+direction:ltr;letter-spacing:3px;font-size:9px;color:#ffffff80;
+}
+.heroEyebrow{
+position:relative;color:var(--orange);font-size:11px;
+letter-spacing:4px;font-weight:900;margin-bottom:8px;
 }
 header h1{
-position:relative;
-margin:0;
-font-family:Arial,sans-serif;
-font-size:clamp(45px,6vw,76px);
-font-weight:900;
-letter-spacing:-2px;
-line-height:1.2;
-color:white;
-text-shadow:0 5px 35px #000;
+position:relative;margin:0;font-family:Impact,'Arial Black',sans-serif;
+font-size:clamp(55px,7vw,86px);font-weight:1000;
+letter-spacing:-2px;line-height:1.1;color:white;
+text-shadow:4px 5px 0 #5d260f,0 0 30px #000;
+direction:ltr;
 }
-header h1:before{display:none}
+header h1 span{color:var(--orange)}
 header p{
-position:relative;
-color:#ccc;
-font-family:Arial,sans-serif;
-font-size:19px;
-margin:10px 0 25px;
+position:relative;color:#ddd;font-family:Arial,sans-serif;
+font-size:17px;margin:13px 0 20px;letter-spacing:1px;
 }
 .heroTag{
-position:relative;
-display:inline-block;
-background:#eee;
-color:#111;
-font-weight:800;
-padding:10px 28px;
-border-radius:30px;
-font-size:13px;
-letter-spacing:1px;
-cursor:pointer;
+position:relative;display:inline-flex;align-items:center;gap:10px;
+background:var(--orange);color:#111;font-weight:900;
+padding:12px 27px;border-radius:30px;font-size:13px;
+letter-spacing:1px;cursor:pointer;border:1px solid #ff9b5c;
 }
-.heroTag:hover{background:var(--orange)}
+.heroTag:hover{background:#fff;color:#111}
 .heroDots{
-position:absolute;
-left:220px;
-bottom:30px;
-width:50px;height:50px;
-border:1px solid #555;
-border-radius:50%;
+position:absolute;left:220px;bottom:30px;width:50px;height:50px;
+border:1px solid #777;border-radius:50%;
 display:flex;align-items:center;justify-content:center;
 font-size:22px;color:#ddd;
 }
 
 /* MAIN */
 main{
-width:auto;
-max-width:none;
-margin:0 0 0 262px;
-padding:0 28px 35px;
-min-height:75vh;
+width:auto;max-width:none;margin:0 0 0 262px;
+padding:0 28px 35px;min-height:75vh;
 }
-section{
-background:transparent;
-border:0;
-border-radius:0;
-padding:14px 0;
-margin-bottom:20px;
-}
-h2{
-color:#eee;
-font-size:20px;
-font-weight:800;
-margin:0 0 18px;
-padding:0;
-border:0;
-}
-h2:after{display:none}
+section{background:transparent;border:0;border-radius:0;padding:14px 0;margin-bottom:20px}
+h2{color:#eee;font-size:20px;font-weight:800;margin:0 0 18px;padding:0;border:0}
 h3{color:#eee;font-weight:800}
 .small{color:var(--muted);font-size:12px}
 .empty{
@@ -340,67 +199,57 @@ color:#888;text-align:center;padding:30px 10px;
 background:#191919;border:1px dashed #393939;border-radius:12px;
 }
 .card{
-background:#191919;padding:16px;
-border:1px solid #292929;border-radius:13px;
-margin:13px 0;transition:.2s;
+background:#191919;padding:16px;border:1px solid #292929;
+border-radius:13px;margin:13px 0;transition:.2s;
 }
 .card:hover{border-color:#76502f;background:#202020;transform:translateY(-2px)}
-
-/* STATUS */
-#statusBox{
-background:#171717;border:1px solid #303030;
-padding:10px 17px;border-radius:10px;
-}
+#statusBox{background:#171717;border:1px solid #303030;padding:10px 17px;border-radius:10px}
 #status{color:#ffb17d;white-space:pre-wrap;line-height:1.9;margin:0;font-size:12px}
-
-/* HEADINGS */
-.sectionHeading{
-display:flex;justify-content:space-between;align-items:center;
-gap:10px;flex-wrap:wrap;
-}
-.weeklyBadge{
-background:#211d19;color:#aaa;padding:5px 12px;
-border:1px solid #333;border-radius:30px;font-size:10px;
-}
-
-/* SEARCH */
+.sectionHeading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.weeklyBadge{background:#211d19;color:#aaa;padding:5px 12px;border:1px solid #333;border-radius:30px;font-size:10px}
 .searchBox{margin:14px 0 24px}
-.searchBox input{
-margin:0;background:#202020;border:1px solid #303030;
-border-radius:30px;padding:14px 22px;
-}
+.searchBox input{margin:0;background:#202020;border:1px solid #303030;border-radius:30px;padding:14px 22px}
 input::placeholder,textarea::placeholder{color:#777}
 
-/* TRACKS - SQUARE ALBUM CARDS */
+/* PROFESSIONAL TRACK CARDS */
 #trackList{
-display:grid;
-grid-template-columns:repeat(6,minmax(0,1fr));
-gap:16px;
+display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:17px;
 }
 #trackList .card{
-margin:0;padding:0;cursor:pointer;min-width:0;
-background:transparent;border:0;border-radius:9px;
+margin:0;padding:10px;cursor:pointer;min-width:0;
+background:#171717;border:1px solid #252525;border-radius:12px;
 }
-#trackList .card:hover{background:transparent;border-color:transparent}
-#trackList .relatedTrack{
-display:flex;flex-direction:column;align-items:stretch;gap:8px;
+#trackList .card:hover{
+background:#211b17;border-color:#a64e1b;
+box-shadow:0 12px 30px #0008;transform:translateY(-5px);
 }
-#trackList .relatedTrack img{
-width:100%;aspect-ratio:1/1;height:auto;
-object-fit:cover;border-radius:9px;margin:0;
-border:1px solid #292929;transition:.3s;
+.trackCardCover{
+width:100%;aspect-ratio:1/1;position:relative;
+overflow:hidden;border-radius:9px;background:#222;
 }
-#trackList .card:hover img{transform:scale(1.025);box-shadow:0 8px 22px #000}
-#trackList .relatedTrackInfo{padding:0 3px}
-#trackList .relatedTrackInfo h4{
-font-size:13px;margin:0;color:#eee;
-white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+.trackCardCover img{
+width:100%;height:100%;object-fit:cover;display:block;
+transition:transform .4s,filter .4s;
 }
-#trackList .relatedTrackInfo p{margin:2px 0;font-size:11px}
+#trackList .card:hover .trackCardCover img{transform:scale(1.07);filter:brightness(.65)}
+.trackCardPlay{
+position:absolute;right:12px;bottom:12px;
+width:47px;height:47px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+background:var(--orange);color:#111;font-size:19px;
+box-shadow:0 5px 20px #0009;opacity:0;
+transform:translateY(9px);transition:.25s;
+padding:0;
+}
+#trackList .card:hover .trackCardPlay{opacity:1;transform:translateY(0)}
+.trackCardInfo{padding:10px 3px 4px;min-width:0}
+.trackCardInfo h4{
+font-size:13px;margin:0;color:#eee;white-space:nowrap;
+overflow:hidden;text-overflow:ellipsis;
+}
+.trackCardInfo p{margin:3px 0 0;font-size:11px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .relatedTrack{display:flex;align-items:center;gap:14px;cursor:pointer}
-.relatedTrack img{
-width:70px;height:70px;object-fit:cover;border-radius:9px;border:1px solid #444;
-}
+.relatedTrack img{width:70px;height:70px;object-fit:cover;border-radius:9px;border:1px solid #444}
 .relatedTrackInfo{flex:1;min-width:0}
 .relatedTrackInfo h4{margin:0 0 7px}
 
@@ -413,24 +262,15 @@ width:70px;height:70px;object-fit:cover;border-radius:9px;border:1px solid #444;
 .weeklyPlays{color:var(--orange);font-size:12px}
 
 /* ARTISTS */
-.artistCard{
-cursor:pointer;display:inline-block;vertical-align:top;
-width:calc(25% - 14px);min-width:170px;text-align:center;
-}
-.artistCard img{
-width:110px;height:110px;border-radius:50%;
-object-fit:cover;border:2px solid #444;
-}
+.artistCard{cursor:pointer;display:inline-block;vertical-align:top;width:calc(25% - 14px);min-width:170px;text-align:center}
+.artistCard img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid #444}
 .artistCard:hover{transform:translateY(-4px)}
 .artistHero{
 text-align:center;padding:32px 18px;
 background:linear-gradient(145deg,#24201b,#141414);
 border:1px solid #443426;border-radius:15px;margin-bottom:20px;
 }
-.artistHero img{
-width:165px;height:165px;border-radius:50%;
-object-fit:cover;border:3px solid var(--orange);
-}
+.artistHero img{width:165px;height:165px;border-radius:50%;object-fit:cover;border:3px solid var(--orange)}
 .artistBio{
 background:#101010;border-right:3px solid var(--orange);
 border-radius:9px;padding:16px;line-height:2.2;
@@ -499,15 +339,13 @@ color:var(--orange);font-size:38px;font-weight:900;
 .publishedLabel{color:#55dd88}
 .previewCover{width:115px;height:115px;object-fit:cover;border-radius:10px;border:1px solid #555;margin:8px 0}
 
-/* BOTTOM PLAYER */
+/* GLOBAL PLAYER */
 .global-player{
 position:fixed;bottom:0;left:0;right:0;height:104px;
-z-index:500;background:#090909f7;
-border-top:1px solid #303030;
+z-index:500;background:#090909f7;border-top:1px solid #303030;
 display:grid;grid-template-columns:1fr 1.4fr 1fr;
 align-items:center;gap:20px;padding:10px 25px;
-backdrop-filter:blur(18px);
-direction:ltr;
+backdrop-filter:blur(18px);direction:ltr;
 }
 .global-player.hidden{display:none}
 .player-track{display:flex;align-items:center;gap:13px;min-width:0}
@@ -519,10 +357,7 @@ direction:ltr;
 .player-controls{display:flex;align-items:center;justify-content:center;gap:20px}
 .player-controls button{background:transparent;color:#ccc;padding:4px 8px;font-size:18px;box-shadow:none}
 .player-controls button:hover{color:var(--orange);transform:none}
-.player-controls #globalPlay{
-width:43px;height:43px;border-radius:50%;
-background:#eee;color:#111;font-size:17px;
-}
+.player-controls #globalPlay{width:43px;height:43px;border-radius:50%;background:#eee;color:#111;font-size:17px}
 .progress-row{width:100%;display:flex;align-items:center;gap:9px;direction:ltr;color:#999;font-size:10px}
 .progress-row input{width:100%;margin:0;padding:0;height:4px;accent-color:#eee;cursor:pointer}
 .player-extra{display:flex;align-items:center;justify-content:flex-end;gap:12px}
@@ -548,15 +383,14 @@ hr{border:0;border-top:1px solid #292929;margin:26px 0}
 #trackList{grid-template-columns:repeat(3,minmax(0,1fr))}
 .global-player{grid-template-columns:1fr 1.5fr;height:94px}
 .player-extra{display:none}
-header{height:300px}
+header{height:310px}
 }
 @media(max-width:700px){
 nav{
-position:fixed;top:auto;bottom:85px;left:0;right:0;
-width:100%;height:65px;flex-direction:row;
-justify-content:space-around;align-items:center;
-padding:5px;gap:2px;border-right:0;border-top:1px solid #333;
-background:#090909f5;overflow:visible;
+position:fixed;top:auto;bottom:85px;left:0;right:0;width:100%;
+height:65px;flex-direction:row;justify-content:space-around;
+align-items:center;padding:5px;gap:2px;border-right:0;
+border-top:1px solid #333;background:#090909f5;
 }
 .brandLogo,.navLabel,.playlistHeading,.sidePlaylist{display:none}
 nav button{width:auto;flex:1;padding:10px 3px;font-size:10px;text-align:center}
@@ -566,11 +400,8 @@ nav button{width:auto;flex:1;padding:10px 3px;font-size:10px;text-align:center}
 .topSearch:before{font-size:25px}
 .topIcons{gap:10px;font-size:18px}
 .topAvatar{width:34px;height:34px}
-header{
-margin:10px 12px 18px;height:230px;
-padding:25px 22px;border-radius:15px;
-}
-header h1{font-size:42px}
+header{margin:10px 12px 18px;height:245px;padding:25px 22px;border-radius:15px}
+header h1{font-size:47px}
 header p{font-size:13px}
 header:after{right:5%;width:80px;height:50px}
 main{margin:0;padding:10px 14px 35px}
@@ -578,19 +409,17 @@ footer{margin:0}
 body{padding-bottom:155px}
 .artistCard{width:calc(50% - 12px);min-width:130px}
 .artistStats{grid-template-columns:repeat(2,1fr)}
-.global-player{
-height:85px;bottom:65px;padding:8px 12px;
-grid-template-columns:1fr 1fr;gap:5px;
-}
+.global-player{height:85px;bottom:65px;padding:8px 12px;grid-template-columns:1fr 1fr;gap:5px}
 .global-player .player-track img{width:45px;height:45px}
 .player-controls{gap:8px}
 .player-controls button{font-size:15px}
 .player-controls #globalPlay{width:33px;height:33px}
 .progress-row{gap:5px}
+.trackCardPlay{opacity:1;transform:none;width:39px;height:39px}
 }
 @media(max-width:450px){
-header h1{font-size:34px}
-header{height:200px}
+header h1{font-size:37px}
+header{height:215px}
 #trackList{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .trackHero{padding:15px}
 .trackTitle{font-size:24px}
@@ -616,6 +445,7 @@ h2{font-size:18px}
 <div class="brandCrown">♛</div>
 <div class="brandName">RAP<br>ROOM</div>
 <div class="brandWave">▂▅▇▃▆▂▅▇▃</div>
+<div class="brandTag">INDEPENDENT HIP HOP</div>
 </div>
 
 <div class="navLabel">منوی اصلی</div>
@@ -623,9 +453,7 @@ h2{font-size:18px}
 <button data-go="tracks">⌕ &nbsp; جست‌وجو</button>
 <button data-go="tracks">▥ &nbsp; کتابخانه من</button>
 
-<div class="playlistHeading">
-<span>پلی‌لیست‌ها</span><span>＋</span>
-</div>
+<div class="playlistHeading"><span>پلی‌لیست‌ها</span><span>＋</span></div>
 
 <div class="sidePlaylist" data-go="tracks">
 <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=150" alt="">
@@ -658,11 +486,12 @@ h2{font-size:18px}
 </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO BANNER -->
 <header>
-<h1>Rap Room</h1>
+<div class="heroEyebrow">WELCOME TO THE UNDERGROUND</div>
+<h1>RAP <span>ROOM</span></h1>
 <p>Feel the beat. Live the rhyme.</p>
-<button class="heroTag" id="heroPlay">▶ &nbsp; Play</button>
+<button class="heroTag" id="heroPlay">▶ &nbsp; LISTEN NOW</button>
 <div class="heroDots">•••</div>
 </header>
 
@@ -691,9 +520,7 @@ h2{font-size:18px}
 <span class="weeklyBadge">۷ روز اخیر</span>
 </div>
 
-<div id="weeklyTrackList">
-<p class="empty">در حال دریافت آمار هفتگی...</p>
-</div>
+<div id="weeklyTrackList"><p class="empty">در حال دریافت آمار هفتگی...</p></div>
 </section>
 
 <section id="trackPage" class="hidden">
@@ -720,9 +547,7 @@ h2{font-size:18px}
 
 <section id="artists" class="hidden">
 <h2>🎤 هنرمندان RAP ROOM</h2>
-<div class="searchBox">
-<input id="artistSearch" type="search" placeholder="🔎 جست‌وجوی هنرمند...">
-</div>
+<div class="searchBox"><input id="artistSearch" type="search" placeholder="🔎 جست‌وجوی هنرمند..."></div>
 <div id="artistList">در حال دریافت هنرمندان...</div>
 </section>
 
@@ -1106,17 +931,24 @@ audioPlayer.addEventListener("ended",()=>playAdjacentTrack(1));
 audioPlayer.volume=.8;
 $("playerVolume").value=.8;
 
+/* TRACK CARD WITH PLAY BUTTON */
 function createTrackCard(track){
 const card=document.createElement("div");
 card.className="card";
 card.innerHTML=`
-<div class="relatedTrack">
-<img src="${escapeHTML(track.cover_url||DEFAULT_AVATAR)}" alt="کاور">
-<div class="relatedTrackInfo">
+<div class="trackCardCover">
+<img src="${escapeHTML(track.cover_url||DEFAULT_AVATAR)}" alt="کاور آهنگ" loading="lazy">
+<button class="trackCardPlay" type="button" aria-label="پخش آهنگ">▶</button>
+</div>
+<div class="trackCardInfo">
 <h4>${escapeHTML(track.title)}</h4>
-<p class="small">${escapeHTML(track.artist_name)}</p>
-</div></div>`;
+<p>${escapeHTML(track.artist_name)}</p>
+</div>`;
 card.addEventListener("click",()=>openTrackPage(track));
+card.querySelector(".trackCardPlay").addEventListener("click",event=>{
+event.stopPropagation();
+openTrackPage(track,true);
+});
 return card;
 }
 
