@@ -375,69 +375,499 @@ hr{border:0;border-top:1px solid #292929;margin:26px 0}
 .contactBox{line-height:2.8}
 .contactBox a{color:var(--orange);text-decoration:none}
 
-/* RESPONSIVE */
-@media(max-width:1200px){
-#trackList{grid-template-columns:repeat(4,minmax(0,1fr))}
-}
-@media(max-width:900px){
-#trackList{grid-template-columns:repeat(3,minmax(0,1fr))}
-.global-player{grid-template-columns:1fr 1.5fr;height:94px}
-.player-extra{display:none}
-header{height:310px}
-}
-@media(max-width:700px){
-nav{
-position:fixed;top:auto;bottom:85px;left:0;right:0;width:100%;
-height:65px;flex-direction:row;justify-content:space-around;
-align-items:center;padding:5px;gap:2px;border-right:0;
-border-top:1px solid #333;background:#090909f5;
-}
-.brandLogo,.navLabel,.playlistHeading,.sidePlaylist{display:none}
-nav button{width:auto;flex:1;padding:10px 3px;font-size:10px;text-align:center}
-.topbar{height:65px;margin:0;padding:0 14px;gap:10px}
-.topSearch{max-width:none}
-.topSearch input{height:43px}
-.topSearch:before{font-size:25px}
-.topIcons{gap:10px;font-size:18px}
-.topAvatar{width:34px;height:34px}
-header{margin:10px 12px 18px;height:245px;padding:25px 22px;border-radius:15px}
-header h1{font-size:47px}
-header p{font-size:13px}
-header:after{right:5%;width:80px;height:50px}
-main{margin:0;padding:10px 14px 35px}
-footer{margin:0}
-body{padding-bottom:155px}
-.artistCard{width:calc(50% - 12px);min-width:130px}
-.artistStats{grid-template-columns:repeat(2,1fr)}
-.global-player{height:85px;bottom:65px;padding:8px 12px;grid-template-columns:1fr 1fr;gap:5px}
-.global-player .player-track img{width:45px;height:45px}
-.player-controls{gap:8px}
-.player-controls button{font-size:15px}
-.player-controls #globalPlay{width:33px;height:33px}
-.progress-row{gap:5px}
-.trackCardPlay{opacity:1;transform:none;width:39px;height:39px}
-}
-@media(max-width:450px){
-header h1{font-size:37px}
-header{height:215px}
-#trackList{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.trackHero{padding:15px}
-.trackTitle{font-size:24px}
-.trackCover,.trackCoverPlaceholder{width:100%}
-.lyricsText{font-size:14px}
-.artistHero{padding:24px 12px}
-.artistHero img{width:135px;height:135px}
-.weeklyCard img{width:58px;height:58px}
-.weeklyNumber{font-size:20px;min-width:28px}
-section{padding:12px 0}
-h2{font-size:18px}
-.player-track-info strong{font-size:11px}
-.player-track-info span{font-size:10px}
-}
-</style>
-</head>
+/* =========================================
+   RAP ROOM — RESPONSIVE LAYOUT
+   DESKTOP / TABLET / MOBILE
+========================================= */
 
-<body>
+/* DESKTOP */
+@media (min-width: 1201px) {
+    #trackList {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+}
+
+/* LAPTOP */
+@media (min-width: 901px) and (max-width: 1200px) {
+    #trackList {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    nav {
+        width: 235px;
+        padding: 20px 15px;
+    }
+
+    .topbar {
+        margin-left: 235px;
+        padding: 0 24px;
+    }
+
+    main {
+        margin-left: 235px;
+        padding-right: 22px;
+        padding-left: 22px;
+    }
+
+    header {
+        margin-left: 257px;
+        margin-right: 22px;
+    }
+
+    footer {
+        margin-left: 235px;
+    }
+
+    .global-player {
+        padding-left: 18px;
+        padding-right: 18px;
+        gap: 12px;
+    }
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    nav {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 68px;
+        padding: 5px 7px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 3px;
+        border-right: 0;
+        border-top: 1px solid #333;
+        background: #090909f7;
+        backdrop-filter: blur(15px);
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .brandLogo,
+    .navLabel,
+    .playlistHeading,
+    .sidePlaylist {
+        display: none;
+    }
+
+    nav button {
+        flex: 1 0 auto;
+        min-width: 55px;
+        width: auto;
+        padding: 10px 5px;
+        font-size: 11px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .topbar {
+        height: 75px;
+        margin: 0;
+        padding: 0 22px;
+    }
+
+    header {
+        margin: 12px 20px 22px;
+        height: 300px;
+        padding: 30px;
+    }
+
+    header h1 {
+        font-size: clamp(45px, 8vw, 70px);
+    }
+
+    main {
+        margin: 0;
+        padding: 0 22px 30px;
+    }
+
+    footer {
+        margin: 0;
+    }
+
+    #trackList {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .global-player {
+        height: 82px;
+        bottom: 68px;
+        padding: 8px 16px;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 12px;
+    }
+
+    .player-extra {
+        display: none;
+    }
+
+    .player-track img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .player-controls {
+        gap: 12px;
+    }
+
+    body {
+        padding-bottom: 175px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .topbar {
+        height: 64px;
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .topSearch {
+        max-width: none;
+    }
+
+    .topSearch input {
+        height: 42px;
+        font-size: 12px;
+        padding-right: 15px;
+    }
+
+    .topIcons {
+        gap: 7px;
+    }
+
+    .topIcons button {
+        font-size: 18px;
+    }
+
+    .topAvatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    header {
+        margin: 9px 10px 18px;
+        height: 235px;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    header h1 {
+        font-size: clamp(36px, 10vw, 48px);
+    }
+
+    header p {
+        font-size: 12px;
+        margin: 8px 0 15px;
+    }
+
+    .heroEyebrow {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .heroTag {
+        padding: 10px 19px;
+        font-size: 11px;
+    }
+
+    .heroDots {
+        display: none;
+    }
+
+    header:after {
+        font-size: 7px;
+        letter-spacing: 1px;
+        left: 15px;
+        bottom: 12px;
+    }
+
+    main {
+        padding: 0 12px 25px;
+    }
+
+    section {
+        padding: 12px 0;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 17px;
+    }
+
+    .sectionHeading {
+        gap: 8px;
+    }
+
+    .weeklyBadge {
+        font-size: 9px;
+        padding: 4px 9px;
+    }
+
+    #trackList {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #trackList .card {
+        padding: 8px;
+    }
+
+    .trackCardInfo h4 {
+        font-size: 12px;
+    }
+
+    .trackCardInfo p {
+        font-size: 10px;
+    }
+
+    .trackCardPlay {
+        opacity: 1;
+        transform: none;
+        width: 37px;
+        height: 37px;
+        right: 8px;
+        bottom: 8px;
+    }
+
+    .artistCard {
+        width: calc(50% - 10px);
+        min-width: 0;
+        margin: 4px;
+    }
+
+    .artistCard img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .artistStats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .artistHero {
+        padding: 22px 12px;
+    }
+
+    .artistHero img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .trackHero {
+        padding: 13px;
+    }
+
+    .trackCover,
+    .trackCoverPlaceholder {
+        width: 100%;
+    }
+
+    .trackTitle {
+        font-size: 23px;
+    }
+
+    .trackStats {
+        gap: 7px;
+    }
+
+    .trackStat {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+
+    .playerBox,
+    .lyricsBox,
+    .downloadBox {
+        padding: 14px;
+    }
+
+    .lyricsText {
+        font-size: 13px;
+        line-height: 2.4;
+    }
+
+    .adminForm {
+        padding: 13px;
+    }
+
+    .adminStats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .adminActions button {
+        flex: 1 1 100%;
+    }
+
+    .global-player {
+        height: 76px;
+        bottom: 68px;
+        padding: 7px 10px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 5px;
+    }
+
+    .global-player .player-track img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .player-track {
+        gap: 8px;
+    }
+
+    .player-track-info strong {
+        font-size: 11px;
+    }
+
+    .player-track-info span {
+        font-size: 9px;
+    }
+
+    .player-center {
+        gap: 3px;
+    }
+
+    .player-controls {
+        gap: 5px;
+    }
+
+    .player-controls button {
+        padding: 3px 5px;
+        font-size: 14px;
+    }
+
+    .player-controls #globalPlay {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .progress-row {
+        gap: 4px;
+        font-size: 8px;
+    }
+
+    .global-player .player-extra {
+        display: none;
+    }
+
+    body {
+        padding-bottom: 165px;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 380px) {
+    .topbar {
+        padding: 0 8px;
+    }
+
+    header {
+        height: 210px;
+        padding: 16px;
+    }
+
+    header h1 {
+        font-size: 35px;
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    main {
+        padding-right: 9px;
+        padding-left: 9px;
+    }
+
+    #trackList {
+        gap: 9px;
+    }
+
+    #trackList .card {
+        padding: 6px;
+    }
+
+    .trackCardInfo h4 {
+        font-size: 11px;
+    }
+
+    nav {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    nav button {
+        min-width: 48px;
+        font-size: 9px;
+        padding: 9px 2px;
+    }
+
+    .global-player {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    .player-controls {
+        gap: 2px;
+    }
+}
+
+/* EXTRA SMALL SCREENS */
+@media (max-width: 330px) {
+    #trackList {
+        grid-template-columns: 1fr;
+    }
+
+    .global-player .player-track-info {
+        max-width: 100px;
+    }
+
+    .player-controls button {
+        padding: 2px;
+    }
+}
+
+/* PREVENT HORIZONTAL OVERFLOW */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    max-width: 100%;
+}
+
+/* TOUCH DEVICES */
+@media (hover: none) {
+    #trackList .card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    button:hover {
+        transform: none;
+    }
+}
 
 <!-- SIDEBAR -->
 <nav>
